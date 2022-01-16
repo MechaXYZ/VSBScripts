@@ -1,5 +1,5 @@
 script.Name = 'Animate'
-function   waitForChild(parent, childName)
+function waitForChild(parent, childName)
 	local child = parent:findFirstChild(childName)
 	if child then return child end
 	while true do
