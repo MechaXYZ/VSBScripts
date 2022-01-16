@@ -1,29 +1,5 @@
---[[
-local _p = game:WaitForChild("Players")
-local _plr = _p.ChildAdded:Wait()
-if _plr == _p.LocalPlayer then
-	_plr.ChildAdded:Connect(function(cccc)
-		if c.Name == "PlayerScriptsLoader" then
-			c.Disabled = true
-		end
-	end)
-end
-]]
-repeat wait()
-a = pcall(function()
-	game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
-		if c.Name == "PlayerScriptsLoader"then
-			c.Disabled = true
-		end
-	end)
-	end)
-	if a == true then break end
-until true == false
-game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
-	if c.Name == "PlayerScriptsLoader"then
-		c.Disabled = true
-	end
-end)
+
+game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").PlayerScriptsLoader.Disabled = true
 
 
 function _CameraUI()
@@ -9267,6 +9243,9 @@ function _InitObjects()
 objects.Name = "objects"
 local vf = Instance.new("VectorForce" , objects)
 vf.ApplyAtCenterOfMass = true
+	vf.Force = Vector3.new()
+	vf.RelativeTo = "World"
+	vf.Color = BrickColor.new("Bright blue")
 local floor = Instance.new("Part" , objects)
 floor.Name = "Floor"
 floor.Size = Vector3.new(2,1,1)
@@ -9279,6 +9258,7 @@ sphere.Size = Vector3.new(2,2,2)
 sphere.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 sphere.Transparency = 1
 local bg = Instance.new("BodyGyro" , objects)
+	bg.CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 bg.D = 500
 bg.MaxTorque = Vector3.new(100000.004, 100000.004, 100000.004)
 bg.P = 25000.001
