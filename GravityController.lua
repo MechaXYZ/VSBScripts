@@ -7,6 +7,38 @@ Controls:Disable()
 
 ]]--
 
+local objects = Instance.new("Model" , script)
+objects.Name = "objects"
+local vf = Instance.new("VectorForce" , objects)
+vf.ApplyAtCenterOfMass = true
+vf.Force = Vector3.new()
+vf.RelativeTo = "World"
+vf.Color = BrickColor.new("Bright blue")
+vf.Attachment0 = nil
+vf.Attachment1 = nil
+local floor = Instance.new("SpawnLocation" , objects)
+floor.Enabled = false
+floor.Name = "Floor"
+floor.Size = Vector3.new(2,1,1)
+floor.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+floor.Transparency = 1
+floor.CanCollide = false
+floor.Massless = true
+local sphere = Instance.new("SpawnLocation" , objects)
+sphere.Enabled = false
+sphere.Name = "Sphere"
+sphere.Shape = "Ball"
+sphere.Size = Vector3.new(2,2,2)
+sphere.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+sphere.Transparency = 1
+sphere.Massless = true
+sphere.CanCollide = false
+local bg = Instance.new("BodyGyro" , objects)
+bg.CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+bg.D = 500
+bg.MaxTorque = Vector3.new(100000.004, 100000.004, 100000.004)
+bg.P = 25000.001
+
 function _CameraUI()
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
@@ -9244,41 +9276,11 @@ function _StateTracker()
 	return StateTracker
 end
 function _InitObjects()
-local objects = Instance.new("Model" , script)
-objects.Name = "objects"
-local vf = Instance.new("VectorForce" , objects)
-vf.ApplyAtCenterOfMass = true
-vf.Force = Vector3.new()
-vf.RelativeTo = "World"
-vf.Color = BrickColor.new("Bright blue")
-vf.Attachment0 = nil
-vf.Attachment1 = nil
-local floor = Instance.new("SpawnLocation" , objects)
-floor.Enabled = false
-floor.Name = "Floor"
-floor.Size = Vector3.new(2,1,1)
-floor.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-floor.Transparency = 1
-floor.CanCollide = false
-floor.Massless = true
-local sphere = Instance.new("SpawnLocation" , objects)
-sphere.Enabled = false
-sphere.Name = "Sphere"
-sphere.Shape = "Ball"
-sphere.Size = Vector3.new(2,2,2)
-sphere.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-sphere.Transparency = 1
-sphere.Massless = true
-local bg = Instance.new("BodyGyro" , objects)
-bg.CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-bg.D = 500
-bg.MaxTorque = Vector3.new(100000.004, 100000.004, 100000.004)
-bg.P = 2e6
-  local model = objects
-	local SPHERE = model:WaitForChild("Sphere")
-	local FLOOR = model:WaitForChild("Floor")
-	local VFORCE = model:WaitForChild("VectorForce")
-	local BGYRO = model:WaitForChild("BodyGyro")
+local model = objects
+local SPHERE = model:WaitForChild("Sphere")
+local FLOOR = model:WaitForChild("Floor")
+local VFORCE = model:WaitForChild("VectorForce")
+local BGYRO = model:WaitForChild("BodyGyro")
 	local function initObjects(self)
 		local hrp = self.HRP
 		local humanoid = self.Humanoid
