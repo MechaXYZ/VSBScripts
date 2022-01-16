@@ -1,6 +1,8 @@
+local PlayerModule = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("PlayerModule"))
 
---game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").PlayerScriptsLoader.Disabled = true
+local Controls = PlayerModule:GetControls()
 
+Controls:Disable()
 
 function _CameraUI()
 	local Players = game:GetService("Players")
@@ -9251,6 +9253,7 @@ floor.Name = "Floor"
 floor.Size = Vector3.new(2,1,1)
 floor.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 floor.Transparency = 1
+	floor.CanCollide = false
 local sphere = Instance.new("Part" , objects)
 sphere.Name = "Sphere"
 sphere.Shape = "Ball"
