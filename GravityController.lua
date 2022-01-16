@@ -30,7 +30,6 @@ bg.CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 bg.D = 500
 bg.MaxTorque = Vector3.new(100000.004, 100000.004, 100000.004)
 bg.P = 25000.001
-game:GetService("Players").LocalPlayer.Humanoid.PlatformStand = true
 function _CameraUI()
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
@@ -8511,7 +8510,7 @@ function _ControlModule()
 		if enable then
 			self:EnableActiveControlModule()
 		else
-			self:Disable()
+			--self:Disable()
 		end
 	end
 	
