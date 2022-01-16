@@ -1,5 +1,5 @@
 
-game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").PlayerScriptsLoader.Disabled = true
+--game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").PlayerScriptsLoader.Disabled = true
 
 
 function _CameraUI()
