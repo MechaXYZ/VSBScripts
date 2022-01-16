@@ -9307,7 +9307,6 @@ plr.CharacterAdded:Connect(function(c)
 	char = c
 end)
 function _R6()
-	pcall(function()
 	function r6()
 	local Figure = char
 	local Torso = Figure:WaitForChild("Torso")
@@ -9879,11 +9878,9 @@ function _R6()
 	
 	end
 	return r6()
-	end)
 end
 
 function _R15()
-	pcall(function()
 	local function r15()
 		
 	local Character = char
@@ -10697,10 +10694,9 @@ function _R15()
 	}
 	end
 	return r15()
-			end)
 end
 while true do
-	task.wait(.1)
+	task.wait(.05)
 	if plr.Character ~= nil then
 		char = plr.Character
 		break
