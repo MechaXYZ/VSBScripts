@@ -1,3 +1,27 @@
+repeat task.wait()
+a = pcall(function()
+	game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+		if c.Name == "PlayerScriptsLoader"then
+			c.Disabled = true
+		end
+	end)
+	end)
+	if a == true then break end
+until true == false
+game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+	if c.Name == "PlayerScriptsLoader"then
+		c.Disabled = true
+	end
+end)
+local function smooth(P)
+local sm = Enum.SurfaceType.SmoothNoOutlines
+P.TopSurface = sm
+P.BottomSurface = sm
+P.RightSurface = sm
+P.LeftSurface = sm
+P.FrontSurface = sm
+P.BackSurface = sm
+end
 local objects = Instance.new("Model" , script)
 objects.Name = "objects"
 local vf = Instance.new("VectorForce" , objects)
@@ -15,11 +39,15 @@ floor.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 floor.Transparency = 1
 floor.CanCollide = false
 floor.Massless = true
+floor.Material = "Plastic"
+floor.Anchored = false
+smooth(floor)
 floor.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
 local sphere = Instance.new("SpawnLocation" , objects)
 sphere.Enabled = false
 sphere.Name = "Sphere"
 sphere.Shape = "Ball"
+sphere.Anchored = false
 sphere.Color = Color3.fromRGB(205, 205, 205)
 sphere.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
 sphere.Size = Vector3.new(2,2,2)
@@ -27,9 +55,11 @@ sphere.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 sphere.Transparency = 1
 sphere.Massless = true
 sphere.CanCollide = true
+sphere.Material = "Plastic"
+smooth(sphere)
 local bg = Instance.new("BodyGyro" , objects)
 bg.CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-bg.D = 500
+bg.D = 5000
 bg.MaxTorque = Vector3.new(100000.004, 100000.004, 100000.004)
 bg.P = 25000.001
 function _CameraUI()
