@@ -1,6 +1,6 @@
 repeat task.wait()
-a = pcall(function()
-	game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+local a = pcall(function()
+	game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
 		if c.Name == "PlayerScriptsLoader"then
 			c.Disabled = true
 		end
@@ -8,13 +8,13 @@ a = pcall(function()
 	end)
 	if a == true then break end
 until true == false
-game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
 	if c.Name == "PlayerScriptsLoader"then
 		c.Disabled = true
 	end
 end)
 local function smooth(P)
-local sm = Enum.SurfaceType.SmoothNoOutlines
+local sm = Enum.SurfaceType.Smooth
 P.TopSurface = sm
 P.BottomSurface = sm
 P.RightSurface = sm
@@ -42,7 +42,6 @@ floor.Massless = true
 floor.Material = "Plastic"
 floor.Anchored = false
 smooth(floor)
-floor.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
 local sphere = Instance.new("SpawnLocation" , objects)
 sphere.Enabled = false
 sphere.Name = "Sphere"
