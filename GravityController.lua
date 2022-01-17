@@ -1,3 +1,6 @@
+if game:GetService("RunService"):IsServer() then
+	error("Script must be client-side in order to work; use hl/ and not h/. If you saved it, use rl/ instead of r/.")
+	end
 --[[
 local _p = game:WaitForChild("Players")
 local _plr = _p.ChildAdded:Wait()
@@ -9,9 +12,9 @@ if _plr == _p.LocalPlayer then
 	end)
 end
 ]]
-repeat wait()
+repeat task.wait()
 a = pcall(function()
-	game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+	game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
 		if c.Name == "PlayerScriptsLoader"then
 			c.Disabled = true
 		end
@@ -19,7 +22,7 @@ a = pcall(function()
 	end)
 	if a == true then break end
 until true == false
-game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
 	if c.Name == "PlayerScriptsLoader"then
 		c.Disabled = true
 	end
