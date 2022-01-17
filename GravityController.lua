@@ -1,6 +1,17 @@
-repeat task.wait()
-local a = pcall(function()
-	game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+--[[
+local _p = game:WaitForChild("Players")
+local _plr = _p.ChildAdded:Wait()
+if _plr == _p.LocalPlayer then
+	_plr.ChildAdded:Connect(function(cccc)
+		if c.Name == "PlayerScriptsLoader" then
+			c.Disabled = true
+		end
+	end)
+end
+]]
+repeat wait()
+a = pcall(function()
+	game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
 		if c.Name == "PlayerScriptsLoader"then
 			c.Disabled = true
 		end
@@ -8,11 +19,12 @@ local a = pcall(function()
 	end)
 	if a == true then break end
 until true == false
-game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
+game:WaitForChild("Players").LocalPlayer:WaitForChild("PlayerScripts").ChildAdded:Connect(function(c)
 	if c.Name == "PlayerScriptsLoader"then
 		c.Disabled = true
 	end
 end)
+
 local function smooth(P)
 local sm = Enum.SurfaceType.Smooth
 P.TopSurface = sm
@@ -8541,7 +8553,7 @@ function _ControlModule()
 		if enable then
 			self:EnableActiveControlModule()
 		else
-			--self:Disable()
+			self:Disable()
 		end
 	end
 	
@@ -9298,11 +9310,11 @@ function _StateTracker()
 	return StateTracker
 end
 function _InitObjects()
-local model = objects
-local SPHERE = model:WaitForChild("Sphere")
-local FLOOR = model:WaitForChild("Floor")
-local VFORCE = model:WaitForChild("VectorForce")
-local BGYRO = model:WaitForChild("BodyGyro")
+	local model = objects
+	local SPHERE = model:WaitForChild("Sphere")
+	local FLOOR = model:WaitForChild("Floor")
+	local VFORCE = model:WaitForChild("VectorForce")
+	local BGYRO = model:WaitForChild("BodyGyro")
 	local function initObjects(self)
 		local hrp = self.HRP
 		local humanoid = self.Humanoid
@@ -10728,7 +10740,7 @@ function _R15()
 	return r15()
 end
 while true do
-	task.wait(.1)
+	wait(.1)
 	if plr.Character ~= nil then
 		char = plr.Character
 		break
@@ -11570,6 +11582,17 @@ function GetGravityUp(self, oldGravityUp)
 	
 	return oldGravityUp
 end
+
+Controller.GetGravityUp = GetGravityUp
+
+-- Z is toggle
+PLAYERS.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
+		if k == 'z' and Controller == nil then
+		Controller = GravityController.new(PLAYERS.LocalPlayer)
 		Controller.GetGravityUp = GetGravityUp
-		GravityController.new(PLAYERS.LocalPlayer).GetGravityUp = GetGravityUp
-print("A")
+		elseif k == 'z' and (Controller) then
+			Controller:Destroy()
+		Controller = nil
+	end
+end)
+print("end")
