@@ -9302,10 +9302,17 @@ local BGYRO = model:WaitForChild("BodyGyro")
 end
 local plr = game:GetService("Players").LocalPlayer
 local ms = plr:GetMouse()
-local char = plr.Character
+local char
 plr.CharacterAdded:Connect(function(c)
 	char = c
 end)
+while true do
+	task.wait()
+	if plr.Character ~= nil then
+		char = plr.Character
+		break
+		end
+	end
 function _R6()
 	function r6()
 	local Figure = char
@@ -10697,7 +10704,7 @@ function _R15()
 end
 
 function _Controller()
-	local humanoid = char.Humanoid
+	local humanoid = char:WaitForChild("Humanoid")
 	local animFuncs = {}
 	if (humanoid.RigType == Enum.HumanoidRigType.R6) then
 		animFuncs = _R6()
