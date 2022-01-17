@@ -8509,7 +8509,7 @@ function _ControlModule()
 		if enable then
 			self:EnableActiveControlModule()
 		else
-			--self:Disable()
+			self:Disable()
 		end
 	end
 	
@@ -9300,19 +9300,12 @@ local BGYRO = model:WaitForChild("BodyGyro")
 	end
 	return initObjects
 end
-local plr = game:GetService("Players").LocalPlayer
+local plr = game.Players.LocalPlayer
 local ms = plr:GetMouse()
 local char
 plr.CharacterAdded:Connect(function(c)
 	char = c
 end)
-while true do
-	task.wait()
-	if plr.Character ~= nil then
-		char = plr.Character
-		break
-		end
-	end
 function _R6()
 	function r6()
 	local Figure = char
@@ -10702,7 +10695,13 @@ function _R15()
 	end
 	return r15()
 end
-
+while true do
+	task.wait(.1)
+	if plr.Character ~= nil then
+		char = plr.Character
+		break
+	end
+end
 function _Controller()
 	local humanoid = char:WaitForChild("Humanoid")
 	local animFuncs = {}
@@ -11466,7 +11465,7 @@ function GetGravityUp(self, oldGravityUp)
 	local centerRay = Ray.new(origin, -centerRayLength * oldGravityUp)
 	local centerHit, centerHitPoint, centerHitNormal = workspace:FindPartOnRayWithIgnoreList(centerRay, ignoreList)
 	
-	--[[
+	--[[disable
 	DrawClass:Clear()
 	DrawClass.Draw3D.Ray(centerRay.Origin, centerRay.Direction)
 	]]
@@ -11539,6 +11538,7 @@ function GetGravityUp(self, oldGravityUp)
 	
 	return oldGravityUp
 end
-		Controller = GravityController.new(PLAYERS.LocalPlayer)
+		Controller.GetGravityUp = GetGravityUp
+		Controller = GravityController.new(game:GetService("Players").LocalPlayer)
 		Controller.GetGravityUp = GetGravityUp
 print("A")
