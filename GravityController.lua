@@ -9302,7 +9302,7 @@ local BGYRO = model:WaitForChild("BodyGyro")
 end
 local plr = game:GetService("Players").LocalPlayer
 local ms = plr:GetMouse()
-local char
+local char = plr.Character
 plr.CharacterAdded:Connect(function(c)
 	char = c
 end)
