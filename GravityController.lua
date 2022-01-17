@@ -10754,7 +10754,6 @@ function _Controller()
 	else
 		animFuncs = _R15()
 	end
-	print("Animation succes")
 	return animFuncs
 end
 function _AnimationHandler()
@@ -11588,11 +11587,12 @@ Controller.GetGravityUp = GetGravityUp
 -- Z is toggle
 PLAYERS.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
 		if k == 'z' and Controller == nil then
+		print("Gravity Controller activated.")
 		Controller = GravityController.new(PLAYERS.LocalPlayer)
 		Controller.GetGravityUp = GetGravityUp
 		elseif k == 'z' and (Controller) then
+				print("Gravity Controller deactivated.")
 			Controller:Destroy()
 		Controller = nil
 	end
 end)
-print("end")
