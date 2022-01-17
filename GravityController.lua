@@ -11584,14 +11584,19 @@ end
 
 Controller.GetGravityUp = GetGravityUp
 
--- Z is toggle
+warn([[
+Gravity Controller Script by EgoMoose
+Edited to make it compatible for VSB place 1
+Z to toggle
+Gravity Controller is already activated for you
+]])
 PLAYERS.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
 		if k == 'z' and Controller == nil then
-		print("Gravity Controller activated.")
+		warn("Gravity Controller activated.")
 		Controller = GravityController.new(PLAYERS.LocalPlayer)
 		Controller.GetGravityUp = GetGravityUp
 		elseif k == 'z' and (Controller) then
-				print("Gravity Controller deactivated.")
+				warn("Gravity Controller deactivated.")
 			Controller:Destroy()
 		Controller = nil
 	end
