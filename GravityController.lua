@@ -19,6 +19,7 @@ local sphere = Instance.new("SpawnLocation" , objects)
 sphere.Enabled = false
 sphere.Name = "Sphere"
 sphere.Shape = "Ball"
+sphere.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
 sphere.Size = Vector3.new(2,2,2)
 sphere.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 sphere.Transparency = 1
