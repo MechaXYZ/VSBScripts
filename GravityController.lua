@@ -1,7 +1,7 @@
 local objects = Instance.new("Model" , script)
 objects.Name = "objects"
 local vf = Instance.new("VectorForce" , objects)
-vf.ApplyAtCenterOfMass = true
+vf.ApplyAtCenterOfMass = false
 vf.Force = Vector3.new()
 vf.RelativeTo = "World"
 vf.Color = BrickColor.new("Bright blue")
@@ -15,6 +15,7 @@ floor.CFrame = CFrame.new(0, 50000001.96, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 floor.Transparency = 1
 floor.CanCollide = false
 floor.Massless = true
+floor.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
 local sphere = Instance.new("SpawnLocation" , objects)
 sphere.Enabled = false
 sphere.Name = "Sphere"
