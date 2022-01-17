@@ -10696,10 +10696,9 @@ function _R15()
 	return r15()
 end
 while true do
-	task.wait(.05)
+	task.wait()
 	if plr.Character ~= nil then
 		char = plr.Character
-		break
 	end
 end
 function _Controller()
