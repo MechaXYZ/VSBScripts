@@ -9300,7 +9300,7 @@ local BGYRO = model:WaitForChild("BodyGyro")
 	end
 	return initObjects
 end
-local plr = game.Players.LocalPlayer
+local plr = game:GetService("Players").LocalPlayer
 local ms = plr:GetMouse()
 local char
 plr.CharacterAdded:Connect(function(c)
@@ -10695,11 +10695,7 @@ function _R15()
 	end
 	return r15()
 end
-game:GetService("RunService").Heartbeat:Connect(function()
-				if plr.Character then
-		char = plr.Character
-	end
-end)
+
 function _Controller()
 	local humanoid = char:WaitForChild("Humanoid")
 	local animFuncs = {}
@@ -11536,9 +11532,6 @@ function GetGravityUp(self, oldGravityUp)
 	
 	return oldGravityUp
 end
-
-Controller.GetGravityUp = GetGravityUp
-
 		Controller = GravityController.new(PLAYERS.LocalPlayer)
 		Controller.GetGravityUp = GetGravityUp
 print("A")
