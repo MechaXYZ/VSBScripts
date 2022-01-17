@@ -25,7 +25,7 @@ end
 local objects = Instance.new("Model" , script)
 objects.Name = "objects"
 local vf = Instance.new("VectorForce" , objects)
-vf.ApplyAtCenterOfMass = false
+vf.ApplyAtCenterOfMass = true
 vf.Force = Vector3.new()
 vf.RelativeTo = "World"
 vf.Color = BrickColor.new("Bright blue")
@@ -59,7 +59,7 @@ sphere.Material = "Plastic"
 smooth(sphere)
 local bg = Instance.new("BodyGyro" , objects)
 bg.CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-bg.D = 5000
+bg.D = 500
 bg.MaxTorque = Vector3.new(100000.004, 100000.004, 100000.004)
 bg.P = 25000.001
 function _CameraUI()
