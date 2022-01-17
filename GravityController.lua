@@ -10695,12 +10695,16 @@ function _R15()
 	end
 	return r15()
 end
+coroutine.wrap(function()
 while true do
+pcall(function()
 	task.wait()
 	if plr.Character ~= nil then
 		char = plr.Character
 	end
+end)
 end
+end)()
 function _Controller()
 	local humanoid = char:WaitForChild("Humanoid")
 	local animFuncs = {}
