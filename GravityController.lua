@@ -8509,7 +8509,7 @@ function _ControlModule()
 		if enable then
 			self:EnableActiveControlModule()
 		else
-			self:Disable()
+			--self:Disable()
 		end
 	end
 	
@@ -10697,7 +10697,7 @@ function _R15()
 end
 
 function _Controller()
-	local humanoid = char:WaitForChild("Humanoid")
+	local humanoid = char.Humanoid
 	local animFuncs = {}
 	if (humanoid.RigType == Enum.HumanoidRigType.R6) then
 		animFuncs = _R6()
@@ -11459,7 +11459,7 @@ function GetGravityUp(self, oldGravityUp)
 	local centerRay = Ray.new(origin, -centerRayLength * oldGravityUp)
 	local centerHit, centerHitPoint, centerHitNormal = workspace:FindPartOnRayWithIgnoreList(centerRay, ignoreList)
 	
-	--[[disable
+	--[[
 	DrawClass:Clear()
 	DrawClass.Draw3D.Ray(centerRay.Origin, centerRay.Direction)
 	]]
