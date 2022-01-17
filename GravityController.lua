@@ -8509,7 +8509,7 @@ function _ControlModule()
 		if enable then
 			self:EnableActiveControlModule()
 		else
-			self:Disable()
+			--self:Disable()
 		end
 	end
 	
@@ -11539,6 +11539,5 @@ function GetGravityUp(self, oldGravityUp)
 	return oldGravityUp
 end
 		Controller.GetGravityUp = GetGravityUp
-		Controller = GravityController.new(game:GetService("Players").LocalPlayer)
-		Controller.GetGravityUp = GetGravityUp
+		GravityController.new(PLAYERS.LocalPlayer).GetGravityUp = GetGravityUp
 print("A")
