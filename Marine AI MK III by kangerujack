@@ -1822,7 +1822,7 @@ function attackLoop()
 				attackLogic()
 			elseif status:get("m4Equipped") and not status:get("weaponAimed") then
 				status:set("weaponAimed",false)
-				actions.lowerM4()
+				--actions.lowerM4()
 			end
 		else
 			actions.updateFace("Idle")
