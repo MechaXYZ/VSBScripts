@@ -636,11 +636,11 @@ local actions = {}
 local w = Instance.new("WeldConstraint", marine.Torso)
 w.Part0 = gun
 w.Name = "Left Arm Weld"
-w.Enabled = false
+--w.Enabled = false
 local w = Instance.new("WeldConstraint", marine.Torso)
 w.Part0 = gun
 w.Name = "Right Arm Weld"
-w.Enabled = false
+--w.Enabled = false
 --task.wait()
 --Services
 local debrisService = game:GetService("Debris")
