@@ -1051,7 +1051,6 @@ function trouble.createLine(instance)
 	lineEnd.Parent = instance
 end
 local movement = {}
---Services
 local pathfindingService = game:GetService("PathfindingService")
 local runService = game:GetService("RunService")
 local myHuman = marine.Humanoid
