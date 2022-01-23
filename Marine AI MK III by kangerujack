@@ -897,7 +897,6 @@ function actions.drawKnife()
 		--knife.Weld.C0 = knife.CFrame:Inverse() * rArm.CFrame
 	end
 end
-
 function actions.yieldKnife()
 	if status:get("knifeEquipped") then
 		status:set("knifeEquipped",false)
@@ -906,7 +905,6 @@ function actions.yieldKnife()
 		knife.Weld.Part0 = myTorso
 	end
 end
-
 function actions.yieldWeapons()
 	actions.yieldKnife()
 	actions.yieldM4()
