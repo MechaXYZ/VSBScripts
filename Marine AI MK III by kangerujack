@@ -1,0 +1,1852 @@
+local anim = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/MechaXYZ/VSBScripts/main/ROBLOX%20Animation%20Script", true)
+local function createguy(color)
+local Model0 = Instance.new("Model")
+    local Part1 = Instance.new("SpawnLocation")
+    local SpecialMesh2 = Instance.new("SpecialMesh")
+    local Part4 = Instance.new("SpawnLocation")
+    local Part45 = Instance.new("SpawnLocation")
+    local Part5 = Instance.new("SpawnLocation")
+    local Part6 = Instance.new("SpawnLocation")
+    local Part7 = Instance.new("SpawnLocation")
+    local Part8 = Instance.new("SpawnLocation")
+    Part1.Enabled = false
+    Part4.Enabled = false
+    Part45.Enabled = false
+    Part5.Enabled = false
+    Part6.Enabled = false
+    Part7.Enabled = false
+    Part8.Enabled = false
+    local Humanoid9 = Instance.new("Humanoid")
+    Model0.Name = "Marine"
+    Model0.Parent = script
+    Model0.PrimaryPart = Part1
+    Part1.Name = "Head"
+    Part1.Parent = Model0
+    Part1.CFrame = CFrame.new(14.4682684, 4.49999714, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part1.Position = Vector3.new(14.4682684, 4.49999714, 13.7751303)
+    Part1.Color = color
+    Part1.Size = Vector3.new(2, 1, 1)
+    Part1.CanCollide = true
+    Part1.TopSurface = Enum.SurfaceType.Smooth
+    Part1.brickColor = BrickColor.new("Really red")
+    Part1.FormFactor = Enum.FormFactor.Symmetric
+    Part1.formFactor = Enum.FormFactor.Symmetric
+    SpecialMesh2.Parent = Part1
+    SpecialMesh2.Scale = Vector3.new(1.25, 1.25, 1.25)
+    Part4.Name = "Torso"
+    Part4.Parent = Model0
+    Part4.CFrame = CFrame.new(14.4682684, 2.99999905, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part4.Position = Vector3.new(14.4682684, 2.99999905, 13.7751303)
+    Part4.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part4.Size = Vector3.new(2, 2, 1)
+    Part4.BrickColor = BrickColor.new("Brown")
+    Part4.CanCollide = true
+    Part4.LeftParamA = 0
+    Part4.LeftParamB = 0
+    Part4.LeftSurface = Enum.SurfaceType.Smooth
+    Part4.RightParamA = 0
+    Part4.RightParamB = 0
+    Part4.RightSurface = Enum.SurfaceType.Smooth
+    Part4.brickColor = BrickColor.new("Really red")
+    Part4.FormFactor = Enum.FormFactor.Symmetric
+    Part4.formFactor = Enum.FormFactor.Symmetric
+    Part45.Name = "HumanoidRootPart"
+    Part45.Parent = Model0
+    Part45.CFrame = CFrame.new(14.4682684, 2.99999905, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part45.Position = Vector3.new(14.4682684, 2.99999905, 13.7751303)
+    Part45.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part45.Size = Vector3.new(2, 2, 1)
+    Part45.Transparency = 1
+    Part45.BrickColor = BrickColor.new("Brown")
+    Part45.CanCollide = true
+    Part45.LeftParamA = 0
+    Part45.LeftParamB = 0
+    Part45.LeftSurface = Enum.SurfaceType.Smooth
+    Part45.RightParamA = 0
+    Part45.RightParamB = 0
+    Part45.RightSurface = Enum.SurfaceType.Smooth
+    Part45.brickColor = BrickColor.new("Really red")
+    Part45.FormFactor = Enum.FormFactor.Symmetric
+    Part45.formFactor = Enum.FormFactor.Symmetric
+    Part5.Name = "Left Arm"
+    Part5.Parent = Model0
+    Part5.CFrame = CFrame.new(12.9682684, 2.99999905, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part5.Position = Vector3.new(12.9682684, 2.99999905, 13.7751303)
+    Part5.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part5.Size = Vector3.new(1, 2, 1)
+    Part5.BrickColor = BrickColor.new("Really black")
+    Part5.CanCollide = true
+    Part5.brickColor = BrickColor.new("Really red")
+    Part5.FormFactor = Enum.FormFactor.Symmetric
+    Part5.formFactor = Enum.FormFactor.Symmetric
+    Part6.Name = "Right Arm"
+    Part6.Parent = Model0
+    Part6.CFrame = CFrame.new(15.9682684, 2.99999905, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part6.Position = Vector3.new(15.9682684, 2.99999905, 13.7751303)
+    Part6.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part6.Size = Vector3.new(1, 2, 1)
+    Part6.BrickColor = BrickColor.new("Really black")
+    Part6.CanCollide = true
+    Part6.brickColor = BrickColor.new("Really red")
+    Part6.FormFactor = Enum.FormFactor.Symmetric
+    Part6.formFactor = Enum.FormFactor.Symmetric
+    Part7.Name = "Left Leg"
+    Part7.Parent = Model0
+    Part7.CFrame = CFrame.new(13.9682684, 1, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part7.Position = Vector3.new(13.9682684, 1, 13.7751303)
+    Part7.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part7.Size = Vector3.new(1, 2, 1)
+    Part7.BottomSurface = Enum.SurfaceType.Smooth
+    Part7.BrickColor = BrickColor.new("Really black")
+    Part7.CanCollide = true
+    Part7.brickColor = BrickColor.new("Really red")
+    Part7.FormFactor = Enum.FormFactor.Symmetric
+    Part7.formFactor = Enum.FormFactor.Symmetric
+    Part8.Name = "Right Leg"
+    Part8.Parent = Model0
+    Part8.CFrame = CFrame.new(14.9682684, 1, 13.7751303, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    Part8.Position = Vector3.new(14.9682684, 1, 13.7751303)
+    Part8.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part8.Size = Vector3.new(1, 2, 1)
+    Part8.BottomSurface = Enum.SurfaceType.Smooth
+    Part8.BrickColor = BrickColor.new("Really black")
+    Part8.CanCollide = true
+    Part8.brickColor = BrickColor.new("Really red")
+    Part8.FormFactor = Enum.FormFactor.Symmetric
+    Part8.formFactor = Enum.FormFactor.Symmetric
+for i, v in pairs(Model0:GetChildren()) do
+v.Color = color
+end
+local rl = Part8
+local ll = Part7
+local ra = Part6
+local la = Part5
+local tors = Part4
+local head = Part1
+local nc = Instance.new("Motor6D" , tors)
+nc.Name = 'Neck'
+nc.Part0 = tors
+nc.Part1 = head
+nc.C0 = CFrame.new(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+nc.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+nc.MaxVelocity = 0.10000000149012
+local rs = Instance.new("Motor6D" , tors)
+rs.Name = 'Right Shoulder'
+rs.Part0 = tors
+rs.Part1 = ra
+rs.C0 = CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rs.C1 = CFrame.new(-0.5, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rs.MaxVelocity = 0.15000000596046
+local ls = Instance.new("Motor6D" , tors)
+ls.Name = 'Left Shoulder'
+ls.Part0 = tors
+ls.Part1 = la
+ls.C0 = CFrame.new(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+ls.C1 = CFrame.new(0.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+ls.MaxVelocity = 0.15000000596046
+local rh = Instance.new("Motor6D" , tors)
+rh.Name = 'Right Hip'
+rh.Part0 = tors
+rh.Part1 = rl
+rh.C0 = CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rh.C1 = CFrame.new(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rh.MaxVelocity = 0.10000000149012
+local lh = Instance.new("Motor6D" , tors)
+lh.Name = 'Left Hip'
+lh.Part0 = tors
+lh.Part1 = ll
+lh.C0 = CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+lh.C1 = CFrame.new(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+local rj = Instance.new("Motor6D" , Part45)
+rj.Name = 'RootJoint'
+rj.Part0 = Part45
+rj.Part1 = tors
+rj.C0 = CFrame.new(-0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+rj.C1 = CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+rj.MaxVelocity = 0.10000000149012
+Humanoid9.Parent = Model0
+Humanoid9.LeftLeg = ll
+Humanoid9.RightLeg = rl
+Humanoid9.Torso = Part4
+Humanoid9.Died:Connect(function()
+game:GetService("Debris"):AddItem(Model0, 5)
+end)
+local face = Instance.new("Texture", Model0.Head)
+face.Texture = 'rbxassetid://286688505'
+face.StudsPerTileU = 100
+face.StudsPerTileV = 100
+face.Name = "faceIdle"
+NS(anim, Model0)
+return Model0
+end
+local marine = createguy(Color3.fromRGB(241, 231, 199))
+local anim = Instance.new("Animation", marine)
+anim.Name = "Reload"
+anim.AnimationId = 'rbxassetid://94332664'
+local anim = Instance.new("Animation", marine)
+anim.Name = "Stab"
+anim.AnimationId = 'rbxassetid://94161088'
+local anim = Instance.new("Animation", marine)
+anim.Name = "StabPunch"
+anim.AnimationId = 'rbxassetid://94161333'
+local anim = Instance.new("Animation", marine)
+anim.Name = "ThrowAnimation"
+anim.AnimationId = 'rbxassetid://168160500'
+local beams = Instance.new("Folder" , marine)
+beams.Name = "Beams"
+local shirt = Instance.new("Shirt" , marine)
+shirt.Name = "Shirt"
+local pants = Instance.new("Pants", marine)
+pants.Name = "Pants"
+marine.Shirt.ShirtTemplate = 'rbxassetid://5479755204'
+marine.Pants.PantsTemplate = 'rbxassetid://5520806032'
+local helm = Instance.new("SpawnLocation" , marine)
+helm.Enabled = false
+helm.Name = "ACH"
+helm.Size = Vector3.new(1.95, 1.841, 1.75)
+local msh = Instance.new("SpecialMesh" , helm)
+msh.MeshId = 'rbxassetid://5563574660'
+msh.TextureId = 'rbxassetid://5563575228'
+msh.Scale = Vector3.new(1, 1, 1)
+local w = Instance.new("Weld" , helm)
+w.Part0 = helm
+w.Part1 = marine.Head
+w.C1 = CFrame.new(0.055, .313, -0.089, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+local vest = Instance.new("SpawnLocation" , marine)
+vest.Enabled = false
+vest.Name = "IOTV"
+vest.Size = Vector3.new(2.247, 2.414, 1.676)
+local at = Instance.new("Attachment" , vest)
+at.Name = "AimAttach"
+at.CFrame = CFrame.new(0, 0.666, -0.932, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+local msh = Instance.new("SpecialMesh" , vest)
+msh.MeshId = 'rbxassetid://6520780161'
+msh.TextureId = 'rbxassetid://6520749944'
+msh.Scale = Vector3.new(1, 1, 1)
+local w = Instance.new("Weld" , vest)
+w.Part0 = vest
+w.Part1 = marine.Torso
+w.C1 = CFrame.new(0, 0.38, -0.133, 1, 0.001, 0, -0.001, 1, 0.001, 0, -0.001, 1)
+local knife = Instance.new("SpawnLocation" , marine)
+knife.Enabled = false
+knife.Name = "Knife"
+knife.Size = Vector3.new(.4, 3, .8)
+local msh = Instance.new("SpecialMesh" , knife)
+msh.MeshId = 'rbxassetid://121944778'
+msh.TextureId = 'rbxassetid://121944805'
+msh.Scale = Vector3.new(1, 1, 1)
+local w = Instance.new("Weld" , knife)
+w.Part0 = marine.Torso
+w.Part1 = knife
+w.C0 = CFrame.new(-1, -1.082, 0.297, -1, 0, 0, 0, -0.342, 0.94, 0, 0.94, 0.342)
+local grenade = Instance.new("SpawnLocation" , marine)
+grenade.Enabled = false
+grenade.Name = "Grenade"
+grenade.Size = Vector3.new(0.842, 1.2, 0.776)
+local at = Instance.new("Attachment" , grenade)
+at.Name = "Attach0"
+at.CFrame = CFrame.new(0.359, 0.21, 0.009, 0.937, -0.349, -0.029, 0.349, 0.937, 0, 0.027, -0.01, 1)
+local at = Instance.new("Attachment" , grenade)
+at.Name = "Attach1"
+at.CFrame = CFrame.new(0.392, -0.405, 0.044, 0.987, 0.161, -0.027, -0.161, 0.987, 0, 0.026, 0.004, 1)
+local msh = Instance.new("SpecialMesh" , grenade)
+msh.MeshId = 'rbxassetid://431532852'
+msh.TextureId = 'rbxassetid://431532899'
+msh.Scale = Vector3.new(.003, .003, .003)
+local w = Instance.new("Weld" , marine.Torso)
+w.Part0 = grenade
+w.Part1 = marine.Torso
+w.Name = "GrenadeWeld"
+w.C0 = CFrame.new(-0.733, 0.5, 0.725, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+local gun = Instance.new("SpawnLocation" , marine)
+gun.Enabled = false
+gun.Name = "M4"
+gun.CanCollide = false
+gun.Size = Vector3.new(0.411, 1.268, 4.764)
+local snd = Instance.new("Sound", gun)
+snd.Name = "Equip"
+snd.SoundId = 'rbxassetid://247071598'
+snd.EmitterSize = 10
+snd.PlaybackSpeed = 2
+snd.Volume = 1
+local snd = Instance.new("Sound", gun)
+snd.Name = "Fire"
+snd.SoundId = 'rbxassetid://620716624'
+snd.EmitterSize = 10
+snd.Volume = 1
+local snd = Instance.new("Sound", gun)
+snd.Name = "Reload"
+snd.SoundId = 'rbxassetid://95309699'
+snd.EmitterSize = 10
+snd.Volume = 1
+local mag = Instance.new("SpawnLocation" , marine)
+mag.Enabled = false
+mag.Name = "Mag"
+mag.Size = Vector3.new(0.499, 0.946, 0.105)
+local at = Instance.new("Attachment" , gun)
+at.Name = "Barrel"
+at.CFrame = CFrame.new(-0.054, 0.24, -2.48, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+local bg = Instance.new("BillboardGui", at)
+bg.Name = "FlashBG"
+bg.DistanceUpperLimit = -1
+bg.ClipsDescendants = true
+bg.Size = UDim2.new(1, 0, 1, 0)
+bg.MaxDistance = 3.402823669209385e+38
+local img = Instance.new("ImageLabel", bg)
+img.Name = "Flash1"
+img.SizeConstraint = "RelativeXY"
+img.Image = 'rbxassetid://4547209881'
+img.ScaleType = "Stretch"
+img.SliceScale = 1
+img.ZIndex = 1
+local img = Instance.new("ImageLabel", bg)
+img.Name = "Flash2"
+img.SizeConstraint = "RelativeXY"
+img.Image = 'rbxassetid://4547143464'
+img.ScaleType = "Stretch"
+img.SliceScale = 1
+img.ZIndex = 1
+local img = Instance.new("ImageLabel", bg)
+img.Name = "Flash3"
+img.SizeConstraint = "RelativeXY"
+img.Image = 'rbxassetid://4547210957'
+img.ScaleType = "Stretch"
+img.SliceScale = 1
+img.ZIndex = 1
+local pl = Instance.new("PointLight", at)
+pl.Range = 5
+pl.Brightness = .2
+pl.Color = Color3.fromRGB(255, 255, 255)
+pl.Shadows = true
+pl.Enabled = false
+local pe = Instance.new("ParticleEmitter")
+pe.Enabled = false
+pe.Name = "Flash1"
+pe.Speed = NumberRange.new(0, 0)
+pe.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+pe.LightEmission = 0
+pe.LightInfluence = 1
+pe.Texture = "rbxassetid://4547209881"
+pe.Size = NumberSequence.new(.8)
+pe.LockedToPart = true
+pe.Orientation = "FacingCamera"
+pe.EmissionDirection = "Front"
+pe.Drag = 0
+pe.Lifetime = NumberRange.new(.1, .1)
+pe.Rate = 20
+pe.SpreadAngle = Vector2.new(0, 0)
+pe.VelocitySpread = 0
+pe.RotSpeed = NumberRange.new(0, 0)
+pe.Rotation = NumberRange.new(0, 0)
+pe.Parent = at
+local pe = Instance.new("ParticleEmitter")
+pe.Enabled = false
+pe.Name = "Flash2"
+pe.Speed = NumberRange.new(0, 0)
+pe.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+pe.LightEmission = 0
+pe.LightInfluence = 1
+pe.Texture = "rbxassetid://4547143464"
+pe.Size = NumberSequence.new(.8)
+pe.LockedToPart = true
+pe.Orientation = "FacingCamera"
+pe.EmissionDirection = "Front"
+pe.Drag = 0
+pe.Lifetime = NumberRange.new(.1, .1)
+pe.Rate = 20
+pe.SpreadAngle = Vector2.new(0, 0)
+pe.VelocitySpread = 0
+pe.RotSpeed = NumberRange.new(0, 0)
+pe.Rotation = NumberRange.new(0, 0)
+pe.Parent = at
+local pe = Instance.new("ParticleEmitter")
+pe.Enabled = false
+pe.Name = "Flash3"
+pe.Speed = NumberRange.new(0, 0)
+pe.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+pe.LightEmission = 0
+pe.LightInfluence = 1
+pe.Texture = "rbxassetid://4547210957"
+pe.Size = NumberSequence.new(.8)
+pe.LockedToPart = true
+pe.Orientation = "FacingCamera"
+pe.EmissionDirection = "Front"
+pe.Drag = 0
+pe.Lifetime = NumberRange.new(.1, .1)
+pe.Rate = 20
+pe.SpreadAngle = Vector2.new(0, 0)
+pe.VelocitySpread = 0
+pe.RotSpeed = NumberRange.new(0, 0)
+pe.Rotation = NumberRange.new(0, 0)
+pe.Parent = at
+local at = Instance.new("Attachment" , gun)
+at.Name = "Chamber"
+at.CFrame = CFrame.new(0.058, 0.237, 0.533, -1, 0, 0, 0, -0.988, -0.154, 0, -0.154, 0.988)
+local at = Instance.new("Attachment" , gun)
+at.Name = "HingeAttach1"
+at.CFrame = CFrame.new(0, 0, 1.138, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+local at = Instance.new("Attachment" , marine.Torso)
+at.Name = "HingeAttach0"
+at.CFrame = CFrame.new(0.607, 0.775, 0.009, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+local hinge = Instance.new("HingeConstraint" , gun)
+hinge.Attachment0 = at
+hinge.LimitsEnabled = true
+hinge.Attachment1 = gun.HingeAttach1
+hinge.ActuatorType = "Servo"
+hinge.LowerAngle = -70
+hinge.Restitution = 0
+hinge.UpperAngle = 65
+hinge.AngularResponsiveness = 45
+hinge.AngularSpeed = 1000
+hinge.ServoMaxTorque = 1000
+hinge.Radius = .15
+local at = Instance.new("Attachment" , gun)
+at.Name = "Impact"
+at.CFrame = CFrame.new(0.024, 0.008, -0.816, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+local pe = Instance.new("ParticleEmitter")
+pe.Enabled = false
+pe.Name = "Debris"
+pe.Speed = NumberRange.new(0, 0)
+pe.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+pe.LightEmission = 0
+pe.LightInfluence = 1
+pe.Texture = "rbxassetid://4688927228"
+pe.Size = NumberSequence.new(0, .562)
+pe.Transparency = NumberSequence.new(0, 1)
+pe.Orientation = "FacingCamera"
+pe.EmissionDirection = "Front"
+pe.Drag = 0
+pe.Lifetime = NumberRange.new(1, 1)
+pe.Rate = 50
+pe.SpreadAngle = Vector2.new(0, 0)
+pe.VelocitySpread = 0
+pe.RotSpeed = NumberRange.new(0, 0)
+pe.Rotation = NumberRange.new(0, 0)
+pe.Parent = at
+local msh = Instance.new("SpecialMesh" , gun)
+msh.MeshId = 'rbxassetid://5478683222'
+msh.TextureId = 'rbxassetid://5478683276'
+msh.Scale = Vector3.new(1, 1, 1)
+local msh = Instance.new("SpecialMesh" , mag)
+msh.MeshId = 'rbxassetid://5465614281'
+msh.TextureId = 'rbxassetid://5465614323'
+msh.Scale = Vector3.new(1, 1, 1)
+local w = Instance.new("Weld" , gun)
+w.Name = "M4 Weld"
+w.Part0 = marine.Torso
+w.Part1 = gun
+w.C0 = CFrame.new(-0.38, -0.215, 0.692, 0, -0.709, 0.705, 0, 0.705, 0.709, -1, 0, 0)
+local w = Instance.new("Weld" , gun)
+w.Name = "Mag-M4"
+w.Part0 = gun
+w.Part1 = mag
+w.C0 = CFrame.new(0.004, -0.452, 0.481, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+local at = Instance.new("Attachment" , marine.Head)
+at.Name = "TorsoAttachmentHinge"
+at.CFrame = CFrame.new(0, -0.424, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+local at = Instance.new("Attachment" , marine.Torso)
+at.Name = "HeadAttachmentHinge"
+at.CFrame = CFrame.new(0, 1.029, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+local hinge = Instance.new("HingeConstraint" , marine.Head)
+hinge.Attachment0 = marine.Head.TorsoAttachmentHinge
+hinge.Attachment1 = at
+hinge.ActuatorType = "Servo"
+hinge.AngularResponsiveness = 45
+hinge.AngularSpeed = 1000
+hinge.ServoMaxTorque = 1000
+hinge.Radius = .15
+local at = Instance.new("Attachment" , vest)
+at.Name = "RagAttach"
+at.CFrame = CFrame.new(0, 0.11, 0, 1, 0, 0, 0, 1, -0.001, 0, 0.001, 1)
+local at = Instance.new("Attachment" , marine.HumanoidRootPart)
+at.Name = "RootAttachment"
+local alignor = Instance.new("AlignOrientation" , marine.HumanoidRootPart)
+alignor.Enabled = false
+alignor.MaxAngularVelocity = 3.402823669209385e+38
+alignor.MaxTorque = 10000
+alignor.Responsiveness = 200
+alignor.AlignType = "Parallel"
+alignor.PrimaryAxisOnly = false
+alignor.ReactionTorqueEnabled = false
+alignor.RigidityEnabled = false
+alignor.Attachment0 = at
+local mySettings = {
+["M4"] = {
+["Delay"] = .2,
+["Range"] = 150
+},
+["AttackPlayers"] = true,
+["Debug"] = false,
+["DetectionRange"] = 200,
+["MagSize"] = 30,
+["RandomAppearance"] = false,
+["Respawn"] = false,
+["RespawnDelay"] = 5,
+["Team"] = "USA",
+["Wander"] = true
+}
+local faces = {
+["faceDead"] = 'rbxassetid://15426038',
+["faceHurt"] = 'rbxassetid://258192246',
+["faceAttacking"] = 'rbxassetid://286688505',
+["faceHunting"] = 'rbxassetid://209715003'
+}
+local status = {
+	reloading = false,
+	weaponAimed = false,
+	weaponCool = true,
+	m4Equipped = false,
+	knifeEquipped = false,
+	grenadeCool = true,
+	currentTarget = false,
+	mood = "Idle",
+	currentFace = "",
+	gunPointedAt = nil,
+	tookDamage = false,
+	potentialTargets = {},
+	activeAllies = {},
+	mag = 30,
+}
+function status:set(var,val)
+	self[var] = val
+end
+function status:get(var)
+	return self[var]
+end
+local core = {}
+local myRoot = marine.HumanoidRootPart
+local myHead = marine.Head
+local barrel = gun.Barrel
+local event = Instance.new("BindableEvent")
+function core.spawn(func,...)
+	local connection = event.Event:Connect(func)
+	event:Fire(...)
+	connection:Disconnect()
+end
+function core.checkDist(part1,part2)
+	return (part1.Position - part2.Position).Magnitude
+end
+function core.applyDamage(human,dmg)
+	if not core.isAlly(human.Parent) and human.Health > 0 then
+		human.Health -= dmg
+	end
+end
+function core.getHuman(instance)
+	if instance:IsA("Tool") or instance:IsA("Accessory") then
+		instance = instance.Parent
+	end
+	
+	return instance:FindFirstChild("Humanoid")
+end
+local raycastParams = RaycastParams.new()
+raycastParams.FilterDescendantsInstances = {marine}
+function core.checkSight(target)
+	local result = workspace:Raycast(marine.Head.Position,(target.Position - marine.Head.Position).Unit*mySettings.M4.Range,raycastParams)
+	if result and result.Instance.Parent then
+		if result.Instance:IsDescendantOf(target.Parent) or result.Instance.Name == "Bullet" then
+			return true
+		else
+			--local human = result.Instance.Parent:FindFirstChild("Humanoid")
+			local human = core.getHuman(result.Instance.Parent)
+			if human and human.Health>0 and not core.isAlly(human.Parent) then
+				status:set("currentTarget",human.RootPart)
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function core.checkPotentialSight(target)
+	local dist = core.checkDist(myHead,target)
+	local pos2 = Vector3.new(target.Position.X,myHead.Position.Y,target.Position.Z)
+	local result = workspace:Raycast(myHead.Position,(pos2 - myHead.Position).Unit*dist,raycastParams)
+	if result then
+		return false
+	else
+		return true
+	end
+end
+
+function core.raycast(origin,dir)
+	local result = workspace:Raycast(origin,dir,raycastParams)
+	if result then
+		return true, result
+	else
+		return false
+	end
+end
+
+function core.checkShot(target)
+	local dist = core.checkDist(myRoot,target)
+	local result1 = workspace:Raycast(barrel.WorldPosition,(target.Position - barrel.WorldPosition).Unit*dist,raycastParams)
+	local result2 = workspace:Raycast(myHead.Position, (target.Position - myHead.Position).Unit*dist,raycastParams)
+	if result1 and result2 and result1.Instance.Parent == result2.Instance.Parent then
+		if result1.Instance:IsDescendantOf(target.Parent) or result1.Instance.Name == "Bullet" then
+			return true
+		else
+			local human = result1.Instance.Parent:FindFirstChild("Humanoid")
+			if human and human.Health>0 and not core.isAlly(human.Parent) then
+				status:set("currentTarget",human.RootPart)
+				return true
+			end
+		end
+	end
+	return false
+end
+
+local allies = {}
+local team = mySettings.Team
+local attackPlayers = mySettings.AttackPlayers
+function core.isAlly(model)
+	--Check and see if they are on our team, if they are break the loop.
+	local targetTeam
+	if model:FindFirstChild("Team") then
+		targetTeam = model.Team
+	elseif model:FindFirstChild("Settings") and model.Settings:FindFirstChild("Team") then
+		targetTeam = model.Settings.Team			
+	end
+	for _,ally in ipairs(allies) do
+		if model.Name == ally then
+			return true
+		end
+	end
+	if (targetTeam and targetTeam == team) or (not attackPlayers and game.Players:GetPlayerFromCharacter(model)) then
+		return true
+	end
+	return false
+end
+
+function core.facingTarget()
+	--Make sure we're facing the target
+	local currentLookVector = myRoot.CFrame.LookVector
+	local targetPos = status:get("currentTarget").Position
+	local goalLookVector = CFrame.new(myRoot.Position,Vector3.new(
+		targetPos.X,
+		myRoot.Position.Y,
+		targetPos.Z
+		)).LookVector
+	local difference = (currentLookVector - goalLookVector).Magnitude
+	if difference < 0.5 then
+		return true
+	else
+		return false
+	end
+end
+
+local actions = {}
+local w = Instance.new("WeldConstraint", marine.Torso)
+w.Part0 = gun
+w.Name = "Left Arm Weld"
+local w = Instance.new("WeldConstraint", marine.Torso)
+w.Part0 = gun
+w.Name = "Right Arm Weld"
+--Services
+local debrisService = game:GetService("Debris")
+local runService = game:GetService("RunService")
+local tweenService = game:GetService("TweenService")
+local myHuman = marine.Humanoid
+local myRoot = marine.HumanoidRootPart
+local m4 = marine.M4
+local reloadSound = m4.Reload
+local magazine = marine.Mag
+local myHead = marine.Head
+local myTorso = marine.Torso
+local neck = myTorso.Neck
+local lShoulder = myTorso["Left Shoulder"]
+local rShoulder = myTorso["Right Shoulder"]
+local lArmWeld = myTorso["Left Arm Weld"]
+local rArmWeld = myTorso["Right Arm Weld"]
+local lArm = marine["Left Arm"]
+local rArm = marine["Right Arm"]
+local m4Weld = m4["M4 Weld"]
+--Motors--
+local lHip = myTorso["Left Hip"]
+local lHipOrg = lHip.C0
+local rHip = myTorso["Right Hip"]
+local rHipOrg = rHip.C0
+local rootJoint = myRoot.RootJoint
+local rootJointOrg = rootJoint.C0
+--Align Orientations
+local bodyRotate = myRoot.AlignOrientation
+local xAxisAttach = Instance.new("Attachment")
+xAxisAttach.Parent = workspace.Terrain
+xAxisAttach.CFrame = myRoot.CFrame
+local yAxisAttach = Instance.new("Attachment")
+yAxisAttach.Parent = workspace.Terrain
+yAxisAttach.CFrame = myRoot.CFrame
+bodyRotate.Attachment1 = yAxisAttach
+
+
+local m4Hinge = m4.HingeConstraint
+local m4HingeAttach = m4.HingeAttach1
+local torsoHingeAttach = myTorso.HingeAttach0
+local torsoHingAttachOrgPos = torsoHingeAttach.Position
+local headHinge = myHead.HingeConstraint
+
+local reloadAnimation = myHuman:LoadAnimation(marine.Reload)
+reloadAnimation.Priority = Enum.AnimationPriority.Action
+
+function actions.aim()
+	
+	local aimPos = Vector3.new()
+	local sightIndex = 50
+	
+	status:set("weaponAimed",true)
+	myHuman.AutoRotate = false
+	bodyRotate.Enabled = true
+	myHuman.WalkSpeed = 10
+	
+	while true do
+		
+		local target = status:get("currentTarget")
+
+		if myHuman.Health <=0 or not target or not target.Parent then
+			break
+		elseif not status:get("m4Equipped") and not status:get("reloading") then
+			break
+		end
+
+		local target = status:get("currentTarget")
+		local dist = core.checkDist(target,myTorso)
+		local canSee = core.checkSight(target)
+		
+		if not canSee then
+			sightIndex = sightIndex - 1
+		else
+			sightIndex = 50
+		end
+		
+		if not canSee and myRoot.Velocity.Magnitude > 3 and sightIndex <= 0 then
+			
+			local walkPoint = myHuman.WalkToPoint
+			local myPos = myRoot.Position
+			local dir = (Vector3.new(walkPoint.X,0,walkPoint.Z) - Vector3.new(myPos.X,0,myPos.Z)).Unit * 20
+			aimPos = myRoot.Position + Vector3.new(0,1.5,0) + dir
+		else
+			aimPos = target.Position + target.Velocity/(10 - dist/50)
+		end
+		
+		local tilt = (myRoot.Position.Y - aimPos.Y) / (dist*0.04)
+		tilt = math.clamp(tilt,-45,45)
+		rootJoint.C0 = rootJointOrg * CFrame.fromEulerAnglesYXZ(math.rad(tilt),0,0)
+		lHip.C0 = lHipOrg * CFrame.fromEulerAnglesYXZ(0,0,math.rad(-tilt))
+		rHip.C0 = rHipOrg * CFrame.fromEulerAnglesYXZ(0,0,math.rad(tilt))
+		
+		xAxisAttach.WorldCFrame = CFrame.lookAt(m4.Position,aimPos)
+		m4.HingeConstraint.Attachment0.WorldCFrame = CFrame.new(m4.HingeConstraint.Attachment0.WorldPosition) * CFrame.fromEulerAnglesYXZ(math.rad(0),math.rad(myRoot.Orientation.Y),0)
+		m4.HingeConstraint.TargetAngle = xAxisAttach.Orientation.X
+		headHinge.TargetAngle = xAxisAttach.Orientation.X
+		
+		torsoHingeAttach.Position = torsoHingAttachOrgPos + Vector3.new(0,tilt/90,0)
+
+		yAxisAttach.WorldCFrame = CFrame.lookAt(m4.Position,Vector3.new(
+			aimPos.X,
+			myRoot.Position.Y,
+			aimPos.Z
+			))
+
+		if status:get("m4Equipped") then
+			neck.C0 = CFrame.new(0,1,0) * CFrame.Angles(-1.5 + math.rad(xAxisAttach.Orientation.X),math.rad(15),math.rad(180))
+		else
+			neck.C0 = CFrame.new(0,1,0) * CFrame.Angles(-1.5 + math.rad(xAxisAttach.Orientation.X),0,math.rad(180))
+		end
+
+		runService.Heartbeat:Wait()
+		runService.Heartbeat:Wait()
+	end
+	
+	
+	actions.resetHead()
+	bodyRotate.Enabled = false
+	myHuman.WalkSpeed = 16
+	myHuman.AutoRotate = true
+	
+	rootJoint.C0 = rootJointOrg
+	lHip.C0 = lHipOrg
+	rHip.C0 = rHipOrg
+	
+	status:set("weaponAimed",false)
+end
+
+function actions.reload()
+	status:set("weaponAimed",false)
+	reloadSound:Play()
+	status:set("reloading",true)
+	
+	actions.yieldM4()
+
+	m4Weld.Part0 = nil
+	m4.CFrame = lArm.CFrame * CFrame.new(0.5,-0.2,0) * CFrame.Angles(math.rad(-90),math.rad(0),math.rad(0))
+	m4Weld.Part0 = lArm
+	
+	reloadAnimation:Play()
+	reloadAnimation:AdjustSpeed(3)
+	
+	wait(0.2)
+	
+	local fakeMag = magazine:Clone()
+	fakeMag.CanCollide = true
+	fakeMag.Parent = workspace
+	debrisService:AddItem(fakeMag,4)
+	magazine.Transparency = 1
+	
+	reloadAnimation.Stopped:Wait()
+
+	magazine.Transparency = 0
+	status:set("reloading",false)
+	status:set("mag",marine.Settings.MagSize)
+	actions.drawM4()
+end
+
+function actions.drawM4()
+	actions.yieldKnife()
+	if not status:get("m4Equipped") and not status:get("reloading") then
+		status:set("m4Equipped",true)
+		status:set("m4Lowered",false)
+		m4.Equip:Play()
+		
+		xAxisAttach.CFrame = myTorso.CFrame
+		
+		--M4 Setup
+		m4Weld.Part0 = nil
+		m4.CFrame = myRoot.CFrame * CFrame.new(0.65,-1.6,0) * CFrame.Angles(math.rad(-90),math.rad(0),math.rad(0))
+		m4HingeAttach.WorldPosition = torsoHingeAttach.WorldPosition		
+		m4Hinge.Enabled = true
+		m4Weld.C0 = m4.CFrame:Inverse() * myRoot.CFrame
+		--Right Arm Setup
+		rShoulder.Part1 = nil
+		rArmWeld.Part1 = nil --x 1.25
+		rArmWeld.Enabled = false
+		rArm.CFrame = m4.CFrame * CFrame.new(0.7,-0.4,1.5) * CFrame.Angles(math.rad(80),math.rad(0),math.rad(-10))
+		rArmWeld.Part1 = rArm
+		rArmWeld.Enabled = true
+		--rArmWeld.C0 = m4.CFrame:Inverse() * rArm.CFrame
+		--Left Arm Setup 
+		lShoulder.Part1 = nil
+		lArmWeld.Part1 = nil
+		lArm.CFrame = m4.CFrame * CFrame.new(-1,-0.3,0.8) * CFrame.Angles(math.rad(90),math.rad(-3),math.rad(28)) --x84
+		lArmWeld.Part1 = lArm
+		--lArmWeld.C0 = m4.CFrame:Inverse() * lArm.CFrame
+		task.wait(.5)
+	end
+end
+
+
+
+function actions.yieldM4()
+	if status:get("m4Equipped") or status:get("m4Lowered") then
+
+		status:set("m4Equipped",false)
+		status:set("weaponAimed",false)
+		status:set("m4Lowered",false)
+
+		m4.Equip:Play()
+		
+		--Right Arm setup
+		rArmWeld.Part1 = nil
+		rShoulder.Part1 = rArm
+		
+		--Left Arm Setup
+		lArmWeld.Part1 = nil
+		lShoulder.Part1 = lArm
+		
+		--M4 Setup
+		m4Weld.Part0 = nil
+		m4Hinge.Enabled = false
+		m4.CFrame = myTorso.CFrame * CFrame.new(0,0,0.5) * CFrame.Angles(math.rad(-90),math.rad(45),math.rad(-270))
+		m4Weld.Part0 = myTorso
+	end
+end
+
+function actions.lowerM4()
+	if not status:get("m4Lowered") and status:get("m4Equipped") and not status:get("reloading") then
+		
+		status:set("m4Equipped",false)
+		status:set("m4Lowered",true)
+		
+		m4.Equip:Play()
+		
+		--M4 Setup
+		m4Hinge.Enabled = false
+		m4Weld.Part0 = nil
+		m4.CFrame = myTorso.CFrame * CFrame.new(-0.5,-0.9,-1) * CFrame.Angles(math.rad(-75),math.rad(55),math.rad(75)) -- z 35 x 0
+		m4Weld.Part0 = myTorso
+		
+		--Right Arm Setup
+		rShoulder.Part1 = nil 
+		rArmWeld.Part1 = nil
+		rArm.CFrame = myRoot.CFrame * CFrame.new(1.3,-0.2,-0.3) * CFrame.Angles(math.rad(30),math.rad(14),math.rad(-25))
+		rArmWeld.Part1 = rArm
+		
+		--Left Arm Setup 
+		lShoulder.Part1 = nil 
+		lArmWeld.Part1 = nil
+		lArm.CFrame = myRoot.CFrame * CFrame.new(-1.3,-0.1,-0.3) * CFrame.Angles(math.rad(40),math.rad(-3),math.rad(10)) --x84
+		lArmWeld.Part1 = lArm
+		
+		wait(0.5)
+	end
+end
+local knife = marine.Knife
+function actions.drawKnife()
+	if not status:get("knifeEquipped") then
+		actions.yieldM4()
+		--knife.Equip:Play()
+		status:set("knifeEquipped",true)
+		knife.Weld.Part0 = nil
+		knife.CFrame = rArm.CFrame * CFrame.new(0,-1,-1) * CFrame.Angles(math.rad(90),math.rad(180),math.rad(180))
+		knife.Weld.Part0 = rArm
+		knife.Weld.C0 = knife.CFrame:Inverse() * rArm.CFrame
+	end
+end
+
+function actions.yieldKnife()
+	if status:get("knifeEquipped") then
+		status:set("knifeEquipped",false)
+		knife.Weld.Part0 = nil
+		knife.CFrame = myTorso.CFrame * CFrame.new(-1,-1,0.5) * CFrame.Angles(math.rad(-65),0,math.rad(180))
+		knife.Weld.Part0 = myTorso
+	end
+end
+
+function actions.yieldWeapons()
+	actions.yieldKnife()
+	actions.yieldM4()
+end
+function actions.resetHead()
+	tweenService:Create(neck,TweenInfo.new(0.5),{C0 = CFrame.new(0,1,0) * CFrame.Angles(math.rad(-90),0,math.rad(180))}):Play()
+end
+function actions.updateFace(newStatus,recovered)
+	if status:get("mood") ~= "Dead" then
+		if status:get("mood") ~= "Hurt" or recovered or newStatus == "Dead" then
+			local currentFace = status:get("currentFace")
+			currentFace.Parent = faces 
+			status:set("currentFace",faces["face"..newStatus])
+			status:get("currentFace").Parent = myHead
+		end
+		status:set("mood", newStatus)
+	end
+end
+local trouble = {}
+local myModel = marine
+local myRoot = myModel.HumanoidRootPart
+local debugOption = mySettings.Debug
+function trouble.visualizePath(path)
+	if not debugOption then return end
+	local waypoints = path:GetWaypoints()
+	for i,waypoint in ipairs(waypoints) do
+		local p = Instance.new("SpawnLocation")
+		p.Enabled = false
+		p.Size = Vector3.new(1,1,1)
+		p.CanCollide = false
+		p.Shape = Enum.PartType.Ball
+		p.Transparency = 0.5
+		p.Material = Enum.Material.Neon
+		p.BrickColor = BrickColor.Random()
+		p.Anchored = true
+		p.Position = waypoint.Position
+		p.Name = i
+		p.Parent = script
+	end
+end
+
+local p = Instance.new("SpawnLocation")
+if debugOption then
+	p.Size = Vector3.new(3,3,3)
+	p.Enabled = false
+	p.CanCollide = false
+	p.Shape = Enum.PartType.Ball
+	p.Transparency = 0.5
+	p.Material = Enum.Material.Neon
+	p.BrickColor = BrickColor.new("Bright bluish green")
+	p.Anchored = true
+	p.Parent = script
+end
+function trouble.waypoint(pos)
+	if not debugOption then return end
+	p.Position = pos
+end
+function trouble.mark(pos)
+	if not debugOption then return end
+	local p = Instance.new("SpawnLocation")
+	p.Enabled = false
+	p.Size = Vector3.new(2,2,2)
+	p.CanCollide = false
+	p.Shape = Enum.PartType.Ball
+	p.Transparency = 0.5
+	p.Material = Enum.Material.Neon
+	p.BrickColor = BrickColor.new("Really red")
+	p.Anchored = true
+	p.Parent = script
+	p.Position = pos
+end
+
+local beams = {}
+function initBeams()
+	for i = 1, 100 do
+		local attach0 = Instance.new("Attachment")
+		attach0.Parent = workspace.Terrain
+		local attach1 = Instance.new("Attachment")
+		attach1.Parent = workspace.Terrain
+		local b = Instance.new("Beam")
+		b.FaceCamera = true
+		b.Color = ColorSequence.new(Color3.new(0,1,0))
+		b.Parent = myModel.Beams
+		b.Width0 = 0.3
+		b.Width1 = 0.3
+		b.Attachment0 = attach0
+		b.Attachment1 = attach1
+		table.insert(beams,{
+			beam = b,
+			a0 = attach0,
+			a1 = attach1
+		})
+	end
+end
+if debugOption then
+	initBeams()
+end
+local currentBeam = 1
+function trouble.createBeam(origin,direction)
+	if not debugOption then return end
+	currentBeam = currentBeam + 1
+	if currentBeam > #beams then
+		currentBeam = 1
+	end
+	beams[currentBeam].a0.WorldPosition = origin
+	beams[currentBeam].a1.WorldPosition = origin+direction
+	return beams[currentBeam].beam
+end
+
+function trouble.newBeam(origin,direction)
+	local a0 = Instance.new("Attachment")
+	a0.Parent = workspace.Terrain
+	local a1 = Instance.new("Attachment")
+	a1.Parent = workspace.Terrain
+	a0.WorldPosition = origin
+	a1.WorldPosition = origin+direction
+	local beam = Instance.new("Beam")
+	beam.Width0 = 0.2
+	beam.Width1 = 0.2
+	beam.Parent = workspace
+	beam.Attachment0 = a0
+	beam.Attachment1 = a1
+	game:GetService("Debris"):AddItem(beam,3)
+end
+
+local sb = Instance.new("SelectionBox")
+if debugOption then
+	sb.Parent = myModel
+	sb.Color3 = Color3.new(1,0,0)
+	sb.LineThickness = 0.1	
+end
+function trouble.selectionBox(instance)
+	if not debugOption then return end
+	sb.Adornee = instance
+end
+local lineEnd = Instance.new("Attachment")
+function trouble.createLine(instance)
+	if not debugOption then return end
+	lineEnd.Parent = instance
+end
+local movement = {)
+--Services
+local pathfindingService = game:GetService("PathfindingService")
+local runService = game:GetService("RunService")
+local myHuman = marine.Humanoid
+local myRoot = marine.HumanoidRootPart
+local moveEvent = Instance.new("BindableEvent")
+function movement.moveToFinished()
+	local success = true
+	local completed = false
+    
+    core.spawn(function() 
+        wait(1)
+		if not completed then
+	        success = false
+	        moveEvent:Fire()   
+		end
+    end)
+    
+    core.spawn(function()
+        myHuman.MoveToFinished:Wait()
+        moveEvent:Fire()
+    end)
+    
+	moveEvent.Event:Wait()
+
+	completed = true
+
+    return success
+end
+
+local path = pathfindingService:CreatePath()
+function movement.pathToLocation(target)
+	if not target or not target.Parent then return end
+	
+	path:ComputeAsync(myRoot.Position, target.Position)
+	
+	if path.Status == Enum.PathStatus.NoPath then
+		return
+	end
+	
+	local waypoints = path:GetWaypoints()
+	
+	--Make sure that path is actually valid
+	if waypoints[1] and core.checkDist(waypoints[1],myRoot) > 10 then
+		runService.Heartbeat:Wait()
+		movement.pathToLocation(target)
+	end
+	
+	trouble.visualizePath(path)
+	
+	for _,waypoint in ipairs(waypoints) do
+		if waypoint.Action == Enum.PathWaypointAction.Jump then
+			myHuman.Jump = true
+		end
+		myHuman:MoveTo(waypoint.Position)
+		core.spawn(function()
+			while myHuman.WalkToPoint.Y > myRoot.Position.Y - 1 do
+				wait(0.1)
+				myHuman.Jump = true
+			end
+		end)
+		local moveSuccess = movement.moveToFinished()
+		local dist = core.checkDist(myRoot,target)
+		local canSee = core.checkSight(target)
+		if not moveSuccess or not target.Parent or (dist < 30 and canSee) or status:get("currentTarget") ~= target then
+			break
+		elseif (core.checkSight(target) and target.Position.Y <= myRoot.Position.Y-5) then
+			myHuman:MoveTo(myRoot.Position)
+			break
+		end
+		if core.checkDist(target,waypoints[#waypoints]) > 30 then
+			--movement.pathToLocation(target)
+			break
+		end
+	end
+end
+
+function movement.walkRandom()
+	local randX = math.random(-100,100)
+	local randZ = math.random(-100,100)
+	local goal = myRoot.Position + Vector3.new(randX, 0, randZ)
+	local path = pathfindingService:CreatePath()
+	path:ComputeAsync(myRoot.Position, goal)
+	local waypoints = path:GetWaypoints()
+	
+	if path.Status == Enum.PathStatus.Success then
+		for i,waypoint in ipairs(waypoints) do
+			if waypoint.Action == Enum.PathWaypointAction.Jump then
+				myHuman.Jump = true
+			end
+			myHuman:MoveTo(waypoint.Position)
+			core.spawn(function()
+				wait(0.5)
+				if myHuman.WalkToPoint.Y > myRoot.Position.Y then
+					myHuman.Jump = true
+				end
+			end)
+			local moveSuccess = myHuman.MoveToFinished:Wait()
+			if not moveSuccess or status:get("currentTarget") then
+				break
+			end
+		end
+	else
+		wait(2)
+	end
+end
+
+--When strafing make sure you can see target from end pos
+function movement.strafe()
+	local goalPos = status:get("currentTarget").Position
+	local origin,dir = myRoot.Position,nil
+	
+	local action = math.random(2)
+	if action == 1 then
+		dir = myRoot.CFrame.RightVector
+	elseif action == 2 then
+		dir = -myRoot.CFrame.RightVector
+	end
+	
+	for _=1,10 do
+		if not core.raycast(origin,dir*2) and core.raycast(origin,Vector3.new(0,-7,0)) then
+			origin += dir*2
+		else
+			origin += dir*-2
+			break
+		end
+	end
+	
+	local _,result = core.raycast(origin,(status:get("currentTarget").Position - origin).Unit * 30)
+	if result then
+		if result.Instance:IsDescendantOf(status:get("currentTarget").Parent) then
+
+		else
+
+			origin = myRoot.Position
+		end
+		origin = myRoot.Position
+	end
+	
+	return origin
+end
+
+function checkDirection(dir)
+	local goalPos = status:get("currentTarget").Position
+	local origin = myRoot.Position
+	
+	local success = false
+	for i=1, 5 do
+		if not core.raycast(origin,dir*1) and core.raycast(origin,Vector3.new(0,-7,0)) then
+			origin = origin + dir*1
+		else
+			origin = origin + dir*-1
+			break
+		end
+		
+		if i == 5 then
+			success = true
+		end
+	end
+	
+	return success,origin
+end
+
+function movement.retreat()
+	
+	--Check if we can retreat directly from the enemy.
+	local result,pos = checkDirection(-(status:get("currentTarget").Position - myRoot.Position).Unit)
+	if result then
+		return pos
+	end
+	
+	--Check if we can move away to the right.
+	result,pos = checkDirection(myRoot.CFrame.RightVector)
+	if result then
+		return pos
+	end
+	
+	--Check if can move away to the left.
+	result,pos = checkDirection(-myRoot.CFrame.RightVector)
+	if result then
+		return pos
+	end
+	
+	return myRoot.Position
+end
+
+function movement.slowAdvance()
+	local goalPos = status:get("currentTarget").Position
+	local origin = myRoot.Position
+	
+	local maxIterations = 30
+	repeat
+		maxIterations -= 1
+		if not core.raycast(origin,(goalPos - origin).Unit*1) and core.raycast(origin,Vector3.new(0,-7,0)) then
+			origin = origin + (goalPos - origin).Unit*1
+		else
+			origin = origin + (goalPos - origin).Unit*-1
+			break
+		end
+		if maxIterations <= 0 then
+			break
+		end
+	until false 
+	
+	return origin
+end
+--[[
+local p = Instance.new("SpawnLocation")
+p.Anchored = true
+p.CanCollide = false
+p.Enabled = false
+p.Parent = marine
+p.Size = Vector3.new(1,1,1)
+task.spawn(function()
+	while true do
+		task.wait(1)
+		if status:get("currentTarget") then
+			p.Position = movement.slowAdvance()
+		end
+	end
+end)--]]
+local targeting = {}
+local myRoot = marine.HumanoidRootPart
+function targeting.findTarget()
+	local dist = mySettings.DetectionRange
+	local target = nil
+	status:set("potentialTargets",{})
+	status:set("activeAllies",{})
+	local seeTargets = {}
+	for _,v in ipairs(workspace:GetChildren()) do
+		local human = v:FindFirstChild("Humanoid")
+		local torso = v:FindFirstChild("HumanoidRootPart") or v:FindFirstChild("Torso")
+		if human and torso and v ~= marine then
+			if (myRoot.Position - torso.Position).magnitude < dist and human.Health > 0 then
+				local teammate = core.isAlly(v)
+				if teammate then
+					table.insert(status:get("activeAllies"),torso)
+				else
+					table.insert(status:get("potentialTargets"),torso)
+				end
+			end
+		end
+	end
+	if #status:get("potentialTargets") > 0 then
+		for i,v in ipairs(status:get("potentialTargets")) do
+			if core.checkSight(v) then
+				table.insert(seeTargets,v)
+			end
+		end
+		if #seeTargets > 0 then
+			for i,v in ipairs(seeTargets) do
+				if (myRoot.Position - v.Position).magnitude < dist then
+					target = v
+					dist = (myRoot.Position - v.Position).magnitude
+				end
+			end
+		else
+			for i,v in ipairs(status:get("potentialTargets")) do
+				if (myRoot.Position - v.Position).magnitude < dist then
+					target = v
+					dist = (myRoot.Position - v.Position).magnitude
+				end
+			end
+		end
+	end
+	status:set("currentTarget",target)
+end
+local combat = {}
+
+--Services
+local runService = game:GetService("RunService")
+local debrisService = game:GetService("Debris")
+local tweenService = game:GetService("TweenService")
+
+local modules = script.Parent
+local core = require(modules.CoreModule)
+local status = require(modules.Status)
+local targeting = require(modules.TargetModule)
+local actions = require(modules.ActionsModule)
+local troubleshoot = require(modules.Troubleshoot)
+
+local marine = script.Parent.Parent.Parent
+local myRoot = marine.HumanoidRootPart
+local myHuman = marine.Humanoid
+
+local m4 = marine.M4
+local barrel = m4.Barrel
+local lightFlash = barrel.PointLight
+local chamber = m4.Chamber
+local fireSound = m4.Fire
+local impact = m4.Impact
+
+--Settings--
+local mySettings = marine.Settings
+
+local stabAnimation = myHuman:LoadAnimation(marine.Stab)
+stabAnimation.Priority = Enum.AnimationPriority.Action
+local stabPunchAnimation = myHuman:LoadAnimation(marine.StabPunch)
+stabPunchAnimation.Priority = Enum.AnimationPriority.Action
+local throwAnimation = myHuman:LoadAnimation(marine.ThrowAnimation)
+throwAnimation.Priority = Enum.AnimationPriority.Action
+throwAnimation.Looped = false
+
+local fullMag = 30
+local mag = fullMag
+
+function combat.getBullet()
+	local bullet = Instance.new("SpawnLocation")
+	bullet.Enabled = false
+	bullet.Size = Vector3.new(.1,.1,.3)
+	bullet.BrickColor = BrickColor.new("New Yeller")
+	bullet.Material = Enum.Material.Neon
+	bullet.Anchored = true
+	bullet.CanCollide = false
+	bullet.Name = "Bullet"
+	bullet.Parent = script
+	--[[
+	local s = Instance.new("Sound")
+	s.Name = "Whiz"
+	s.Volume = 0.7
+	s.PlaybackSpeed = 7
+	s.Looped = true
+	s.SoundId = "rbxasset://sounds/Rocket whoosh 01.wav"
+	s.Parent = bullet
+	s:Play()
+	]]--
+	local a1 = Instance.new("Attachment")
+	a1.Parent = bullet 
+	a1.Position = Vector3.new(-0.1,-0.1,0)
+
+	local a2 = Instance.new("Attachment")
+	a2.Parent = bullet
+	a2.Position = Vector3.new(0.1,0.1,0)
+
+	local t = Instance.new("Trail")
+	t.Parent = bullet
+	t.Attachment0 = a1
+	t.Attachment1 = a2
+	t.Color = ColorSequence.new(bullet.Color)
+	t.WidthScale = NumberSequence.new(1,0)
+	t.Lifetime = 0.1
+	t.MinLength = 1
+	t.FaceCamera = true
+	return bullet
+end
+
+function combat.getCase()
+	local case = Instance.new("SpawnLocation")
+	case.Size = Vector3.new(.1,.1,.4)
+	case.Material = Enum.Material.Metal
+	case.CanCollide = false
+	case.BrickColor = BrickColor.new("New Yeller")
+	case.Parent = script
+	case.Enabled = false
+	local fileMesh = Instance.new("FileMesh")
+	fileMesh.MeshId = "rbxassetid://5435476321"
+	fileMesh.TextureId = "rbxassetid://5435476346"
+	fileMesh.Scale = Vector3.new(0.1,0.1,0.1)
+	fileMesh.Parent = case
+	return case
+end
+
+function removeBullet(bullet)
+	bullet.Transparency = 1
+	--bullet.Whiz:Stop()
+	bullet.Parent = workspace.Terrain
+	--bullet.Size = Vector3.new()
+	debrisService:AddItem(bullet,.5)
+end
+
+function pushBullet(bullet)
+	--Testing removing marine from ignore list
+	--Magic fastcast
+	local speed = 7
+	local iterations = 20
+	
+	local params = RaycastParams.new()
+	params.FilterDescendantsInstances = {workspace.Terrain}
+	
+	runService.Heartbeat:Wait() --Give bullet time to render from barrel
+	bullet.CFrame = m4.CFrame * CFrame.new(0,0.2,-2.5)
+	runService.Heartbeat:Wait() --Give bullet time to render from barrel
+	
+	core.spawn(function()
+		while true do
+			local position,nextPosition = bullet.Position,Vector3.new(0,0,speed)
+	        local result = workspace:Raycast(position, bullet.CFrame.LookVector*speed,params)
+			if result and result.Instance.Name ~= "Bullet" then	
+				bullet.CFrame = CFrame.new(result.Position)
+				removeBullet(bullet)
+				
+				--local human = result.Instance.Parent:FindFirstChildWhichIsA("Humanoid")
+				local human = core.getHuman(result.Instance.Parent)
+				impact.WorldPosition = result.Position
+				if human and human.Health > 0 then
+					--human:TakeDamage(math.random(5,15))
+					core.applyDamage(human,math.random(5,15))
+					impact.Hit:Play()
+					if human.Health <= 0 then
+						targeting.findTarget()
+					end
+				elseif not human then
+					impact.Miss:Play()
+					impact.Debris:Emit(1)
+					for i = 1, math.random(2,3) do
+						local chunk = Instance.new("SpawnLocation")
+						chunk.Enabled = false
+						chunk.Color = result.Instance.Color
+						chunk.Material = result.Instance.Material
+						local size = math.random(5)/20
+						chunk.Size = Vector3.new(size,size,size)
+						chunk.CFrame = CFrame.new(result.Position)
+						chunk.Anchored = false
+						chunk.Velocity = Vector3.new(math.random(-20,20),math.random(10,20),math.random(-20,20))
+						chunk.Parent = workspace
+						debrisService:AddItem(chunk,1)
+					end
+				end
+				break
+	        else
+				bullet.CFrame = bullet.CFrame * CFrame.new(-nextPosition)
+			end
+			
+			iterations -= 1
+			if iterations < 0 then
+				bullet:Destroy()
+				break
+			end
+			game:GetService("RunService").Heartbeat:Wait()
+		end
+	end)
+end
+
+local flashIndex = 1
+function combat.shoot(target)
+	if status:get("weaponCool") and not status:get("reloading") then
+		status:set("weaponCool",false)
+		
+		local shot
+		if core.checkDist(target,myRoot) > 60 then
+			shot = 1
+		else
+			shot = 3
+		end
+		for i = 1, shot do
+			task.wait(0.1)
+			status:set("mag",status:get("mag")-1)
+			
+			--flash:Emit(1)
+			core.spawn(function() 
+				barrel.FlashBG["Flash"..flashIndex].Visible = true
+				lightFlash.Enabled = true 
+				task.wait(0.1) 
+				lightFlash.Enabled = false 
+				barrel.FlashBG["Flash"..flashIndex].Visible = false
+				flashIndex = flashIndex + 1
+				if flashIndex > 3 then
+					flashIndex = 1
+				end
+			end)
+			
+			--bullet.CFrame = m4.CFrame * CFrame.new(0,0.2,-2.5) --z: 0.5
+			pushBullet(combat.getBullet())
+			
+			local case = combat.getCase()
+			case.CFrame = chamber.WorldCFrame
+			case.Velocity = case.CFrame.RightVector * -20 * Vector3.new(1,-3,1)
+			core.spawn(function() 
+				wait(0.05) 
+				case.CanCollide = true 
+				task.wait(2)
+				case:Destroy()
+			end)
+
+			fireSound:Play()
+
+			--Kick
+			local original = m4.HingeAttach1.Position
+			m4.HingeAttach1.Position = original - Vector3.new(0,0,0.2)
+			tweenService:Create(m4.HingeAttach1, TweenInfo.new(0.1),{Position = original}):Play()
+			
+		end
+		
+		if status:get("mag") <= 0 then
+			actions.reload()
+		end
+
+		--New thread here before
+		task.wait(mySettings.M4.Delay)
+		status:set("weaponCool",true)
+	end
+end
+
+function combat.throwGrenade(target)
+	if status:get("weaponCool") and status:get("grenadeCool") then
+		status:set("weaponCool",false)
+		status:set("grenadeCool",false)
+		actions.yieldWeapons()
+		
+		local g = marine.Grenade:Clone()
+		--g.Boom.PlayOnRemove = true
+		g.Parent = script
+		g.CanCollide = true
+		g.CFrame = marine["Right Arm"].CFrame * CFrame.new(0,-1.3,0) * CFrame.Angles(0,0,math.rad(90))
+		g:SetNetworkOwner(nil)
+		debrisService:AddItem(g,5)
+		
+		marine.Grenade.Transparency = 1
+		
+		local w = Instance.new("WeldConstraint",g)
+		w.Part0 = marine["Right Arm"]
+		w.Part1 = g
+		
+		throwAnimation:Play()
+		--marine.Grenade.Pin:Play()
+		--Rotate and throw
+		myHuman.AutoRotate = false
+		for i=1,4 do
+			task.wait(.1)
+			myRoot.CFrame = CFrame.lookAt(Vector3.new(myRoot.Position.X,myRoot.Position.Y,myRoot.Position.Z),Vector3.new(target.Position.X,myRoot.Position.Y,target.Position.Z))
+		end
+		myHuman.AutoRotate = true
+		
+		if myHuman.Health <= 0 then
+			return
+		end
+		
+		throwAnimation:Stop()
+		
+		w.Part1 = nil
+		local targetPos = target.Position + (target.Velocity)
+		troubleshoot.mark(targetPos)
+		local dist = core.checkDist(myRoot,target)
+		local aimCFrame = CFrame.lookAt(myRoot.Position,targetPos)
+		--g.Velocity = (aimCFrame.LookVector + Vector3.new(0,1.1,0)) * Vector3.new(dist,dist*1.5,dist)
+		g.Velocity = (myRoot.CFrame.LookVector + Vector3.new(0,1,0)) * Vector3.new(dist,dist*1.5,dist)
+		
+		--Wait until grenade is thrown before it can be primed
+		touched = g.Touched:Connect(function(obj)
+			if not obj:IsDescendantOf(marine) then
+				touched:Disconnect()
+				--g.Pin:Play()
+				task.wait(.5)
+				local x = Instance.new("Explosion",workspace)
+				x.Position = g.Position
+				x.BlastRadius = 16
+				x.BlastPressure = 0
+				x.Hit:Connect(function(obj,dist)
+					local human = obj.Parent:FindFirstChild("Humanoid")
+					if human then
+						core.applyDamage(human,20-dist)
+					end
+				end)
+				g:Destroy()
+				debrisService:AddItem(x,2)
+			end
+		end)
+		
+		local attach0 = g.Attach0
+		local attach1 = g.Attach1
+		local t = Instance.new("Trail",g)
+		t.Attachment0 = attach0
+		t.Attachment1 = attach1
+		t.Lifetime = 0.5
+		t.Color = ColorSequence.new(Color3.fromRGB(150,150,150))
+		t.WidthScale = NumberSequence.new(1,0)
+		
+		core.spawn(function()
+			task.wait(1)
+			status:set("weaponCool",true)
+			task.wait(5)
+			status:set("grenadeCool",true)
+			marine.Grenade.Transparency = 0
+		end)
+	end
+end
+
+local knife = marine.Knife
+function combat.stab()
+	
+	local canStab = false
+	for i,v in pairs(status:get("currentTarget").Parent:GetChildren()) do
+		if v:IsA("BasePart") and core.checkDist(v,myRoot) < 7 then
+			canStab = true
+		end
+	end
+	if canStab then
+		myHuman:MoveTo(status:get("currentTarget").Position)
+		
+		--knife.Stab:Play()
+		--knife.Attack:Play()
+		
+		if math.random(2) == 1 then
+			stabAnimation:Play(0.1,1,2)
+		else
+			stabPunchAnimation:Play()
+		end
+		
+		local human = status:get("currentTarget").Parent.Humanoid
+		core.applyDamage(human,math.random(30,50))
+		if human.Health <= 0 then
+			targeting.findTarget()
+		end
+		
+		--stabAnimation.Stopped:Wait()
+		task.wait(.5)
+	else
+		task.wait(.2)
+	end
+end
+function combat.checkCluster(target)
+	--Check for nearby allies
+	for i,v in ipairs(status:get("activeAllies")) do
+		if core.checkDist(target,v) < 30 then
+			return false
+		end
+	end
+	--Check if enemies are paired close together
+	for i,v in ipairs(status:get("potentialTargets")) do
+		if v ~= target then
+			if core.checkDist(target,v) < 15 then
+				return true
+			end
+		end
+	end
+	return false
+end
+local marine = script.Parent.Parent.Parent
+
+------Fix network issues------
+pcall(function()
+	while marine.HumanoidRootPart:GetNetworkOwnershipAuto() do
+		marine.HumanoidRootPart:SetNetworkOwner(nil)
+		wait()
+	end
+end)
+
+------Body Variables------
+local myHuman = marine.Humanoid
+local myRoot = marine.HumanoidRootPart
+local myHead = marine.Head
+------Mood------
+status:set("currentFace", myHead.faceIdle)
+local idleIndex = 5
+function movementLogic()
+	local target = status:get("currentTarget")
+	local dist = core.checkDist(target,myRoot)
+	local canSee = core.checkSight(target)
+	
+	idleIndex -= 1
+	if canSee then
+		idleIndex = 5 --100
+	end
+	if ((dist > 50 or not canSee) and (myRoot.Position.Y < target.Position.Y-10 or idleIndex <= 0)) then
+		movement.pathToLocation(target)
+	elseif (dist > 30 or not canSee) and core.checkPotentialSight(target) then
+		myHuman:MoveTo(movement.slowAdvance())
+		wait(0.3)
+	elseif dist > 50 and dist < 90 and canSee and status:get("m4Equipped") then
+		myHuman:MoveTo(movement.strafe())
+		wait(0.5)
+	elseif dist > 4 and dist < 50 and canSee and math.abs(myRoot.Position.Y - target.Position.Y) < 2 and status:get("weaponAimed") then
+		myHuman:MoveTo(movement.retreat())
+		task.wait(0.2)
+	elseif (dist < 4 and canSee) or status:get("knifeEquipped") then
+		myHuman:MoveTo(target.Position)
+	end
+end
+
+
+function movementLoop()
+	while myHuman.Health>0 do
+		if status:get("currentTarget") then
+			movementLogic()
+		else
+			if mySettings.Wander and math.random(4) == 3 then
+				movement.walkRandom()
+			end
+			task.wait(3)
+		end
+		task.wait(.1)
+	end
+end
+
+function getIncomingAttackers()
+	
+	local targets = {}
+	
+	local params = RaycastParams.new()
+	params.FilterDescendantsInstances = {marine}
+	for i = -20, 20, 2 do
+		local origin = myRoot.Position + Vector3.new(-20,0,i)
+		local dir = Vector3.new(40,0,0)
+		trouble.createBeam(origin,dir)
+		local result = workspace:Raycast(origin, dir)
+		if result then
+			local human = core.getHuman(result.Instance.Parent)
+			local root = result.Instance.Parent:FindFirstChild("HumanoidRootPart")
+			if human and human.Health>0 and root and not core.isAlly(result.Instance.Parent) then
+				if core.checkSight(root) then
+					table.insert(targets,root)
+				end
+			end
+		end
+	end
+	
+	--Sort through targets to target the closest one to us
+	local dist = math.huge
+	local tempTarget = nil
+	for _,potentialTarget in ipairs(targets) do
+		if core.checkDist(potentialTarget,myRoot) < dist then
+			dist = core.checkDist(potentialTarget,myRoot)
+			tempTarget = potentialTarget
+		end
+	end
+	
+	if tempTarget then
+		status:set("currentTarget",tempTarget)
+	end
+end
+
+function searchTargetLoop()
+	while myHuman.Health>0 do
+		getIncomingAttackers()
+		if not status:get("currentTarget") or not status:get("currentTarget").Parent or status:get("currentTarget").Parent.Humanoid.Health <=0 or status:get("tookDamage") then
+			status:set("tookDamage",false)
+			status:set("currentTarget",nil)
+			targeting.findTarget()
+		elseif not core.checkSight(status:get("currentTarget")) then
+			targeting.findTarget()
+			if not status:get("currentTarget") then
+				task.wait(3)
+			end
+		end
+		task.wait(.5)
+	end
+end
+
+function aimingLoop()
+	while myHuman.Health>0 do
+		if status:get("currentTarget") then
+			if core.checkSight(status:get("currentTarget")) and status:get("m4Equipped") then
+				actions.aim(status:get("currentTarget"))
+			else
+				task.wait(.5)
+			end
+		else
+			task.wait(2)
+		end
+		task.wait(.1)
+	end
+end
+
+function attackLogic()
+	actions.updateFace("Attacking")
+	local target = status:get("currentTarget")
+	local distance = core.checkDist(myRoot,target)
+	if distance > 7 then
+		--If there is a cluster of enemies far enough away throw grenade.
+		if combat.checkCluster(target) and distance < 100 and distance > 40 and status:get("grenadeCool") then
+			combat.throwGrenade(target)
+		elseif status:get("m4Equipped") then
+			if core.facingTarget() and core.checkShot(target) then
+				combat.shoot(target)
+			end
+		else
+			actions.drawM4()
+		end
+	else
+		actions.drawKnife()
+		combat.stab()
+	end
+end
+
+function attackLoop()
+	while myHuman.Health>0 do
+		local target = status:get("currentTarget")
+		if target and target.Parent then
+			actions.updateFace("Hunting")
+			--If we have a target we can see
+			if core.checkSight(status:get("currentTarget")) and core.checkDist(myRoot,target) < mySettings.M4.Range then
+				attackLogic()
+			elseif status:get("m4Equipped") and not status:get("weaponAimed") then
+				status:set("weaponAimed",false)
+				actions.lowerM4()
+			end
+		else
+			actions.updateFace("Idle")
+			actions.yieldWeapons()
+			task.wait(2)
+		end
+		task.wait(.1)
+	end
+end
+
+core.spawn(searchTargetLoop)
+core.spawn(attackLoop)
+core.spawn(movementLoop)
+core.spawn(aimingLoop)
