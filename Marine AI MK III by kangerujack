@@ -921,10 +921,9 @@ end
 function actions.updateFace(newStatus,recovered)
 	if status:get("mood") ~= "Dead" then
 		if status:get("mood") ~= "Hurt" or recovered or newStatus == "Dead" then
-			local currentFace = status:get("currentFace")
-			currentFace.Parent = faces 
-			status:set("currentFace",faces["face"..newStatus])
-			status:get("currentFace").Parent = myHead
+			marine.faceIdle.Texture = 'rbxassetid://' ..faces["face" ..newStatus]
+			status:set("currentFace", faces["face"..newStatus])
+			--status:get("currentFace").Parent = myHead
 		end
 		status:set("mood", newStatus)
 	end
