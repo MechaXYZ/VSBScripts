@@ -1666,7 +1666,6 @@ function combat.checkCluster(target)
 	end
 	return false
 end
-local marine = script.Parent.Parent.Parent
 
 ------Fix network issues------
 pcall(function()
