@@ -1569,7 +1569,7 @@ function combat.throwGrenade(target)
 		
 		w.Part1 = nil
 		local targetPos = target.Position + (target.Velocity)
-		troubleshoot.mark(targetPos)
+		trouble.mark(targetPos)
 		local dist = core.checkDist(myRoot,target)
 		local aimCFrame = CFrame.lookAt(myRoot.Position,targetPos)
 		--g.Velocity = (aimCFrame.LookVector + Vector3.new(0,1.1,0)) * Vector3.new(dist,dist*1.5,dist)
