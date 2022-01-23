@@ -495,6 +495,11 @@ local faces = {
 ["faceAttacking"] = 'rbxassetid://286688505',
 ["faceHunting"] = 'rbxassetid://209715003'
 }
+for i, v in pairs(marine:GetDescendants()) do 
+if v:IsA("BasePart") then
+v.CanCollide = false
+end
+end
 local status = {
 	reloading = false,
 	weaponAimed = false,
