@@ -632,7 +632,6 @@ function core.facingTarget()
 		return false
 	end
 end
-
 local actions = {}
 local w = Instance.new("WeldConstraint", marine.Torso)
 w.Part0 = gun
@@ -642,7 +641,7 @@ local w = Instance.new("WeldConstraint", marine.Torso)
 w.Part0 = gun
 w.Name = "Right Arm Weld"
 w.Enabled = false
-task.wait()
+--task.wait()
 --Services
 local debrisService = game:GetService("Debris")
 local runService = game:GetService("RunService")
