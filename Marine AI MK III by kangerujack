@@ -811,7 +811,7 @@ function actions.drawM4()
 		m4.CFrame = myRoot.CFrame * CFrame.new(0.65,-1.6,0) * CFrame.Angles(math.rad(-90),math.rad(0),math.rad(0))
 		m4HingeAttach.WorldPosition = torsoHingeAttach.WorldPosition		
 		m4Hinge.Enabled = true
-		m4Weld.C0 = m4.CFrame:Inverse() * myRoot.CFrame
+		--m4Weld.C0 = m4.CFrame:Inverse() * myRoot.CFrame
 		--Right Arm Setup
 		rShoulder.Part1 = nil
 		rArmWeld.Part1 = nil --x 1.25
@@ -883,7 +883,7 @@ function actions.lowerM4()
 		lArm.CFrame = myRoot.CFrame * CFrame.new(-1.3,-0.1,-0.3) * CFrame.Angles(math.rad(40),math.rad(-3),math.rad(10)) --x84
 		lArmWeld.Part1 = lArm
 		
-		wait(0.5)
+		task.wait(.5)
 	end
 end
 local knife = marine.Knife
@@ -895,7 +895,7 @@ function actions.drawKnife()
 		knife.Weld.Part0 = nil
 		knife.CFrame = rArm.CFrame * CFrame.new(0,-1,-1) * CFrame.Angles(math.rad(90),math.rad(180),math.rad(180))
 		knife.Weld.Part0 = rArm
-		knife.Weld.C0 = knife.CFrame:Inverse() * rArm.CFrame
+		--knife.Weld.C0 = knife.CFrame:Inverse() * rArm.CFrame
 	end
 end
 
