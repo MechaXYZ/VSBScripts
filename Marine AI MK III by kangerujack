@@ -168,6 +168,7 @@ Humanoid9.Parent = Model0
 Humanoid9.LeftLeg = ll
 Humanoid9.RightLeg = rl
 Humanoid9.Torso = Part4
+Humanoid9.Name = "Humanoid"
 Humanoid9.Died:Connect(function()
 game:GetService("Debris"):AddItem(Model0, 5)
 end)
@@ -1674,7 +1675,7 @@ pcall(function()
 		wait()
 	end
 end)
-
+marine:WaitForChild("Humanoid")
 ------Body Variables------
 local myHuman = marine.Humanoid
 local myRoot = marine.HumanoidRootPart
