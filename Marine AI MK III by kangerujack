@@ -38,7 +38,7 @@ local Model0 = Instance.new("Model")
     Part4.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
     Part4.Size = Vector3.new(2, 2, 1)
     Part4.BrickColor = BrickColor.new("Brown")
-    Part4.CanCollide = true
+    Part4.CanCollide = false
     Part4.LeftParamA = 0
     Part4.LeftParamB = 0
     Part4.LeftSurface = Enum.SurfaceType.Smooth
@@ -55,7 +55,7 @@ local Model0 = Instance.new("Model")
     Part45.Size = Vector3.new(2, 2, 1)
     Part45.Transparency = 1
     Part45.BrickColor = BrickColor.new("Brown")
-    Part45.CanCollide = false
+    Part45.CanCollide = true
     Part45.LeftParamA = 0
     Part45.LeftParamB = 0
     Part45.LeftSurface = Enum.SurfaceType.Smooth
@@ -495,11 +495,6 @@ local faces = {
 ["faceAttacking"] = 'rbxassetid://286688505',
 ["faceHunting"] = 'rbxassetid://209715003'
 }
-for i, v in pairs(marine:GetDescendants()) do 
-if v:IsA("BasePart") then
-v.CanCollide = false
-end
-end
 local status = {
 	reloading = false,
 	weaponAimed = false,
