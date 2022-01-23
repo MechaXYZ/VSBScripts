@@ -536,7 +536,6 @@ function core.getHuman(instance)
 	if instance:IsA("Tool") or instance:IsA("Accessory") then
 		instance = instance.Parent
 	end
-	
 	return instance:FindFirstChild("Humanoid")
 end
 local raycastParams = RaycastParams.new()
