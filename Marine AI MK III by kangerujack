@@ -486,6 +486,7 @@ local mySettings = {
 ["Wander"] = true
 }
 local faces = {
+["faceIdle"] = 'rbxassetid://23219775',
 ["faceDead"] = 'rbxassetid://15426038',
 ["faceHurt"] = 'rbxassetid://258192246',
 ["faceAttacking"] = 'rbxassetid://286688505',
@@ -636,9 +637,12 @@ local actions = {}
 local w = Instance.new("WeldConstraint", marine.Torso)
 w.Part0 = gun
 w.Name = "Left Arm Weld"
+w.Enabled = false
 local w = Instance.new("WeldConstraint", marine.Torso)
 w.Part0 = gun
 w.Name = "Right Arm Weld"
+w.Enabled = false
+task.wait()
 --Services
 local debrisService = game:GetService("Debris")
 local runService = game:GetService("RunService")
@@ -781,11 +785,11 @@ function actions.reload()
 	reloadAnimation:Play()
 	reloadAnimation:AdjustSpeed(3)
 	
-	wait(0.2)
+	task.wait(.2)
 	
 	local fakeMag = magazine:Clone()
 	fakeMag.CanCollide = true
-	fakeMag.Parent = workspace
+	fakeMag.Parent = script
 	debrisService:AddItem(fakeMag,4)
 	magazine.Transparency = 1
 	
