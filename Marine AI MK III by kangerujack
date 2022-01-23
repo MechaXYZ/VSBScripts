@@ -595,7 +595,6 @@ function core.checkShot(target)
 	end
 	return false
 end
-
 local allies = {}
 local team = mySettings.Team
 local attackPlayers = mySettings.AttackPlayers
