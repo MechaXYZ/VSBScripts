@@ -1050,7 +1050,7 @@ function trouble.createLine(instance)
 	if not debugOption then return end
 	lineEnd.Parent = instance
 end
-local movement = {)
+local movement = {}
 --Services
 local pathfindingService = game:GetService("PathfindingService")
 local runService = game:GetService("RunService")
