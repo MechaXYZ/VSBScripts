@@ -796,7 +796,6 @@ function actions.reload()
 	status:set("mag", mySettings.MagSize)
 	actions.drawM4()
 end
-
 function actions.drawM4()
 	actions.yieldKnife()
 	if not status:get("m4Equipped") and not status:get("reloading") then
