@@ -285,6 +285,7 @@ snd.EmitterSize = 10
 snd.Volume = 1
 local mag = Instance.new("SpawnLocation" , marine)
 mag.Enabled = false
+mag.CanCollide = false
 mag.Name = "Mag"
 mag.CFrame = CFrame.new(35.424, 78.547, 25.676, -0.705, 0.709, 0, 0.709, 0.705, 0, 0, 0, -1)
 mag.Size = Vector3.new(0.499, 0.946, 0.105)
