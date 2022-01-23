@@ -1324,14 +1324,6 @@ local runService = game:GetService("RunService")
 local debrisService = game:GetService("Debris")
 local tweenService = game:GetService("TweenService")
 
-local modules = script.Parent
-local core = require(modules.CoreModule)
-local status = require(modules.Status)
-local targeting = require(modules.TargetModule)
-local actions = require(modules.ActionsModule)
-local troubleshoot = require(modules.Troubleshoot)
-
-local marine = script.Parent.Parent.Parent
 local myRoot = marine.HumanoidRootPart
 local myHuman = marine.Humanoid
 
@@ -1341,9 +1333,6 @@ local lightFlash = barrel.PointLight
 local chamber = m4.Chamber
 local fireSound = m4.Fire
 local impact = m4.Impact
-
---Settings--
-local mySettings = marine.Settings
 
 local stabAnimation = myHuman:LoadAnimation(marine.Stab)
 stabAnimation.Priority = Enum.AnimationPriority.Action
@@ -1447,12 +1436,12 @@ function pushBullet(bullet)
 				if human and human.Health > 0 then
 					--human:TakeDamage(math.random(5,15))
 					core.applyDamage(human,math.random(5,15))
-					impact.Hit:Play()
+					--impact.Hit:Play()
 					if human.Health <= 0 then
 						targeting.findTarget()
 					end
 				elseif not human then
-					impact.Miss:Play()
+					--impact.Miss:Play()
 					impact.Debris:Emit(1)
 					for i = 1, math.random(2,3) do
 						local chunk = Instance.new("SpawnLocation")
