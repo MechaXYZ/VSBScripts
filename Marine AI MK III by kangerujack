@@ -173,7 +173,25 @@ face.Name = "faceIdle"
 NS(anim, Model0)
 return Model0
 end
+local mySettings = {
+["M4"] = {
+["Delay"] = .2,
+["Range"] = 150
+},
+["AttackPlayers"] = true,
+["Debug"] = false,
+["DetectionRange"] = 200,
+["MagSize"] = 30,
+["RandomAppearance"] = false,
+["Respawn"] = false,
+["RespawnDelay"] = 5,
+["Team"] = "USA",
+["Wander"] = true
+}
 local marine = createguy(Color3.fromRGB(241, 231, 199))
+local tem = Instance.new("StringValue", marine)
+tem.Name = "Team"
+tem.Value = mySettings.Team
 local anim = Instance.new("Animation", marine)
 anim.Name = "Reload"
 anim.AnimationId = 'rbxassetid://94332664'
@@ -473,21 +491,6 @@ alignor.PrimaryAxisOnly = false
 alignor.ReactionTorqueEnabled = false
 alignor.RigidityEnabled = false
 alignor.Attachment0 = at
-local mySettings = {
-["M4"] = {
-["Delay"] = .2,
-["Range"] = 150
-},
-["AttackPlayers"] = true,
-["Debug"] = false,
-["DetectionRange"] = 200,
-["MagSize"] = 30,
-["RandomAppearance"] = false,
-["Respawn"] = false,
-["RespawnDelay"] = 5,
-["Team"] = "USA",
-["Wander"] = true
-}
 local faces = {
 ["faceIdle"] = 'rbxassetid://23219775',
 ["faceDead"] = 'rbxassetid://15426038',
@@ -601,22 +604,10 @@ local allies = {}
 local team = mySettings.Team
 local attackPlayers = mySettings.AttackPlayers
 function core.isAlly(model)
-	--Check and see if they are on our team, if they are break the loop.
-	local targetTeam
-	if model:FindFirstChild("Team") then
-		targetTeam = model.Team
-	elseif model:FindFirstChild("Settings") and model.Settings:FindFirstChild("Team") then
-		targetTeam = model.Settings.Team			
-	end
-	for _,ally in ipairs(allies) do
-		if model.Name == ally then
-			return true
-		end
-	end
-	if (targetTeam and targetTeam == team) or (not attackPlayers and game.Players:GetPlayerFromCharacter(model)) then
-		return true
-	end
-	return false
+if model:FindFirstChild("Team") and model:FindFirstChild("Team").Value == team then
+return true
+end
+return false
 end
 
 function core.facingTarget()
