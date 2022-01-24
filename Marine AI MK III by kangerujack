@@ -264,6 +264,11 @@ grenade.Name = "Grenade"
 grenade.CanCollide = false
 grenade.Size = Vector3.new(0.842, 1.2, 0.776)
 grenade.CFrame = CFrame.new(34.979, 78.648, 25.631, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+local snd = Instance.new("Sound", grenade)
+snd.Name = "Pin"
+snd.SoundId = 'rbxassetid://326088041'
+snd.EmitterSize = 10
+snd.Volume = 1.5
 local at = Instance.new("Attachment" , grenade)
 at.Name = "Attach0"
 at.CFrame = CFrame.new(0.359, 0.21, 0.009, 0.937, -0.349, -0.029, 0.349, 0.937, 0, 0.027, -0.01, 1)
@@ -718,8 +723,6 @@ function actions.aim()
 			local myPos = myRoot.Position
 			local dir = (Vector3.new(walkPoint.X,0,walkPoint.Z) - Vector3.new(myPos.X,0,myPos.Z)).Unit * 20
 			aimPos = myRoot.Position + Vector3.new(0,1.5,0) + dir
-		else
-			aimPos = target.Position + target.Velocity/(10 - dist/50)
 		end
 		
 		local tilt = (myRoot.Position.Y - aimPos.Y) / (dist*0.04)
@@ -1544,7 +1547,7 @@ function combat.throwGrenade(target)
 		w.Part1 = g
 		
 		throwAnimation:Play()
-		--marine.Grenade.Pin:Play()
+		marine.Grenade.Pin:Play()
 		--Rotate and throw
 		myHuman.AutoRotate = false
 		for i=1,4 do
