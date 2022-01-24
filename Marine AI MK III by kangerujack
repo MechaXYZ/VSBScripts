@@ -723,6 +723,8 @@ function actions.aim()
 			local myPos = myRoot.Position
 			local dir = (Vector3.new(walkPoint.X,0,walkPoint.Z) - Vector3.new(myPos.X,0,myPos.Z)).Unit * 20
 			aimPos = myRoot.Position + Vector3.new(0,1.5,0) + dir
+			else
+			aimPos = target.Position + target.Velocity/(10 - dist/50)
 		end
 		
 		local tilt = (myRoot.Position.Y - aimPos.Y) / (dist*0.04)
