@@ -457,6 +457,16 @@ hinge.Radius = .15
 local at = Instance.new("Attachment" , gun)
 at.Name = "Impact"
 at.CFrame = CFrame.new(0.024, 0.008, -0.816, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+local snd = Instance.new("Sound", at)
+snd.Name = "Hit"
+snd.SoundId = 'rbxassetid://153647516'
+snd.EmitterSize = 10
+snd.Volume = 1.5
+local snd = Instance.new("Sound", at)
+snd.Name = "Miss"
+snd.SoundId = 'rbxassetid://153647563'
+snd.EmitterSize = 10
+snd.Volume = 1.5
 local pe = Instance.new("ParticleEmitter")
 pe.Enabled = false
 pe.Name = "Debris"
@@ -1459,12 +1469,12 @@ function pushBullet(bullet)
 				if human and human.Health > 0 then
 					--human:TakeDamage(math.random(5,15))
 					core.applyDamage(human,math.random(5,15))
-					--impact.Hit:Play()
+					impact.Hit:Play()
 					if human.Health <= 0 then
 						targeting.findTarget()
 					end
 				elseif not human then
-					--impact.Miss:Play()
+					impact.Miss:Play()
 					impact.Debris:Emit(1)
 					for i = 1, math.random(2,3) do
 						local chunk = Instance.new("SpawnLocation")
