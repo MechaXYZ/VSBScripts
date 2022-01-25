@@ -1317,10 +1317,10 @@ function targeting.findTarget()
 	status:set("potentialTargets",{})
 	status:set("activeAllies",{})
 	local seeTargets = {}
-	for _,v in ipairs(workspace:GetChildren()) do
+	for _,v in ipairs(workspace:GetDescendants()) do
 		local human = v:FindFirstChild("Humanoid")
 		local torso = v:FindFirstChild("HumanoidRootPart") or v:FindFirstChild("Torso")
-		if human and torso and v ~= marine then
+		if human and torso and v ~= marine and not v.Parent:IsA("WorldModel") then
 			if (myRoot.Position - torso.Position).magnitude < dist and human.Health > 0 then
 				local teammate = core.isAlly(v)
 				if teammate then
