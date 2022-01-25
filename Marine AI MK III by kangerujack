@@ -619,7 +619,7 @@ local allies = {}
 local team = mySettings.Team
 local attackPlayers = mySettings.AttackPlayers
 function core.isAlly(model)
-if model:FindFirstChild("Team") and model:FindFirstChild("Team").Value == team then
+if (model:FindFirstChild("Team") and model:FindFirstChild("Team").Value == team) or model.Name == "RPG Soldier" then
 return true
 end
 return false
