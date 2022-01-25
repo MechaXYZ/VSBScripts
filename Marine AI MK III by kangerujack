@@ -1495,11 +1495,12 @@ function combat.shoot(target)
 			
 			--flash:Emit(1)
 			core.spawn(function() 
-				barrel.FlashBG["Flash"..flashIndex].Visible = true
+				barrel["Flash"..flashIndex].Enabled = true
+				barrel["Flash"..flashIndex]:Emit(1)
 				lightFlash.Enabled = true 
-				task.wait(0.1) 
+				task.wait(.1) 
 				lightFlash.Enabled = false 
-				barrel.FlashBG["Flash"..flashIndex].Visible = false
+				barrel["Flash"..flashIndex].Enabled = false
 				flashIndex = flashIndex + 1
 				if flashIndex > 3 then
 					flashIndex = 1
