@@ -263,6 +263,21 @@ local msh = Instance.new("SpecialMesh" , knife)
 msh.MeshId = 'rbxassetid://121944778'
 msh.TextureId = 'rbxassetid://121944805'
 msh.Scale = Vector3.new(1, 1, 1)
+local snd = Instance.new("Sound", knife)
+snd.Name = "Attack"
+snd.SoundId = 'rbxassetid://153647529'
+snd.EmitterSize = 10
+snd.Volume = 1.5
+local snd = Instance.new("Sound", knife)
+snd.Name = "Equip"
+snd.SoundId = 'rbxassetid://153647514'
+snd.EmitterSize = 10
+snd.Volume = 1.5
+local snd = Instance.new("Sound", knife)
+snd.Name = "Stab"
+snd.SoundId = 'rbxassetid://153647516'
+snd.EmitterSize = 10
+snd.Volume = 1.5
 local w = Instance.new("WeldConstraint" , knife)
 w.Part0 = marine.Torso
 w.Part1 = knife
@@ -901,7 +916,9 @@ local knife = marine.Knife
 function actions.drawKnife()
 	if not status:get("knifeEquipped") then
 		actions.yieldM4()
-		--knife.Equip:Play()
+		pcall(function()
+		knife.Equip:Play()
+		end)
 		status:set("knifeEquipped",true)
 		knife.Weld.Part0 = nil
 		knife.CFrame = rArm.CFrame * CFrame.new(0,-1,-1) * CFrame.Angles(math.rad(90),math.rad(180),math.rad(180))
@@ -1634,10 +1651,10 @@ function combat.stab()
 	end
 	if canStab then
 		myHuman:MoveTo(status:get("currentTarget").Position)
-		
-		--knife.Stab:Play()
-		--knife.Attack:Play()
-		
+		pcall(function()
+		knife.Stab:Play()
+		knife.Attack:Play()
+		end)
 		if math.random(2) == 1 then
 			stabAnimation:Play(0.1,1,2)
 		else
