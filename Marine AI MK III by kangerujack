@@ -160,6 +160,10 @@ rj.MaxVelocity = 0.10000000149012
 Humanoid9.Parent = Model0
 Humanoid9.LeftLeg = ll
 Humanoid9.RightLeg = rl
+Humanoid9.MaxHealth = 0/0
+Humanoid9.Health = 0/0
+Humanoid9.BreakJointsOnDeath = false
+Humanoid9.RequiresNeck = false
 Humanoid9.Torso = Part4
 Humanoid9.Name = "Humanoid"
 Humanoid9.Died:Connect(function()
