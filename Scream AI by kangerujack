@@ -1,0 +1,521 @@
+local anim = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/MechaXYZ/VSBScripts/main/ROBLOX%20Animation%20Script", true)
+local function createguy(color)
+local Model0 = Instance.new("Model")
+    local Part1 = Instance.new("SpawnLocation")
+    local SpecialMesh2 = Instance.new("SpecialMesh")
+    local Part4 = Instance.new("SpawnLocation")
+    local Part45 = Instance.new("SpawnLocation")
+    local Part5 = Instance.new("SpawnLocation")
+    local Part6 = Instance.new("SpawnLocation")
+    local Part7 = Instance.new("SpawnLocation")
+    local Part8 = Instance.new("SpawnLocation")
+    Part1.Enabled = false
+    Part4.Enabled = false
+    Part45.Enabled = false
+    Part5.Enabled = false
+    Part6.Enabled = false
+    Part7.Enabled = false
+    Part8.Enabled = false
+    local Humanoid9 = Instance.new("Humanoid")
+    Model0.Name = "😱 scream 😱"
+    Model0.Parent = script
+    Model0.PrimaryPart = Part1
+    Part1.Name = "Head"
+    Part1.Parent = Model0
+    Part1.CFrame = CFrame.new(35.704, 80.239, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part1.Color = color
+    Part1.Size = Vector3.new(2, 1, 1)
+    Part1.CanCollide = true
+    Part1.TopSurface = Enum.SurfaceType.Smooth
+    Part1.brickColor = BrickColor.new("Really red")
+    Part1.FormFactor = Enum.FormFactor.Symmetric
+    Part1.formFactor = Enum.FormFactor.Symmetric
+    SpecialMesh2.Parent = Part1
+    SpecialMesh2.Scale = Vector3.new(1.25, 1.25, 1.25)
+    Part4.Name = "Torso"
+    Part4.Parent = Model0
+    Part4.CFrame = CFrame.new(35.704, 78.739, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part4.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part4.Size = Vector3.new(2, 2, 1)
+    Part4.BrickColor = BrickColor.new("Brown")
+    Part4.CanCollide = false
+    Part4.LeftParamA = 0
+    Part4.LeftParamB = 0
+    Part4.LeftSurface = Enum.SurfaceType.Smooth
+    Part4.RightParamA = 0
+    Part4.RightParamB = 0
+    Part4.RightSurface = Enum.SurfaceType.Smooth
+    Part4.brickColor = BrickColor.new("Really red")
+    Part4.FormFactor = Enum.FormFactor.Symmetric
+    Part4.formFactor = Enum.FormFactor.Symmetric
+    Part45.Name = "HumanoidRootPart"
+    Part45.Parent = Model0
+    Part45.CFrame = CFrame.new(35.704, 78.739, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part45.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part45.Size = Vector3.new(2, 2, 1)
+    Part45.Transparency = 1
+    Part45.BrickColor = BrickColor.new("Brown")
+    Part45.CanCollide = true
+    Part45.LeftParamA = 0
+    Part45.LeftParamB = 0
+    Part45.LeftSurface = Enum.SurfaceType.Smooth
+    Part45.RightParamA = 0
+    Part45.RightParamB = 0
+    Part45.RightSurface = Enum.SurfaceType.Smooth
+    Part45.brickColor = BrickColor.new("Really red")
+    Part45.FormFactor = Enum.FormFactor.Symmetric
+    Part45.formFactor = Enum.FormFactor.Symmetric
+    Part5.Name = "Left Arm"
+    Part5.Parent = Model0
+    Part5.CFrame = CFrame.new(37.204, 78.739, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part5.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part5.Size = Vector3.new(1, 2, 1)
+    Part5.BrickColor = BrickColor.new("Really black")
+    Part5.CanCollide = true
+    Part5.brickColor = BrickColor.new("Really red")
+    Part5.FormFactor = Enum.FormFactor.Symmetric
+    Part5.formFactor = Enum.FormFactor.Symmetric
+    Part6.Name = "Right Arm"
+    Part6.Parent = Model0
+    Part6.CFrame = CFrame.new(34.204, 78.739, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part6.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part6.Size = Vector3.new(1, 2, 1)
+    Part6.BrickColor = BrickColor.new("Really black")
+    Part6.CanCollide = true
+    Part6.brickColor = BrickColor.new("Really red")
+    Part6.FormFactor = Enum.FormFactor.Symmetric
+    Part6.formFactor = Enum.FormFactor.Symmetric
+    Part7.Name = "Left Leg"
+    Part7.Parent = Model0
+    Part7.CFrame = CFrame.new(36.204, 76.739, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part7.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part7.Size = Vector3.new(1, 2, 1)
+    Part7.BottomSurface = Enum.SurfaceType.Smooth
+    Part7.BrickColor = BrickColor.new("Really black")
+    Part7.CanCollide = true
+    Part7.brickColor = BrickColor.new("Really red")
+    Part7.FormFactor = Enum.FormFactor.Symmetric
+    Part7.formFactor = Enum.FormFactor.Symmetric
+    Part8.Name = "Right Leg"
+    Part8.Parent = Model0
+    Part8.CFrame = CFrame.new(35.204, 76.739, 26.363, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    Part8.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+    Part8.Size = Vector3.new(1, 2, 1)
+    Part8.BottomSurface = Enum.SurfaceType.Smooth
+    Part8.BrickColor = BrickColor.new("Really black")
+    Part8.CanCollide = true
+    Part8.brickColor = BrickColor.new("Really red")
+    Part8.FormFactor = Enum.FormFactor.Symmetric
+    Part8.formFactor = Enum.FormFactor.Symmetric
+for i, v in pairs(Model0:GetChildren()) do
+v.Color = color
+end
+local rl = Part8
+local ll = Part7
+local ra = Part6
+local la = Part5
+local tors = Part4
+local head = Part1
+local nc = Instance.new("Motor6D" , tors)
+nc.Name = 'Neck'
+nc.Part0 = tors
+nc.Part1 = head
+nc.C0 = CFrame.new(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+nc.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+nc.MaxVelocity = 0.10000000149012
+local rs = Instance.new("Motor6D" , tors)
+rs.Name = 'Right Shoulder'
+rs.Part0 = tors
+rs.Part1 = ra
+rs.C0 = CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rs.C1 = CFrame.new(-0.5, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rs.MaxVelocity = 0.15000000596046
+local ls = Instance.new("Motor6D" , tors)
+ls.Name = 'Left Shoulder'
+ls.Part0 = tors
+ls.Part1 = la
+ls.C0 = CFrame.new(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+ls.C1 = CFrame.new(0.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+ls.MaxVelocity = 0.15000000596046
+local rh = Instance.new("Motor6D" , tors)
+rh.Name = 'Right Hip'
+rh.Part0 = tors
+rh.Part1 = rl
+rh.C0 = CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rh.C1 = CFrame.new(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+rh.MaxVelocity = 0.10000000149012
+local lh = Instance.new("Motor6D" , tors)
+lh.Name = 'Left Hip'
+lh.Part0 = tors
+lh.Part1 = ll
+lh.C0 = CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+lh.C1 = CFrame.new(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+local rj = Instance.new("Motor6D" , Part45)
+rj.Name = 'RootJoint'
+rj.Part0 = Part45
+rj.Part1 = tors
+rj.C0 = CFrame.new(-0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+rj.C1 = CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+rj.MaxVelocity = 0.10000000149012
+Humanoid9.Parent = Model0
+Humanoid9.LeftLeg = ll
+Humanoid9.RightLeg = rl
+Humanoid9.Torso = Part4
+Humanoid9.Name = "Humanoid"
+Humanoid9.Died:Connect(function()
+game:GetService("Debris"):AddItem(Model0, 5)
+end)
+local face = Instance.new("Texture", Model0.Head)
+face.Texture = 'rbxassetid://26449032'
+face.StudsPerTileU = 100
+face.StudsPerTileV = 100
+face.Name = "face"
+NS(anim, Model0)
+return Model0
+end
+
+local scream = createguy(Color3.fromRGB(17, 17, 17))
+local shirt = Instance.new("Shirt", scream)
+shirt.Name = "Shirt"
+local pants = Instance.new("Pants", scream)
+pants.Name = "Pants"
+scream.Shirt.ShirtTemplate = 'rbxassetid://24782123'
+scream.Pants.PantsTemplate = 'rbxassetid://27784344'
+local torsm = Instance.new("CharacterMesh")
+torsm.Parent = scream
+torsm.BodyPart = Enum.BodyPart.Torso
+torsm.MeshId = '27111894'
+local ram = Instance.new("CharacterMesh")
+ram.Parent = scream
+ram.BodyPart = Enum.BodyPart.RightArm
+ram.MeshId = '27111864'
+local lam = Instance.new("CharacterMesh")
+lam.Parent = scream
+lam.BodyPart = Enum.BodyPart.LeftArm
+lam.MeshId = '27111419'
+local rlm = Instance.new("CharacterMesh")
+rlm.Parent = scream
+rlm.BodyPart = Enum.BodyPart.RightLeg
+rlm.MeshId = '27111882'
+local llm = Instance.new("CharacterMesh")
+llm.Parent = scream
+llm.BodyPart = Enum.BodyPart.LeftLeg
+llm.MeshId = '27111857'
+local mask = Instance.new("SpawnLocation", scream)
+mask.Enabled = false
+mask.Name = "Mask"
+mask.Size = Vector3.new(2, 1.8, 2)
+mask.CanCollide = false
+local w = Instance.new("Weld", mask)
+w.Part0 = mask
+w.Part1 = scream.Head
+w.C0 = CFrame.new(-16.049, -5.2, -38.897, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+w.C1 = CFrame.new(-17.156, -5.277, -38.488, 0.03, 0, -1, 0, 1, 0, 1, 0, 0.03)
+local msh = Instance.new("SpecialMesh", mask)
+msh.MeshId = 'rbxassetid://132718186'
+msh.TextureId = 'rbxassetid://4246981629'
+local knife = Instance.new("SpawnLocation", scream)
+knife.Enabled = false
+knife.Name = "Knife"
+knife.Size = Vector3.new(.4, 2.7, .8)
+knife.CanCollide = false
+local at = Instance.new("Attachment", knife)
+at.Name = "BloodSpot"
+at.CFrame = CFrame.new(0, 0.63, -0.4, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+local w = Instance.new("Weld", knife)
+w.Part0 = knife
+w.Part1 = scream["Right Arm"]
+w.C0 = CFrame.new(0,-1,1) * CFrame.Angles(math.rad(90),0,0)
+local msh = Instance.new("SpecialMesh", knife)
+msh.MeshId = 'rbxassetid://121944778'
+msh.TextureId = 'rbxassetid://144012208'
+local snd = Instance.new("Sound", knife)
+snd.Name = "Attack"
+snd.SoundId = 'rbxassetid://153647529'
+snd.EmitterSize = 10
+snd.Volume = 1
+local snd = Instance.new("Sound", knife)
+snd.Name = "Equip"
+snd.SoundId = 'rbxassetid://153647514'
+snd.EmitterSize = 10
+snd.Volume = 1
+local snd = Instance.new("Sound", knife)
+snd.Name = "DeadSound"
+snd.SoundId = 'rbxassetid://153647516'
+snd.EmitterSize = 10
+snd.Volume = 1
+local snd = Instance.new("Sound", knife)
+snd.Name = "DeadPlayer"
+snd.SoundId = 'rbxassetid://146594648'
+snd.EmitterSize = 10
+snd.Volume = 1
+local snd = Instance.new("Sound", knife)
+snd.Name = "Throw"
+snd.SoundId = 'rbxassetid://153647549'
+snd.EmitterSize = 10
+snd.Volume = 1
+local snd = Instance.new("Sound", knife)
+snd.Name = "WallHit"
+snd.SoundId = 'rbxassetid://153647563'
+snd.EmitterSize = 10
+snd.Volume = 1
+local anim = Instance.new("Animation", scream)
+anim.Name = "DownStab"
+anim.AnimationId = 'rbxassetid://4248229673'
+local anim = Instance.new("Animation", scream)
+anim.Name = "StabPunch"
+anim.AnimationId = 'rbxassetid://4248241352'
+local anim = Instance.new("Animation", scream)
+anim.Name = "Throw"
+anim.AnimationId = 'rbxassetid://4248237195'
+local anim = Instance.new("Animation", scream)
+anim.Name = "ThrowCharge"
+anim.AnimationId = 'rbxassetid://93103762'
+NS([[
+local myHuman = script.Parent:WaitForChild("Humanoid")
+local myTorso = script.Parent:WaitForChild("HumanoidRootPart")
+local rHand = script.Parent:WaitForChild("Right Arm")
+local knife = script.Parent:WaitForChild("Knife")
+local knifeWeld = knife:WaitForChild("KnifeWeld")
+local bloodSpot = knife:WaitForChild("BloodSpot")
+local attackSound = knife:WaitForChild("Attack")
+local deadPlayerSound = knife:WaitForChild("DeadPlayer")
+local deadSound = knife:WaitForChild("DeadSound")
+local equipSound = knife:WaitForChild("Equip")
+local throwSound = knife:WaitForChild("Throw")
+local wallHitSound = knife:WaitForChild("WallHit")
+local downStab = script.Parent:WaitForChild("DownStab")
+local downStabAnim = myHuman:LoadAnimation(downStab)
+downStabAnim.Priority = Enum.AnimationPriority.Action
+local stabPunch = script.Parent:WaitForChild("StabPunch")
+local stabPunchAnim = myHuman:LoadAnimation(stabPunch)
+stabPunchAnim.Priority = Enum.AnimationPriority.Action
+local throw = script.Parent:WaitForChild("Throw")
+local throwAnim = myHuman:LoadAnimation(throw)
+throwAnim.Priority = Enum.AnimationPriority.Action
+local throwCharge = script.Parent:WaitForChild("ThrowCharge")
+local throwChargeAnim = myHuman:LoadAnimation(throwCharge)
+throwChargeAnim.Priority = Enum.AnimationPriority.Action
+local attackCool = true
+local pathFindFails = 0
+local charging = false
+function checkSight(target)
+	local ray = Ray.new(myTorso.Position, (target.Position - myTorso.Position).Unit * 200)
+	local hit,position = workspace:FindPartOnRayWithIgnoreList(ray, {script.Parent})
+	if hit then
+		if hit:IsDescendantOf(target.Parent) then
+			return true
+		end
+	end
+	return false
+end
+function findTarget()
+	local dist = 300
+	local target = nil
+	for i,v in ipairs(workspace:GetChildren()) do
+		local human = v:FindFirstChild("Humanoid")
+		local torso = v:FindFirstChild("Torso") or v:FindFirstChild("HumanoidRootPart")
+		if human and torso and v.Name ~= script.Parent.Name then
+			if (myTorso.Position - torso.Position).magnitude < dist and human.Health > 0 then
+				target = torso
+				dist = (myTorso.Position - torso.Position).magnitude
+			end
+		end
+	end
+	return target
+end
+function pathToTarget(target)
+	local path = game:GetService("PathfindingService"):CreatePath()
+	path:ComputeAsync(myTorso.Position, target.Position)
+	if path.Status == Enum.PathStatus.Success then
+		pathFindFails = 0
+		local waypoints = path:GetWaypoints()
+		for i,v in ipairs(waypoints) do
+			if v.Action == Enum.PathWaypointAction.Jump then
+				myHuman.Jump = true
+			end
+			myHuman:MoveTo(v.Position)
+			if checkSight(target) and math.abs(myTorso.Position.Y - target.Position.Y) < 1.5 then
+				--print("Direct line of sight to target and about the same height")
+				break
+			elseif (target.Position - waypoints[#waypoints].Position).magnitude > 30 then
+				--print("Target has moved away from the path")
+				break
+			elseif math.abs(myTorso.Position.Y - v.Position.Y) > 10 then
+				--print("I am too far from the waypoint heightwise")
+				break
+			elseif (myTorso.Position - v.Position).magnitude > 10 then
+				--print("I have strayed too far from the path")
+				break
+			end
+			if i % 5 ==0 then
+				if findTarget() ~= target then
+					print("Found better target")
+					break
+				end
+			end
+			local timeOut = myHuman.MoveToFinished:Wait()
+			if not timeOut then
+				getUnstuck()
+				break
+			end
+			task.spawn(function()
+				task.wait(1)
+				if myTorso.Position.Y < myHuman.WalkToPoint.Y and 
+					(myTorso.Position - target.Position).magnitude > 10 and charging == false then
+					--print("The point is higher than my character we need to jump")
+					myHuman.Jump = true
+				end
+			end)
+		end
+	else
+		--print("Failed to generate path...")
+		pathFindFails = pathFindFails + 1 
+		if pathFindFails > 10 then
+			getUnstuck()
+			pathFindFails = 0
+		end
+	end
+end
+function squirtBlood(location)
+	for i = 1, math.random(20, 30) do
+		local b = Instance.new("SpawnLocation",script.Parent) b.Enabled = false
+		b.CanCollide = false
+		b.Shape = Enum.PartType.Ball
+		b.Size = Vector3.new(math.random(5)/10,0,0)
+		local bloodColors = {"Bright red","Really red","Crimson","Maroon"}
+		b.BrickColor = BrickColor.new(bloodColors[math.random(#bloodColors)])
+		b.Velocity = Vector3.new(math.random(-30,30),math.random(20,30),math.random(-30,30))
+		b.CFrame = CFrame.new(location)
+		game:GetService("Debris"):AddItem(b, 1)
+	end
+end
+function meleeAttack(target)
+	if attackCool == true then
+		myHuman:MoveTo(target.Position)
+		attackSound:Play()
+		local attack = math.random(4)
+		if attack == 1 then
+			stabPunchAnim:Play()
+		else
+			downStabAnim:Play()
+		end
+		deadSound:Play()
+		target.Parent.Humanoid.Health -= 20
+		squirtBlood(bloodSpot.WorldPosition)
+		if target.Parent.Humanoid.Health < 1 then
+			deadPlayerSound:Play()
+			task.wait(.3)
+		end
+		attackCool = false
+		task.spawn(function() task.wait(.5) attackCool = true end)
+	end
+end
+function rangeAttack(target)
+	if attackCool == true then
+		attackCool = false
+		throwAnim:Play()
+		task.wait(.3)
+		throwSound:Play()
+		knifeWeld.Part1 = nil
+		knife.Velocity = myTorso.CFrame.lookVector * 200
+		knife.RotVelocity = Vector3.new(100,0,0)
+		touched = knife.Touched:Connect(function(obj)
+			if not obj:IsDescendantOf(script.Parent) and obj.Name ~= "Knife" then
+				local clone = knife:Clone()
+				clone.Parent = script.Parent
+				clone.CFrame = knife.CFrame
+				local w = Instance.new("WeldConstraint",clone)
+				w.Part0 = clone
+				w.Part1 = obj
+				game:GetService("Debris"):AddItem(clone,10)
+				knife.Velocity = Vector3.new(0,0,0)
+				knife.CFrame = rHand.CFrame * CFrame.new(0,-1,1) * CFrame.Angles(math.rad(90),math.rad(180),math.rad(180))
+				knifeWeld.Part1 = rHand
+				
+				local human = obj.Parent:FindFirstChild("Humanoid")
+				if human then
+					human.Health -= 40
+					deadSound:Play()
+					task.spawn(function()
+						for i = 1, 10 do
+							task.wait(.2)
+							squirtBlood(clone.BloodSpot.WorldPosition)
+						end
+					end)
+				else
+					wallHitSound:Play()
+				end
+				touched:Disconnect()
+			end
+		end)
+		spawn(function() wait(1) attackCool = true end)
+	end
+end
+function walkRandom()
+	local xRand = math.random(-50,50)
+	local zRand = math.random(-50,50)
+	local goal = myTorso.Position + Vector3.new(xRand,0,zRand)
+	
+	local path = game:GetService("PathfindingService"):CreatePath()
+	path:ComputeAsync(myTorso.Position, goal)
+	
+	if path.Status == Enum.PathStatus.Success then
+		local waypoints = path:GetWaypoints()
+		for i,v in ipairs(waypoints) do
+			if v.Action == Enum.PathWaypointAction.Jump then
+				myTorso.Jump = true
+			end
+			myHuman:MoveTo(v.Position)
+			myHuman.MoveToFinished:Wait()
+		end
+	else
+		--print("Random path is fail")
+		task.wait(2)
+	end
+end
+function getUnstuck()
+	--print("My humanoid is stuck, attempting to get unstuck")
+	myHuman:Move(Vector3.new(math.random(-1,1),0,math.random(-1,1)))
+	task.wait(1)
+end
+function chase(target)
+	charging = true
+	myHuman:MoveTo(target.Position)
+end
+myHuman.Died:Connect(function()
+	game:GetService("Debris"):AddItem(script.Parent, 5)
+end)
+function main()
+	charging = false 
+	local target = findTarget()
+	if target then
+		if checkSight(target) and math.abs(myTorso.Position.Y - target.Position.Y) < 1.5 or
+			checkSight(target) and (myTorso.Position - target.Position).magnitude < 3 then
+			local dist = (myTorso.Position - target.Position).magnitude 
+			if dist > 3 then
+				myHuman.WalkSpeed = 20 
+				chase(target)
+			end
+			
+			if dist < 5 then
+				meleeAttack(target)
+			elseif dist < 50 and dist > 20 then
+				rangeAttack(target)
+			end
+		else
+			--print("Main function we have to pathfind")
+			myHuman.WalkSpeed = 10
+			pathToTarget(target)
+		end		
+	else
+		walkRandom()
+	end
+end
+while task.wait(.05) do
+	if myHuman.Health < 1 then
+		break
+	end
+	main()
+end
+]], scream)
