@@ -224,6 +224,7 @@ at.Name = "BloodSpot"
 at.CFrame = CFrame.new(0, 0.63, -0.4, 0, 0, 1, 0, 1, 0, -1, 0, 0)
 local w = Instance.new("Weld", knife)
 w.Part0 = knife
+w.Name = "Knife Weld"
 w.Part1 = scream["Right Arm"]
 w.C0 = CFrame.new(0,-1,1) * CFrame.Angles(math.rad(90),0,0)
 local msh = Instance.new("SpecialMesh", knife)
@@ -274,7 +275,7 @@ anim.AnimationId = 'rbxassetid://93103762'
 NS([[
 local myHuman = script.Parent:WaitForChild("Humanoid")
 local myTorso = script.Parent:WaitForChild("HumanoidRootPart")
-local rHand = script.Parent:WaitForChild("Right Arm")
+local rHand = script.Parent["Right Arm"]
 local knife = script.Parent:WaitForChild("Knife")
 local knifeWeld = knife:WaitForChild("KnifeWeld")
 local bloodSpot = knife:WaitForChild("BloodSpot")
@@ -449,7 +450,7 @@ function rangeAttack(target)
 				touched:Disconnect()
 			end
 		end)
-		spawn(function() wait(1) attackCool = true end)
+		task.spawn(function() task.wait(1) attackCool = true end)
 	end
 end
 function walkRandom()
