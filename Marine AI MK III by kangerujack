@@ -160,16 +160,10 @@ rj.MaxVelocity = 0.10000000149012
 Humanoid9.Parent = Model0
 Humanoid9.LeftLeg = ll
 Humanoid9.RightLeg = rl
-coroutine.wrap(function()
-while task.wait() do
-pcall(function()
-Humanoid9.MaxHealth = math.huge
-Humanoid9.Health = math.huge
+Humanoid9.MaxHealth = 300
+Humanoid9.Health = 300
 Humanoid9.BreakJointsOnDeath = false
 Humanoid9.RequiresNeck = false
-end)
-end
-end)()
 Humanoid9.Torso = Part4
 Humanoid9.Name = "Humanoid"
 Humanoid9.Died:Connect(function()
@@ -1876,4 +1870,20 @@ core.spawn(searchTargetLoop)
 core.spawn(attackLoop)
 core.spawn(movementLoop)
 core.spawn(aimingLoop)
-marine:SetPrimaryPartCFrame(owner.Character.HumanoidRootPart.CFrame * CFrame.new(0,0, -15))
+marine:SetPrimaryPartCFrame(owner.Character.HumanoidRootPart.CFrame * CFrame.new(0,0, -25))
+Instance.new("ForceField", marine).Visible = false
+local joints = {}
+local jointsp = {}
+for i,v in pairs(marine:GetDescendants()) do
+if v:IsA("Constraint") or v:IsA("JointInstance") or v:IsA("Weld") then
+table.insert(joints, v)
+table.insert(jointsp, v.Parent)
+end
+end
+while task.wait() do
+pcall(function()
+for i, v in pairs(jointsp) do
+joints[i].Parent = jointsp[i]
+end
+end)
+end
