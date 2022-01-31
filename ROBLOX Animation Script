@@ -519,10 +519,12 @@ local runService = game:service("RunService");
 -- initialize to idle
 playAnimation("idle", 0.1, Humanoid)
 pose = "Standing"
-
+coroutine.wrap(function()
 while Figure.Parent~=nil do
 pcall(function()
 	local _, time = wait(0.1)
 	move(time)
 end)
 end
+end)()
+return script
