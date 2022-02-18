@@ -1,0 +1,670 @@
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end local Player,game,owner = owner,game local RealPlayer = Player do     local rp = RealPlayer local Event = Instance.new("RemoteEvent")  Event.Name = "UserInput_Event"    local function fakeEvent()        local t = {_fakeEvent=true,Functions={},Connect=function(self,f)table.insert(self.Functions,f) end}        t.connect = t.Connect       return t    end   local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}   local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}   local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)       CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil   end}    CAS.UnbindAction = CAS.BindAction    local function te(self,ev,...)      local t = m[ev]       if t and t._fakeEvent then           for _,f in pairs(t.Functions) do               f(...)           end       end    end    m.TrigEvent = te    UIS.TrigEvent = te    Event.OnServerEvent:Connect(function(plr,io)        if plr~=rp then return end        m.Target = io.Target        m.Hit = io.Hit        if not io.isMouse then            local b = io.UserInputState == Enum.UserInputState.Begin            if io.UserInputType == Enum.UserInputType.MouseButton1 then                return m:TrigEvent(b and "Button1Down" or "Button1Up")            end            for _,t in pairs(CAS.Actions) do                for _,k in pairs(t.Keys) do                    if k==io.KeyCode then                       t.Function(t.Name,io.UserInputState,io)                   end                end            end           m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())            UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)        end    end)    Event.Parent = NLS([==[    local Player = game:GetService("Players").LocalPlayer    local Event = script:WaitForChild("UserInput_Event")     local Mouse = Player:GetMouse()    local UIS = game:GetService("UserInputService")    local input = function(io,a)        if a then return end Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState,Hit=Mouse.Hit,Target=Mouse.Target})    end    UIS.InputBegan:Connect(input)    UIS.InputEnded:Connect(input)    local h,t    while wait(1/30) do        if h~=Mouse.Hit or t~=Mouse.Target then            h,t=Mouse.Hit,Mouse.Target           Event:FireServer({isMouse=true,Target=t,Hit=h})        end    end]==],Player.PlayerGui)    local _rg = game    local fsmt = {       __index = function(self,k)            local s = rawget(self,"_RealService")            if s then return s[k] end        end,        __newindex = function(self,k,v)            local s = rawget(self,"_RealService")            if s then s[k]=v end        end,        __call = function(self,...)            local s = rawget(self,"_RealService")            if s then return s(...) end        end    }    local function FakeService(t,RealService)        t._RealService = typeof(RealService)=="string" and _rg:GetService(RealService) or RealService        return setmetatable(t,fsmt)    end    local g = {        GetService = function(self,s)            return self[s]        end,        Players = FakeService({            LocalPlayer = FakeService({GetMouse=function(self)return m end},Player)        },"Players"),        UserInputService = FakeService(UIS,"UserInputService"),        ContextActionService = FakeService(CAS,"ContextActionService"),    }    rawset(g.Players,"localPlayer",g.Players.LocalPlayer)    g.service = g.GetService       g.RunService = FakeService({        RenderStepped = _rg:GetService("RunService").Heartbeat,        BindToRenderStep = function(self,name,_,fun)            self._btrs[name] = self.Heartbeat:Connect(fun)        end,        UnbindFromRenderStep = function(self,name)            self._btrs[name]:Disconnect()        end,    },"RunService")     setmetatable(g,{        __index=function(self,s)            return _rg:GetService(s) or typeof(_rg[s])=="function"            and function(_,...)return _rg[s](_rg,...)end or _rg[s]        end,        __newindex = fsmt.__newindex,        __call = fsmt.__call    })    game,owner = g,g.Players.LocalPlayer end
+script.Parent = owner.Character
+local m = owner:GetMouse()
+local rightkeys = {"z", "x", "c", "v", "b"}
+local leftkeys = {"l", "k", "j", "h", "g"}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Model0 = Instance.new("Model")
+Folder0 = Model0
+Part1 = Instance.new("Part")
+Motor6D2 = Instance.new("Motor6D")
+Part3 = Instance.new("Part")
+Part4 = Instance.new("Part")
+Motor6D5 = Instance.new("Motor6D")
+Part6 = Instance.new("Part")
+Motor6D7 = Instance.new("Motor6D")
+Motor6D8 = Instance.new("Motor6D")
+Motor6D9 = Instance.new("Motor6D")
+Motor6D10 = Instance.new("Motor6D")
+Motor6D11 = Instance.new("Motor6D")
+Part12 = Instance.new("Part")
+Part13 = Instance.new("Part")
+Motor6D14 = Instance.new("Motor6D")
+Part15 = Instance.new("Part")
+Motor6D16 = Instance.new("Motor6D")
+Part17 = Instance.new("Part")
+Part18 = Instance.new("Part")
+Motor6D19 = Instance.new("Motor6D")
+Part20 = Instance.new("Part")
+Motor6D21 = Instance.new("Motor6D")
+Part22 = Instance.new("Part")
+Part23 = Instance.new("Part")
+Motor6D24 = Instance.new("Motor6D")
+Part25 = Instance.new("Part")
+Motor6D26 = Instance.new("Motor6D")
+Part27 = Instance.new("Part")
+Motor6D28 = Instance.new("Motor6D")
+Part29 = Instance.new("Part")
+Part30 = Instance.new("Part")
+Weld31 = Instance.new("Weld")
+Model32 = Instance.new("Model")
+Folder32 = Model32
+Part33 = Instance.new("Part")
+Motor6D34 = Instance.new("Motor6D")
+Part35 = Instance.new("Part")
+Motor6D36 = Instance.new("Motor6D")
+Part37 = Instance.new("Part")
+Part38 = Instance.new("Part")
+Motor6D39 = Instance.new("Motor6D")
+Part40 = Instance.new("Part")
+Motor6D41 = Instance.new("Motor6D")
+Part42 = Instance.new("Part")
+Part43 = Instance.new("Part")
+Motor6D44 = Instance.new("Motor6D")
+Part45 = Instance.new("Part")
+Motor6D46 = Instance.new("Motor6D")
+Part47 = Instance.new("Part")
+Part48 = Instance.new("Part")
+Motor6D49 = Instance.new("Motor6D")
+Part50 = Instance.new("Part")
+Part51 = Instance.new("Part")
+Motor6D52 = Instance.new("Motor6D")
+Part53 = Instance.new("Part")
+Motor6D54 = Instance.new("Motor6D")
+Part55 = Instance.new("Part")
+Part56 = Instance.new("Part")
+Motor6D57 = Instance.new("Motor6D")
+Motor6D58 = Instance.new("Motor6D")
+Motor6D59 = Instance.new("Motor6D")
+Motor6D60 = Instance.new("Motor6D")
+Motor6D61 = Instance.new("Motor6D")
+Part62 = Instance.new("Part")
+Weld63 = Instance.new("Weld")
+Model0.Name = "LeftHand"
+Model0.Parent = mas
+Part1.Name = "LMiddleMiddlePart"
+Part1.Parent = Model0
+Part1.CFrame = CFrame.new(-36.41185, 178.735397, -188.107025, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part1.Orientation = Vector3.new(90, -90, 0)
+Part1.Position = Vector3.new(-36.41184997558594, 178.7353973388672, -188.10702514648438)
+Part1.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part1.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part1.BottomSurface = Enum.SurfaceType.Smooth
+Part1.TopSurface = Enum.SurfaceType.Smooth
+Motor6D2.Parent = Part1
+Motor6D2.C0 = CFrame.new(-0.00550127029, 0, 0.153091431, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D2.C1 = CFrame.new(-0.00550913811, 0, -0.146911621, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D2.Part0 = Part1
+Motor6D2.Part1 = Part3
+Motor6D2.part1 = Part3
+Part3.Name = "LMiddleFingerTip"
+Part3.Parent = Model0
+Part3.CFrame = CFrame.new(-36.4118385, 178.435394, -188.106995, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part3.Orientation = Vector3.new(90, -90, 0)
+Part3.Position = Vector3.new(-36.41183853149414, 178.43539428710938, -188.10699462890625)
+Part3.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part3.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part3.BottomSurface = Enum.SurfaceType.Smooth
+Part3.TopSurface = Enum.SurfaceType.Smooth
+Part4.Name = "LMiddleLowerPart"
+Part4.Parent = Model0
+Part4.CFrame = CFrame.new(-36.4118614, 179.035385, -188.107056, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part4.Orientation = Vector3.new(90, -90, 0)
+Part4.Position = Vector3.new(-36.411861419677734, 179.03538513183594, -188.1070556640625)
+Part4.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part4.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part4.BottomSurface = Enum.SurfaceType.Smooth
+Part4.TopSurface = Enum.SurfaceType.Smooth
+Motor6D5.Parent = Part4
+Motor6D5.C0 = CFrame.new(0, -0.00366234779, 0.157454967, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D5.C1 = CFrame.new(2.86102295e-06, -0.00366234779, -0.142539501, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D5.Part0 = Part4
+Motor6D5.Part1 = Part1
+Motor6D5.part1 = Part1
+Part6.Name = "Hand"
+Part6.Parent = Model0
+Part6.CFrame = CFrame.new(-36.4118729, 179.435287, -188.232101, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part6.Orientation = Vector3.new(90, -90, 0)
+Part6.Position = Vector3.new(-36.41187286376953, 179.43528747558594, -188.2321014404297)
+Part6.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part6.Size = Vector3.new(1, 0.25, 0.5)
+Part6.BottomSurface = Enum.SurfaceType.Smooth
+Part6.TopSurface = Enum.SurfaceType.Smooth
+Motor6D7.Name = "ThumbJoint"
+Motor6D7.Parent = Part6
+Motor6D7.C0 = CFrame.new(0.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D7.C1 = CFrame.new(-0.125010014, 0, -0.0998945236, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D7.Part0 = Part6
+Motor6D7.Part1 = Part27
+Motor6D7.part1 = Part27
+Motor6D8.Name = "PointerKnuckle"
+Motor6D8.Parent = Part6
+Motor6D8.C0 = CFrame.new(0.365781993, 0, 0.258156776, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D8.C1 = CFrame.new(-0.00921443105, 0, -0.129257679, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D8.Part0 = Part6
+Motor6D8.Part1 = Part18
+Motor6D8.part1 = Part18
+Motor6D9.Parent = Part6
+Motor6D9.C0 = CFrame.new(0.108825207, 0, 0.267250538, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D9.C1 = CFrame.new(-0.0161755085, 0, -0.132664204, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D9.Part0 = Part6
+Motor6D9.Part1 = Part4
+Motor6D9.part1 = Part4
+Motor6D10.Parent = Part6
+Motor6D10.C0 = CFrame.new(-0.138708591, 0, 0.271941185, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D10.C1 = CFrame.new(-0.0137064457, 0, -0.11547327, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D10.Part0 = Part6
+Motor6D10.Part1 = Part23
+Motor6D10.part1 = Part23
+Motor6D11.Parent = Part6
+Motor6D11.C0 = CFrame.new(-0.365706921, 0, 0.276897907, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D11.C1 = CFrame.new(0.00929331779, 0, -0.0980129242, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D11.Part0 = Part6
+Motor6D11.Part1 = Part13
+Motor6D11.part1 = Part13
+Part12.Name = "LPinkyFingerTip"
+Part12.Parent = Folder0
+Part12.CFrame = CFrame.new(-36.4118195, 178.535339, -188.607025, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part12.Orientation = Vector3.new(90, -90, 0)
+Part12.Position = Vector3.new(-36.41181945800781, 178.53533935546875, -188.60702514648438)
+Part12.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part12.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part12.BottomSurface = Enum.SurfaceType.Smooth
+Part12.TopSurface = Enum.SurfaceType.Smooth
+Part13.Name = "LPinkyLowerPart"
+Part13.Parent = Folder0
+Part13.CFrame = CFrame.new(-36.4118423, 179.060333, -188.607071, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part13.Orientation = Vector3.new(90, -90, 0)
+Part13.Position = Vector3.new(-36.411842346191406, 179.06033325195312, -188.60707092285156)
+Part13.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part13.Size = Vector3.new(0.25, 0.25, 0.25)
+Part13.BottomSurface = Enum.SurfaceType.Smooth
+Part13.TopSurface = Enum.SurfaceType.Smooth
+Motor6D14.Parent = Part13
+Motor6D14.C0 = CFrame.new(0.00103569031, 0.00289463997, 0.10604763, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D14.C1 = CFrame.new(0.00103878975, 0.00289463997, -0.1439538, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D14.Part0 = Part13
+Motor6D14.Part1 = Part15
+Motor6D14.part1 = Part15
+Part15.Name = "LPinkyMiddlePart"
+Part15.Parent = Folder0
+Part15.CFrame = CFrame.new(-36.4118309, 178.810333, -188.607056, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part15.Orientation = Vector3.new(90, -90, 0)
+Part15.Position = Vector3.new(-36.41183090209961, 178.81033325195312, -188.6070556640625)
+Part15.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part15.Size = Vector3.new(0.25, 0.25, 0.25)
+Part15.BottomSurface = Enum.SurfaceType.Smooth
+Part15.TopSurface = Enum.SurfaceType.Smooth
+Motor6D16.Parent = Part15
+Motor6D16.C0 = CFrame.new(0, 0, 0.113123894, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D16.C1 = CFrame.new(-2.14576721e-06, 0, -0.161876202, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D16.Part0 = Part15
+Motor6D16.Part1 = Part12
+Motor6D16.part1 = Part12
+Part17.Name = "LPointerFingerTip"
+Part17.Parent = Folder0
+Part17.CFrame = CFrame.new(-36.41185, 178.485413, -187.85701, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part17.Orientation = Vector3.new(90, -90, 0)
+Part17.Position = Vector3.new(-36.41184997558594, 178.48541259765625, -187.8570098876953)
+Part17.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part17.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part17.BottomSurface = Enum.SurfaceType.Smooth
+Part17.TopSurface = Enum.SurfaceType.Smooth
+Part18.Name = "LPointerLowerPart"
+Part18.Parent = Folder0
+Part18.CFrame = CFrame.new(-36.4118729, 179.047913, -187.857071, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part18.Orientation = Vector3.new(90, -90, 0)
+Part18.Position = Vector3.new(-36.41187286376953, 179.04791259765625, -187.85707092285156)
+Part18.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part18.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part18.BottomSurface = Enum.SurfaceType.Smooth
+Part18.TopSurface = Enum.SurfaceType.Smooth
+Motor6D19.Parent = Part18
+Motor6D19.C0 = CFrame.new(0, 0, 0.146827221, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D19.C1 = CFrame.new(-4.05311584e-06, 0, -0.128169537, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D19.Part0 = Part18
+Motor6D19.Part1 = Part20
+Motor6D19.part1 = Part20
+Part20.Name = "LPointerMiddlePart"
+Part20.Parent = Folder0
+Part20.CFrame = CFrame.new(-36.4118614, 178.772919, -187.85704, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part20.Orientation = Vector3.new(90, -90, 0)
+Part20.Position = Vector3.new(-36.411861419677734, 178.77291870117188, -187.85704040527344)
+Part20.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part20.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part20.BottomSurface = Enum.SurfaceType.Smooth
+Part20.TopSurface = Enum.SurfaceType.Smooth
+Motor6D21.Parent = Part20
+Motor6D21.C0 = CFrame.new(0, 0.00567770004, 0.141721725, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D21.C1 = CFrame.new(0, 0.00567770004, -0.145780087, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D21.Part0 = Part20
+Motor6D21.Part1 = Part17
+Motor6D21.part1 = Part17
+Part22.Name = "LRingFingerTip"
+Part22.Parent = Folder0
+Part22.CFrame = CFrame.new(-36.4118271, 178.485367, -188.35701, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part22.Orientation = Vector3.new(90, -90, 0)
+Part22.Position = Vector3.new(-36.411827087402344, 178.48536682128906, -188.3570098876953)
+Part22.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part22.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part22.BottomSurface = Enum.SurfaceType.Smooth
+Part22.TopSurface = Enum.SurfaceType.Smooth
+Part23.Name = "LRingLowerPart"
+Part23.Parent = Folder0
+Part23.CFrame = CFrame.new(-36.41185, 179.047867, -188.357071, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part23.Orientation = Vector3.new(90, -90, 0)
+Part23.Position = Vector3.new(-36.41184997558594, 179.04786682128906, -188.35707092285156)
+Part23.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part23.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part23.BottomSurface = Enum.SurfaceType.Smooth
+Part23.TopSurface = Enum.SurfaceType.Smooth
+Motor6D24.Parent = Part23
+Motor6D24.C0 = CFrame.new(0, 0, 0.161817074, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D24.C1 = CFrame.new(-9.53674316e-07, 0, -0.11317873, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D24.Part0 = Part23
+Motor6D24.Part1 = Part25
+Motor6D24.part1 = Part25
+Part25.Name = "LRingMiddlePart"
+Part25.Parent = Folder0
+Part25.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part25.BottomSurface = Enum.SurfaceType.Smooth
+Part25.TopSurface = Enum.SurfaceType.Smooth
+Motor6D26.Parent = Part25
+Motor6D26.C0 = CFrame.new(0, 0, 0.151319981, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D26.C1 = CFrame.new(-9.53674316e-07, 0, -0.136183739, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D26.Part0 = Part25
+Motor6D26.Part1 = Part22
+Motor6D26.part1 = Part22
+Part27.Name = "LThumbPart"
+Part27.Parent = Folder0
+Part27.CFrame = CFrame.new(-36.4118958, 179.335449, -187.607086, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part27.Orientation = Vector3.new(90, -90, 0)
+Part27.Position = Vector3.new(-36.411895751953125, 179.33544921875, -187.60708618164062)
+Part27.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part27.Size = Vector3.new(0.25, 0.25, 0.25)
+Part27.BottomSurface = Enum.SurfaceType.Smooth
+Part27.TopSurface = Enum.SurfaceType.Smooth
+Motor6D28.Parent = Part27
+Motor6D28.C0 = CFrame.new(0.00171333551, 0, 0.119864464, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D28.C1 = CFrame.new(0.00171738863, 0, -0.130138397, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D28.Part0 = Part27
+Motor6D28.Part1 = Part29
+Motor6D28.part1 = Part29
+Part29.Name = "LThumbTip"
+Part29.Parent = Folder0
+Part29.CFrame = CFrame.new(-36.4118843, 179.085449, -187.607071, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part29.Orientation = Vector3.new(90, -90, 0)
+Part29.Position = Vector3.new(-36.41188430786133, 179.08544921875, -187.60707092285156)
+Part29.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part29.Size = Vector3.new(0.25, 0.25, 0.25)
+Part29.BottomSurface = Enum.SurfaceType.Smooth
+Part29.TopSurface = Enum.SurfaceType.Smooth
+Part30.Name = "HB"
+Part30.Parent = Folder0
+Part30.CFrame = CFrame.new(-37.0118637, 179.23526, -188.232101, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part30.Orientation = Vector3.new(90, -90, 0)
+Part30.Position = Vector3.new(-37.011863708496094, 179.23526000976562, -188.2321014404297)
+Part30.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part30.Transparency = 1
+Part30.Size = Vector3.new(1, 1, 0.75)
+Part30.BottomSurface = Enum.SurfaceType.Smooth
+Part30.CanCollide = false
+Part30.TopSurface = Enum.SurfaceType.Smooth
+Weld31.Parent = Part30
+Weld31.C0 = CFrame.new(0, -0.600000024, -0.200000003, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Weld31.Part0 = Part30
+Weld31.Part1 = Part6
+Weld31.part1 = Part6
+Folder32.Name = "RightHand"
+Folder32.Parent = mas
+Part33.Name = "MiddleLowerPart"
+Part33.Parent = Folder32
+Part33.CFrame = CFrame.new(-40.2951927, 178.952759, -187.969009, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part33.Orientation = Vector3.new(90, -90, 0)
+Part33.Position = Vector3.new(-40.29519271850586, 178.9527587890625, -187.96900939941406)
+Part33.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part33.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part33.BottomSurface = Enum.SurfaceType.Smooth
+Part33.TopSurface = Enum.SurfaceType.Smooth
+Motor6D34.Name = "MiddleMiddleJoint"
+Motor6D34.Parent = Part33
+Motor6D34.C0 = CFrame.new(0, 0, 0.160241604, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D34.C1 = CFrame.new(2.86102295e-06, 0, -0.139752865, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D34.Part0 = Part33
+Motor6D34.Part1 = Part35
+Motor6D34.part1 = Part35
+Part35.Name = "MiddleMiddlePart"
+Part35.Parent = Folder32
+Part35.CFrame = CFrame.new(-40.2951813, 178.652771, -187.968979, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part35.Orientation = Vector3.new(90, -90, 0)
+Part35.Position = Vector3.new(-40.29518127441406, 178.65277099609375, -187.96897888183594)
+Part35.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part35.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part35.BottomSurface = Enum.SurfaceType.Smooth
+Part35.TopSurface = Enum.SurfaceType.Smooth
+Motor6D36.Name = "MiddleTipJoint"
+Motor6D36.Parent = Part35
+Motor6D36.C0 = CFrame.new(0, 0, 0.145715714, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D36.C1 = CFrame.new(-7.86781311e-06, 0, -0.154287338, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D36.Part0 = Part35
+Motor6D36.Part1 = Part47
+Motor6D36.part1 = Part47
+Part37.Name = "PinkyFingerTip"
+Part37.Parent = Folder32
+Part37.CFrame = CFrame.new(-40.2951508, 178.452713, -188.468979, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part37.Orientation = Vector3.new(90, -90, 0)
+Part37.Position = Vector3.new(-40.29515075683594, 178.4527130126953, -188.46897888183594)
+Part37.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part37.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part37.BottomSurface = Enum.SurfaceType.Smooth
+Part37.TopSurface = Enum.SurfaceType.Smooth
+Part38.Name = "PinkyLowerPart"
+Part38.Parent = Folder32
+Part38.CFrame = CFrame.new(-40.2951736, 178.977707, -188.469025, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part38.Orientation = Vector3.new(90, -90, 0)
+Part38.Position = Vector3.new(-40.29517364501953, 178.9777069091797, -188.46902465820312)
+Part38.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part38.Size = Vector3.new(0.25, 0.25, 0.25)
+Part38.BottomSurface = Enum.SurfaceType.Smooth
+Part38.TopSurface = Enum.SurfaceType.Smooth
+Motor6D39.Name = "PinkyLowerJoint"
+Motor6D39.Parent = Part38
+Motor6D39.C0 = CFrame.new(0, 0, 0.100000001, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D39.C1 = CFrame.new(3.09944153e-06, 0, -0.150001436, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D39.Part0 = Part38
+Motor6D39.Part1 = Part40
+Motor6D39.part1 = Part40
+Part40.Name = "PinkyMiddlePart"
+Part40.Parent = Folder32
+Part40.CFrame = CFrame.new(-40.2951622, 178.727707, -188.469009, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part40.Orientation = Vector3.new(90, -90, 0)
+Part40.Position = Vector3.new(-40.295162200927734, 178.7277069091797, -188.46900939941406)
+Part40.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part40.Size = Vector3.new(0.25, 0.25, 0.25)
+Part40.BottomSurface = Enum.SurfaceType.Smooth
+Part40.TopSurface = Enum.SurfaceType.Smooth
+Motor6D41.Name = "PinkyTipJoint"
+Motor6D41.Parent = Part40
+Motor6D41.C0 = CFrame.new(0, 0, 0.131987661, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D41.C1 = CFrame.new(-2.14576721e-06, 0, -0.143012434, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D41.Part0 = Part40
+Motor6D41.Part1 = Part37
+Motor6D41.part1 = Part37
+Part42.Name = "PointerFingerTip"
+Part42.Parent = Folder32
+Part42.CFrame = CFrame.new(-40.2951813, 178.402786, -187.718964, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part42.Orientation = Vector3.new(90, -90, 0)
+Part42.Position = Vector3.new(-40.29518127441406, 178.4027862548828, -187.71896362304688)
+Part42.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part42.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part42.BottomSurface = Enum.SurfaceType.Smooth
+Part42.TopSurface = Enum.SurfaceType.Smooth
+Part43.Name = "PointerLowerPart"
+Part43.Parent = Folder32
+Part43.CFrame = CFrame.new(-40.2952042, 178.965286, -187.719025, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part43.Orientation = Vector3.new(90, -90, 0)
+Part43.Position = Vector3.new(-40.295204162597656, 178.9652862548828, -187.71902465820312)
+Part43.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part43.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part43.BottomSurface = Enum.SurfaceType.Smooth
+Part43.TopSurface = Enum.SurfaceType.Smooth
+Motor6D44.Name = "PointerMiddleJoint"
+Motor6D44.Parent = Part43
+Motor6D44.C0 = CFrame.new(0, 0, 0.131456375, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D44.C1 = CFrame.new(-4.05311584e-06, 0, -0.143540382, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D44.Part0 = Part43
+Motor6D44.Part1 = Part45
+Motor6D44.part1 = Part45
+Part45.Name = "PointerMiddlePart"
+Part45.Parent = Folder32
+Part45.CFrame = CFrame.new(-40.2951927, 178.690292, -187.718994, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part45.Orientation = Vector3.new(90, -90, 0)
+Part45.Position = Vector3.new(-40.29519271850586, 178.69029235839844, -187.718994140625)
+Part45.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part45.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part45.BottomSurface = Enum.SurfaceType.Smooth
+Part45.TopSurface = Enum.SurfaceType.Smooth
+Motor6D46.Name = "PointerTipJoint"
+Motor6D46.Parent = Part45
+Motor6D46.C0 = CFrame.new(0, 0, 0.150382519, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D46.C1 = CFrame.new(0, 0, -0.137119293, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D46.Part0 = Part45
+Motor6D46.Part1 = Part42
+Motor6D46.part1 = Part42
+Part47.Name = "MiddleFingerTip"
+Part47.Parent = Folder32
+Part47.CFrame = CFrame.new(-40.2951698, 178.352768, -187.968948, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part47.Orientation = Vector3.new(90, -90, 0)
+Part47.Position = Vector3.new(-40.295169830322266, 178.35276794433594, -187.9689483642578)
+Part47.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part47.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part47.BottomSurface = Enum.SurfaceType.Smooth
+Part47.TopSurface = Enum.SurfaceType.Smooth
+Part48.Name = "ThumbPart"
+Part48.Parent = Folder32
+Part48.CFrame = CFrame.new(-40.2952271, 179.252823, -187.46904, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part48.Orientation = Vector3.new(90, -90, 0)
+Part48.Position = Vector3.new(-40.29522705078125, 179.25282287597656, -187.4690399169922)
+Part48.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part48.Size = Vector3.new(0.25, 0.25, 0.25)
+Part48.BottomSurface = Enum.SurfaceType.Smooth
+Part48.TopSurface = Enum.SurfaceType.Smooth
+Motor6D49.Name = "ThumbKnuckle"
+Motor6D49.Parent = Part48
+Motor6D49.C0 = CFrame.new(0, 0.00190460682, 0.100000001, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D49.C1 = CFrame.new(4.05311584e-06, 0.00190460682, -0.150002867, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D49.Part0 = Part48
+Motor6D49.Part1 = Part50
+Motor6D49.part1 = Part50
+Part50.Name = "ThumbTip"
+Part50.Parent = Folder32
+Part50.CFrame = CFrame.new(-40.2952156, 179.002823, -187.469025, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part50.Orientation = Vector3.new(90, -90, 0)
+Part50.Position = Vector3.new(-40.29521560668945, 179.00282287597656, -187.46902465820312)
+Part50.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part50.Size = Vector3.new(0.25, 0.25, 0.25)
+Part50.BottomSurface = Enum.SurfaceType.Smooth
+Part50.TopSurface = Enum.SurfaceType.Smooth
+Part51.Name = "RingLowerPart"
+Part51.Parent = Folder32
+Part51.CFrame = CFrame.new(-40.2951813, 178.96524, -188.219025, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part51.Orientation = Vector3.new(90, -90, 0)
+Part51.Position = Vector3.new(-40.29518127441406, 178.96524047851562, -188.21902465820312)
+Part51.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part51.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part51.BottomSurface = Enum.SurfaceType.Smooth
+Part51.TopSurface = Enum.SurfaceType.Smooth
+Motor6D52.Name = "RingMiddleJoint"
+Motor6D52.Parent = Part51
+Motor6D52.C0 = CFrame.new(0, -0.00421448052, 0.148374557, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D52.C1 = CFrame.new(-9.53674316e-07, -0.00421448052, -0.126621246, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D52.Part0 = Part51
+Motor6D52.Part1 = Part53
+Motor6D52.part1 = Part53
+Part53.Name = "RingMiddlePart"
+Part53.Parent = Folder32
+Part53.CFrame = CFrame.new(-40.2951698, 178.690247, -188.218994, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part53.Orientation = Vector3.new(90, -90, 0)
+Part53.Position = Vector3.new(-40.295169830322266, 178.69024658203125, -188.218994140625)
+Part53.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part53.Size = Vector3.new(0.25, 0.25, 0.2750000059604645)
+Part53.BottomSurface = Enum.SurfaceType.Smooth
+Part53.TopSurface = Enum.SurfaceType.Smooth
+Motor6D54.Name = "RingTipJoint"
+Motor6D54.Parent = Part53
+Motor6D54.C0 = CFrame.new(0, 0, 0.143414974, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D54.C1 = CFrame.new(-9.53674316e-07, 0, -0.144088745, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D54.Part0 = Part53
+Motor6D54.Part1 = Part55
+Motor6D54.part1 = Part55
+Part55.Name = "RingFingerTip"
+Part55.Parent = Folder32
+Part55.CFrame = CFrame.new(-40.2951584, 178.40274, -188.218964, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part55.Orientation = Vector3.new(90, -90, 0)
+Part55.Position = Vector3.new(-40.29515838623047, 178.40274047851562, -188.21896362304688)
+Part55.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part55.Size = Vector3.new(0.25, 0.25, 0.30000001192092896)
+Part55.BottomSurface = Enum.SurfaceType.Smooth
+Part55.TopSurface = Enum.SurfaceType.Smooth
+Part56.Name = "Hand"
+Part56.Parent = Folder32
+Part56.CFrame = CFrame.new(-40.2952042, 179.352661, -188.094055, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part56.Orientation = Vector3.new(90, -90, 0)
+Part56.Position = Vector3.new(-40.295204162597656, 179.3526611328125, -188.09405517578125)
+Part56.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part56.Size = Vector3.new(1, 0.25, 0.5)
+Part56.BottomSurface = Enum.SurfaceType.Smooth
+Part56.TopSurface = Enum.SurfaceType.Smooth
+Motor6D57.Name = "RPinkyKnuckle"
+Motor6D57.Parent = Part56
+Motor6D57.C0 = CFrame.new(-0.400000006, 0, 0.200000003, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D57.C1 = CFrame.new(-0.0249997675, 0, -0.174910828, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D57.Part0 = Part56
+Motor6D57.Part1 = Part38
+Motor6D57.part1 = Part38
+Motor6D58.Name = "RRingKnuckle"
+Motor6D58.Parent = Part56
+Motor6D58.C0 = CFrame.new(-0.13780269, 0, 0.200000003, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D58.C1 = CFrame.new(-0.012800552, 0, -0.187414452, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D58.Part0 = Part56
+Motor6D58.Part1 = Part51
+Motor6D58.part1 = Part51
+Motor6D59.Name = "RMiddleKnuckle"
+Motor6D59.Parent = Part56
+Motor6D59.C0 = CFrame.new(0.124806978, 0, 0.200000003, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D59.C1 = CFrame.new(-0.000193737447, 0, -0.199914739, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D59.Part0 = Part56
+Motor6D59.Part1 = Part33
+Motor6D59.part1 = Part33
+Motor6D60.Name = "RIndexKnuckle"
+Motor6D60.Parent = Part56
+Motor6D60.C0 = CFrame.new(0.400000006, 0, 0.200000003, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D60.C1 = CFrame.new(0.0250035897, 0, -0.187414452, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D60.Part0 = Part56
+Motor6D60.Part1 = Part43
+Motor6D60.part1 = Part43
+Motor6D61.Name = "ThumbJoint"
+Motor6D61.Parent = Part56
+Motor6D61.C0 = CFrame.new(0.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D61.C1 = CFrame.new(-0.125010014, 0, -0.0998945236, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Motor6D61.Part0 = Part56
+Motor6D61.Part1 = Part48
+Motor6D61.part1 = Part48
+Part62.Name = "HB"
+Part62.Parent = Folder32
+Part62.CFrame = CFrame.new(-39.6951942, 179.152679, -188.094009, -4.17379051e-05, -1, 4.15875184e-05, 9.57278316e-05, -4.15915129e-05, -1, 1, -4.17339252e-05, 9.57295706e-05)
+Part62.Orientation = Vector3.new(90, -90, 0)
+Part62.Position = Vector3.new(-39.695194244384766, 179.15267944335938, -188.09400939941406)
+Part62.Rotation = Vector3.new(89.98999786376953, 0, 90)
+Part62.Transparency = 1
+Part62.Size = Vector3.new(1, 1, 0.75)
+Part62.BottomSurface = Enum.SurfaceType.Smooth
+Part62.CanCollide = false
+Part62.TopSurface = Enum.SurfaceType.Smooth
+Weld63.Parent = Part62
+Weld63.C0 = CFrame.new(0, 0.600000024, -0.200000003, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Weld63.Part0 = Part62
+Weld63.Part1 = Part56
+Weld63.part1 = Part56
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = script
+	pcall(function() v:MakeJoints() end)
+end
+mas:Destroy()
+local stuff = Instance.new("Folder", script)
+stuff.Name = "VR stuff"
+Model0.Parent = stuff
+Model32.Parent = stuff
+local RH = stuff.RightHand
+local LH = stuff.LeftHand
+RH.Hand.Anchored = true
+LH.Hand.Anchored = true
+for _, v in pairs(owner.Character:GetDescendants()) do
+if v:IsA("BasePart") and v:IsDescendantOf(RH) == false and v:IsDescendantOf(LH) == false and v.Name ~= "Head" then
+v.Transparency = 1
+end
+end
+coroutine.wrap(function()
+while task.wait() do
+pcall(function()
+RH.Hand.CFrame = owner.Character.Head.CFrame * CFrame.new(1.5, -.25, -1) * CFrame.Angles(0, math.pi, math.pi/2)
+LH.Hand.CFrame = owner.Character.Head.CFrame * CFrame.new(-1.5, -.25, -1) * CFrame.Angles(0, math.pi, math.pi/2)
+end)
+end
+end)()
+local RightMotors = {}
+local LeftMotors = {}
+
+
+for i,x in pairs(RH:GetDescendants()) do
+	if x:IsA("Motor6D") then
+		table.insert(RightMotors,{x,x.C1})
+	end
+end
+for i,x in pairs(LH:GetDescendants()) do
+	if x:IsA("Motor6D") then
+		table.insert(LeftMotors,{x,x.C1})
+	end
+end
+
+local function BendFingers(Hand, Rot, Joint)
+	local joints = (Hand == "Right" and RightMotors) or (Hand == "Left" and LeftMotors)
+	local Rot = (Hand == "Right" and -Rot) or (Hand == "Left" and Rot)
+	for _, x in pairs(joints) do
+		if x[1] == Joint and Joint.Name == "ThumbJoint" then
+			game:GetService("TweenService"):Create(x[1], TweenInfo.new(.5), {C1 = x[2] * CFrame.Angles(math.rad(45*Rot),math.rad(10*Rot),0)}):Play()
+		elseif x[1] == Joint and Joint.Name ~= "ThumbJoint" then
+			game:GetService("TweenService"):Create(x[1], TweenInfo.new(.5), {C1 = x[2] * CFrame.Angles(math.rad(25*Rot),0,0)}):Play()
+		end
+	end
+end
+local RHAngle = 2.25
+local RPLJ = RH:FindFirstChild("PinkyLowerJoint", true)
+local RRMJ = RH:FindFirstChild("RingMiddleJoint", true)
+local RMMJ = RH:FindFirstChild("MiddleMiddleJoint", true)
+local RPMJ = RH:FindFirstChild("PointerMiddleJoint", true)
+local RTJ = RH:FindFirstChild("ThumbJoint", true)
+
+local LHAngle = 2.25
+local LPLJ = LH:FindFirstChild("LPinkyLowerPart", true).Motor6D
+local LRMJ = LH:FindFirstChild("LRingLowerPart", true).Motor6D
+local LMMJ = LH:FindFirstChild("LMiddleLowerPart", true).Motor6D
+local LPMJ = LH:FindFirstChild("LPointerLowerPart", true).Motor6D
+local LTJ = LH:FindFirstChild("ThumbJoint", true)
+
+m.KeyDown:Connect(function(k)
+if k == rightkeys[1] then -- Right
+BendFingers("Right", RHAngle, RPLJ)
+elseif k == rightkeys[2] then
+BendFingers("Right", RHAngle, RRMJ)
+elseif k == rightkeys[3] then
+BendFingers("Right", RHAngle, RMMJ)
+elseif k == rightkeys[4] then
+BendFingers("Right", RHAngle, RPMJ)
+elseif k == rightkeys[5] then
+BendFingers("Right", RHAngle, RTJ)
+elseif k == leftkeys[1] then -- Left
+BendFingers("Left", LHAngle, LPLJ)
+elseif k == leftkeys[2] then
+BendFingers("Left", LHAngle, LRMJ)
+elseif k == leftkeys[3] then
+BendFingers("Left", LHAngle, LMMJ)
+elseif k == leftkeys[4] then
+BendFingers("Left", LHAngle, LPMJ)
+elseif k == leftkeys[5] then
+BendFingers("Left", LHAngle, LTJ)
+end
+end)
+m.KeyUp:Connect(function(k)
+if k == rightkeys[1] then -- Right
+BendFingers("Right", 0, RPLJ)
+elseif k == rightkeys[2] then
+BendFingers("Right", 0, RRMJ)
+elseif k == rightkeys[3] then
+BendFingers("Right", 0, RMMJ)
+elseif k == rightkeys[4] then
+BendFingers("Right", 0, RPMJ)
+elseif k == rightkeys[5] then
+BendFingers("Right", 0, RTJ)
+elseif k == leftkeys[1] then -- Left
+BendFingers("Left", 0, LPLJ)
+elseif k == leftkeys[2] then
+BendFingers("Left", 0, LRMJ)
+elseif k == leftkeys[3] then
+BendFingers("Left", 0, LMMJ)
+elseif k == leftkeys[4] then
+BendFingers("Left", 0, LPMJ)
+elseif k == leftkeys[5] then
+BendFingers("Left", 0, LTJ)
+end
+end)
