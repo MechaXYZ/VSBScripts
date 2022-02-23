@@ -1,0 +1,215 @@
+local RA = owner.Character["Right Arm"]
+local LA = owner.Character["Left Arm"]
+local RL = owner.Character["Right Leg"]
+local LL = owner.Character["Left Leg"]
+local Head = owner.Character.Head
+local Torso = owner.Character.Torso
+local Humanoid = owner.Character.Humanoid
+local Character = owner.Character
+local Player = owner
+local HRP = owner.Character.HumanoidRootPart
+local RS = owner.Character.Torso["Right Shoulder"]
+local LS = owner.Character.Torso["Left Shoulder"]
+local RH = owner.Character.Torso['Right Hip']
+local LH = owner.Character.Torso['Left Hip']
+local Neck = owner.Character.Torso.Neck
+local RootJoint = owner.Character.HumanoidRootPart.RootJoint
+local bb = Instance.new("Tool", owner.Backpack)
+bb.Name = "Bread Biters"
+bb.ToolTip = '"Hahahaha! I teleported bread!" - The Soldier'
+bb.RequiresHandle = false
+bb.CanBeDropped = false
+local div = 19
+local barraging = false
+local right = Instance.new("SpawnLocation", bb)
+right.Name = "Right Biter"
+right.CanCollide = false
+right.Enabled = false
+right.Size = Vector3.new(38.378, 44.824, 29.836) / div
+local msh = Instance.new("SpecialMesh", right)
+msh.MeshId = 'rbxassetid://8900658007'
+msh.TextureId = 'rbxassetid://8900658235'
+msh.Scale = Vector3.new(1/div, 1/div, 1/div)
+local w = Instance.new("Weld", right)
+w.Part0 = right
+w.Part1 = owner.Character["Right Arm"]
+w.C1 = CFrame.new(-.005, -.5, 0) * CFrame.Angles(math.rad(180-16), math.rad(90-2.5), math.rad(17.5)) * CFrame.Angles(math.rad(-17.5), 0, 0)
+local div2 = 17
+local left = Instance.new("SpawnLocation", bb)
+left.Name = "Left Biter"
+left.CanCollide = false
+left.Enabled = false
+left.Size = Vector3.new(34.894, 34.412, 28.522) / div2
+local msh = Instance.new("SpecialMesh", left)
+msh.MeshId = 'rbxassetid://8900657282'
+msh.TextureId = 'rbxassetid://8900657555'
+msh.Scale = Vector3.new(1/div2, 1/div2, 1/div2)
+local w = Instance.new("Weld", right)
+w.Part0 = left
+w.Part1 = owner.Character["Left Arm"]
+w.C1 = CFrame.new(-.028, -.75, 0) * CFrame.Angles(math.rad(180 - 17.5), math.rad(-90), math.rad(-17.5)) * CFrame.Angles(math.rad(-17.5), 0, 0)
+local resetc1 = false
+local function newMotor(part0, part1, c0, c1)
+	local w = Instance.new("Weld", part0)
+		w.Part0 = part0
+		w.Part1 = part1
+		w.C0 = c0
+		w.C1 = c1
+	return w
+end
+local equipped = false
+local pow = Instance.new("Sound", game:GetService("VRService"))
+pow.SoundId = 'rbxassetid://679798995'
+pow.Volume = 1.25
+pow.PlayOnRemove = true
+local swing = Instance.new("Sound", game:GetService("VRService"))
+swing.SoundId = 'rbxassetid://5835032207'
+swing.Volume = .75
+swing.PlayOnRemove = true
+bb.Equipped:Connect(function()
+equipped = true
+owner.Character.Humanoid.WalkSpeed += 3
+end)
+bb.Unequipped:Connect(function()
+equipped = false
+barraging = false
+owner.Character.Humanoid.WalkSpeed -= 3
+end)
+local RootCF = CFrame.fromEulerAnglesXYZ(-1.57, 0, 3.14)
+local NeckCF = CFrame.new(0, 1, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+local RW = newMotor(Torso, RA, CFrame.new(1.5, 0, 0), CFrame.new(0, 0, 0)) 
+local LW = newMotor(Torso, LA, CFrame.new(-1.5, 0, 0), CFrame.new(0, 0, 0))
+local RH = newMotor(Torso, RL, CFrame.new(.5, -2, 0), CFrame.new(0, 0, 0))
+local LH = newMotor(Torso, LL, CFrame.new(-.5, -2, 0), CFrame.new(0, 0, 0))
+local RJW = newMotor(HRP, Torso, CFrame.new(), CFrame.new())
+local NW = newMotor(Torso, Head, CFrame.new(0, 1.5, 0), CFrame.new())
+local rarmc1 = RW.C1
+local larmc1 = LW.C1
+local rlegc1 = RH.C1
+local llegc1 = LH.C1
+local function PlayAnimationFromTable(table, speed, bool)
+	RJW.C0 = RJW.C0:Lerp(table[1], speed) 
+	NW.C0 = NW.C0:Lerp(table[2], speed) 
+	RW.C0 = RW.C0:Lerp(table[3], speed) 
+	LW.C0 = LW.C0:Lerp(table[4], speed) 
+	RH.C0 = RH.C0:Lerp(table[5], speed) 
+	LH.C0 = LH.C0:Lerp(table[6], speed) 
+	if bool == true then
+		if resetc1 == false then
+			resetc1 = true
+			RJW.C1 = RootJoint.C1
+			NW.C1 = Torso.Neck.C1
+			RW.C1 = rarmc1
+			LW.C1 = larmc1
+			RH.C1 = rlegc1
+			LH.C1 = llegc1
+		end
+	end
+end
+local function barrage()
+local thing = 18
+	barraging = true
+	for i = 0, 1, .2 do
+		task.wait()
+		PlayAnimationFromTable({
+			CFrame.new(4.76837158e-007, -0.107780606, -0.0868092626, 1, 0, 0, 0, 0.984807849, 0.173647985, 0, -0.173647985, 0.984807849) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			CFrame.new(0, 1.4999913, 2.38418608e-007, 1, 0, 0, 0, 1.00000012, 0, 0, 0, 1.00000012) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			CFrame.new(1.50214899, 0.590444803, 0.195881441, 0.965925872, 3.76027884e-007, 0.258818895, 0.257834077, -0.0871552154, -0.962250412, 0.0225570519, 0.99619478, -0.0841855928) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			CFrame.new(-1.60470915, 0.600643516, 0.204860806, 0.937436998, -0.0449436344, -0.345242023, -0.345831364, -0.00582624972, -0.938278675, 0.0401581824, 0.998972595, -0.0210046768) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			CFrame.new(0.636808395, -1.93472588, -0.370165229, 0.936116338, -0.0517791435, -0.347858071, 0.0266665779, 0.996705353, -0.0765988752, 0.350678325, 0.0624292716, 0.934412897) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			CFrame.new(-0.6665681, -1.92173398, -0.343467057, 0.962250233, 0.0613082647, 0.265171379, -0.0410595685, 0.99584806, -0.0812460929, -0.269051433, 0.0672912449, 0.960772276) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			}, .3, false)
+	end
+	local alpha = .6
+	while barraging == true do
+	 pow.Pitch = 1 + (math.random()/16) 
+		swing.Pitch = pow.Pitch 
+		pow.Parent = owner.Character.Head
+		swing.Parent = pow.Parent
+		 pow.Parent = nil
+		swing.Parent = nil
+		HRP.Velocity = HRP.CFrame.lookVector * 5 
+		for i = 1, alpha*10 do
+			task.wait()
+			PlayAnimationFromTable({
+				CFrame.new(-0.0223142356, -0.107780628, -0.249816686, 0.906307876, 0.0733869597, -0.416197479, 0, 0.98480773, 0.173648462, 0.422617942, -0.157378972, 0.892539084) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-2.22850417e-007, 1.49999118, 1.16660271e-006, 0.906307936, 1.49011612e-008, 0.422617972, -7.27595761e-009, 1, 0, -0.422618032, 0, 0.906308055) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(1.5318948, 0.588474631, 0.207054406, 0.899958313, 0.340718478, 0.272003621, 0.314965397, -0.0767233223, -0.945997, -0.301449746, 0.9370296, -0.176362336) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-1.75, 0.723447502, -1.20010054, 0.726744413, 0.46058476, -0.509611845, -0.503104627, -0.148215696, -0.851421177, -0.46768418, 0.875153661, 0.124007396) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(35)), 
+				CFrame.new(.5,-1-math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
+				CFrame.new(-.5,-1+math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0)
+			}, alpha, false)
+		end 
+		HRP.Velocity = HRP.CFrame.lookVector * 5
+		task.wait()
+		for i = 1, alpha*10 do
+			task.wait()
+			PlayAnimationFromTable({
+				CFrame.new(0.0767437443, -0.107780531, -0.279432267, 0.866025388, -0.0868241936, 0.492404073, 0, 0.98480773, 0.173648342, -0.500000238, -0.150383845, 0.852868438) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-2.61076184e-006, 1.4999913, -6.19508683e-007, 0.866025209, 2.98023224e-007, -0.500000656, -2.56928615e-007, 1, 1.1920929e-007, 0.500000596, 2.98023224e-008, 0.866025209) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(1.75, 0.812639356, -1.14933658, 0.82139349, -0.422619373, 0.383021921, 0.349686205, -0.157378837, -0.923553765, 0.450591207, 0.892538428, 0.0185142085) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(-35)), 
+				CFrame.new(-1.64197171, 0.599264741, 0.212680459, 0.807513177, -0.456930667, -0.373010725, -0.413006425, 0.0134942085, -0.9106282, 0.421127379, 0.889400065, -0.177818552) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(.5,-1-math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
+				CFrame.new(-.5,-1+math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0), 
+			}, alpha, false)
+		end
+		 task.wait()
+	end
+end
+bb.Activated:Connect(function()
+barrage()
+end)
+bb.Deactivated:Connect(function()
+barraging = false
+end)
+local sine = 0
+local change = 0
+while task.wait() do
+RW.Enabled = equipped
+LW.Enabled = equipped
+RH.Enabled = equipped
+LH.Enabled = equipped
+RJW.Enabled = equipped
+NW.Enabled = equipped
+	local Torsovelocity = (HRP.Velocity * Vector3.new(1, 0, 1)).Magnitude 
+	local velocity = HRP.Velocity.y
+	sine += change
+	if HRP.Velocity.Y > 1 then 
+			PlayAnimationFromTable({
+				CFrame.new(0, 0.0486936681, -0.0429394133, 1, 0, -0, 0, 0.996194661, -0.087155968, 0, 0.087155968, 0.996194661) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(0, 1.48698187, -0.0992434025, 1, 0, 0, 0, 0.98480767, 0.173648626, -0, -0.173648626, 0.98480767) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(1.66118193, 0.583681226, 0.430878729, 0.556951106, -0.772693694, -0.30454877, 0.830109596, 0.506009281, 0.234249175, -0.026898358, -0.383274168, 0.923242927) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-1.65963519, 0.695907593, 0.339572817, 0.482961893, 0.810776234, 0.330741376, -0.866026103, 0.498096228, 0.0435779653, -0.129409045, -0.307477146, 0.94271481) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(0.499997795, -1.71809137, -0.102601528, 0.984807849, 3.55863392e-007, -0.173647791, 0.0593907312, 0.939692557, 0.336824298, 0.163175657, -0.342020214, 0.925416589) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-0.599241376, -1.29528463, -0.396836221, 0.992403984, 0.086823605, 0.0871558413, -0.118890785, 0.858931601, 0.498097867, -0.0316142589, -0.504676282, 0.862729669) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			}, .3, false)
+	elseif HRP.Velocity.Y < -1 then 
+			PlayAnimationFromTable({
+				CFrame.new(-0, -0.0520263538, -0.0354017057, 1, 0, 0, 0, 0.965925872, 0.258818984, 0, -0.258818984, 0.965925872) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(0, 1.51533091, -0.10684365, 1, 0, 0, 0, 0.965925872, 0.258819342, 0, -0.258819342, 0.965925872) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(1.67554009, 0.885679007, 0.385592818, 0.374123871, -0.696466088, -0.61234498, 0.914592147, 0.386364758, 0.119345918, 0.153468132, -0.604696095, 0.781530797) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-1.67474985, 0.999329269, 0.296636045, 0.250219911, 0.753912985, 0.607457995, -0.927206695, 0.367205799, -0.0738086402, -0.278707415, -0.544770718, 0.79091537) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(0.504494727, -1.81757987, -0.0935191363, 0.984807849, -0.0449431092, -0.167730823, 0.059390761, 0.99484998, 0.0821366012, 0.163175508, -0.0908504426, 0.982405365) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-0.623603821, -1.49203336, -0.421764404, 0.992403865, 0.122534379, 0.0109562073, -0.118891656, 0.978150725, -0.17054674, -0.0316146575, 0.167948633, 0.985288799) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			}, .3, false)
+	elseif Torsovelocity < 1 and barraging == false then change = 3
+			PlayAnimationFromTable({
+				CFrame.new(-0.0254490171, -0.100000001, -0.0245252885, 0.965925872, 0, 0.258818984, 0, 1, 0, -0.258818984, 0, 0.965925872) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-5.58793545e-008, 1.49999201, 2.23517418e-007, 0.965925872, 0.02255762, -0.257834077, 0, 0.996194661, 0.087155968, 0.258818984, -0.0841862038, 0.962250173) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(1.18608475, 0.561332762, -0.668662548, 0.815707564, 0.397307515, 0.420437992, 0.567439079, -0.408345699, -0.71502924, -0.112402454, 0.821827531, -0.558538496) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-1.18486226, 0.664583206, -0.703545451, 0.801997423, -0.384815574, -0.456855893, -0.595755875, -0.459863067, -0.658483863, 0.0433037281, 0.800276875, -0.598065078) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(0.602607846, -1.89999723, -0.281901717, 0.938264608, -0.0318391919, -0.344450235, 0.0551190265, 0.996793628, 0.0580029301, 0.341499031, -0.0734078437, 0.937011182) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-0.68740654, -1.99010217, 0.313043743, 0.998308659, 0.0566585623, -0.0130319893, -0.0526040196, 0.975744903, 0.212496698, 0.0247556716, -0.211451754, 0.977074862) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+			}, .3, false)
+	elseif Torsovelocity > 2 and barraging == false then
+local thing = 18
+			PlayAnimationFromTable({
+				CFrame.new(-0, -0.331043243, -0.246173918, 1, 0, 0, 0, 0.906307876, 0.422617942, 0, -0.422617942, 0.906307876) * CFrame.new(0, .1, 0) * CFrame.Angles(math.rad(8),math.rad(-HRP.Orientation.Y),math.cos(tick()*15)/15) * CFrame.fromEulerAnglesXYZ(Humanoid.MoveDirection.Z/6,0,-Humanoid.MoveDirection.X/6) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0),
+				CFrame.new(0, 1.4999913, 6.55651093e-007, 1, 0, 0, 0, 0.965925813, -0.258818924, 0, 0.258818924, 0.965925813) * CFrame.new(0, 0, 0) * CFrame.Angles(0, math.rad(5), 0), 
+				CFrame.new(1.14562762, 0.526349247, -0.591056466, 0.825674891, 0.469375819, 0.312965363, 0.547643542, -0.533675969, -0.644419432, -0.135452792, 0.703474402, -0.697693527) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(-1.14244175, 0.534408689, -0.582344949, 0.825674295, -0.469376504, -0.312966168, -0.547644734, -0.533675849, -0.644418597, 0.13545242, 0.703474045, -0.697693944) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+				CFrame.new(.5,-1-math.cos(tick()*thing)/2,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
+				CFrame.new(-.5,-1+math.cos(tick()*thing)/2,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0)
+			}, .2, false)
+		end
+end
