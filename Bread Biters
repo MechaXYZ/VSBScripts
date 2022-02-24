@@ -156,10 +156,20 @@ local thing = 18
 		 task.wait()
 	end
 end
-bb.Activated:Connect(function()
+local brgp = Instance.new("ProximityPrompt", right)
+brgp.Enabled = true
+brgp.MaxActivationDistance = 10000
+brgp.Style = "Custom"
+brgp.ClickablePrompt = false
+brgp.RequiresLineOfSight = false
+brgp.HoldDuration = 0
+brgp.KeyboardKeyCode = Enum.KeyCode.E
+brgp.Triggered:Connect(function(plr)
+if plr ~= owner then return end
 barrage()
 end)
-bb.Deactivated:Connect(function()
+brgp.TriggerEnded:Connect(function(plr)
+if plr ~= owner then return end
 barraging = false
 end)
 local sine = 0
