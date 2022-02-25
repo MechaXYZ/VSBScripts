@@ -50,12 +50,12 @@ w.Part1 = owner.Character["Left Arm"]
 w.C1 = CFrame.new(-.028, -.75, 0) * CFrame.Angles(math.rad(180 - 17.5), math.rad(-90), math.rad(-17.5)) * CFrame.Angles(math.rad(-17.5), 0, 0)
 local resetc1 = false
 local function newMotor(part0, part1, c0, c1)
-	local w = Instance.new("Weld", part0)
-		w.Part0 = part0
-		w.Part1 = part1
-		w.C0 = c0
-		w.C1 = c1
-	return w
+local w = Instance.new("Weld", part0)
+w.Part0 = part0
+w.Part1 = part1
+w.C0 = c0
+w.C1 = c1
+return w
 end
 local equipped = false
 local move = 1
@@ -89,41 +89,38 @@ local larmc1 = LW.C1
 local rlegc1 = RH.C1
 local llegc1 = LH.C1
 local function PlayAnimationFromTable(table, speed, bool)
-	RJW.C0 = RJW.C0:Lerp(table[1], speed) 
-	NW.C0 = NW.C0:Lerp(table[2], speed) 
-	RW.C0 = RW.C0:Lerp(table[3], speed) 
-	LW.C0 = LW.C0:Lerp(table[4], speed) 
-	RH.C0 = RH.C0:Lerp(table[5], speed) 
-	LH.C0 = LH.C0:Lerp(table[6], speed) 
-	if bool == true then
-		if resetc1 == false then
-			resetc1 = true
-			RJW.C1 = RootJoint.C1
-			NW.C1 = Torso.Neck.C1
-			RW.C1 = rarmc1
-			LW.C1 = larmc1
-			RH.C1 = rlegc1
-			LH.C1 = llegc1
-		end
-	end
+RJW.C0 = RJW.C0:Lerp(table[1], speed) 
+NW.C0 = NW.C0:Lerp(table[2], speed) 
+RW.C0 = RW.C0:Lerp(table[3], speed) 
+LW.C0 = LW.C0:Lerp(table[4], speed) 
+RH.C0 = RH.C0:Lerp(table[5], speed) 
+LH.C0 = LH.C0:Lerp(table[6], speed) 
+if bool == true then
+RJW.C1 = RootJoint.C1
+NW.C1 = Torso.Neck.C1
+RW.C1 = rarmc1
+LW.C1 = larmc1
+RH.C1 = rlegc1
+LH.C1 = llegc1
+end
 end
 local function barrage()
 local thing = 18
-	barraging = true
-	for i = 0, 1, .2 do
-		task.wait()
-		PlayAnimationFromTable({
-			CFrame.new(4.76837158e-007, -0.107780606, -0.0868092626, 1, 0, 0, 0, 0.984807849, 0.173647985, 0, -0.173647985, 0.984807849) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-			CFrame.new(0, 1.4999913, 2.38418608e-007, 1, 0, 0, 0, 1.00000012, 0, 0, 0, 1.00000012) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-			CFrame.new(1.50214899, 0.590444803, 0.195881441, 0.965925872, 3.76027884e-007, 0.258818895, 0.257834077, -0.0871552154, -0.962250412, 0.0225570519, 0.99619478, -0.0841855928) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-			CFrame.new(-1.60470915, 0.600643516, 0.204860806, 0.937436998, -0.0449436344, -0.345242023, -0.345831364, -0.00582624972, -0.938278675, 0.0401581824, 0.998972595, -0.0210046768) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-			CFrame.new(0.636808395, -1.93472588, -0.370165229, 0.936116338, -0.0517791435, -0.347858071, 0.0266665779, 0.996705353, -0.0765988752, 0.350678325, 0.0624292716, 0.934412897) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-			CFrame.new(-0.6665681, -1.92173398, -0.343467057, 0.962250233, 0.0613082647, 0.265171379, -0.0410595685, 0.99584806, -0.0812460929, -0.269051433, 0.0672912449, 0.960772276) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-			}, .3, false)
-	end
-	local alpha = 1
-	while barraging == true do
-	 pow.Pitch = 1 + (math.random()/16) 
+barraging = true
+for i = 0, 1, .2 do
+task.wait()
+PlayAnimationFromTable({
+CFrame.new(4.76837158e-007, -0.107780606, -0.0868092626, 1, 0, 0, 0, 0.984807849, 0.173647985, 0, -0.173647985, 0.984807849) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(0, 1.4999913, 2.38418608e-007, 1, 0, 0, 0, 1.00000012, 0, 0, 0, 1.00000012) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(1.50214899, 0.590444803, 0.195881441, 0.965925872, 3.76027884e-007, 0.258818895, 0.257834077, -0.0871552154, -0.962250412, 0.0225570519, 0.99619478, -0.0841855928) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(-1.60470915, 0.600643516, 0.204860806, 0.937436998, -0.0449436344, -0.345242023, -0.345831364, -0.00582624972, -0.938278675, 0.0401581824, 0.998972595, -0.0210046768) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(0.636808395, -1.93472588, -0.370165229, 0.936116338, -0.0517791435, -0.347858071, 0.0266665779, 0.996705353, -0.0765988752, 0.350678325, 0.0624292716, 0.934412897) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(-0.6665681, -1.92173398, -0.343467057, 0.962250233, 0.0613082647, 0.265171379, -0.0410595685, 0.99584806, -0.0812460929, -0.269051433, 0.0672912449, 0.960772276) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+}, .3, false)
+end
+local alpha = 1
+while barraging == true do
+pow.Pitch = 1 + (math.random()/16) 
 		swing.Pitch = pow.Pitch 
 		pow.Parent = owner.Character.Head
 		swing.Parent = pow.Parent
