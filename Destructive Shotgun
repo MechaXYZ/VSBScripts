@@ -1,0 +1,146 @@
+local fragmentable = script
+local list = {}
+local yieldafter = 3
+local minimumsize = Vector3.new(1, 1, 1) * .75
+function fragmentate(cframe, size, c, explosion_position, explosion_blastradius, backsurface, bottomsurface, frontsurface, leftsurface, rightsurface, topsurface, transparency, reflectance, material, anchored, heck, ree, same)
+local tbl = {c[1],c[2]}
+local parts = {}
+local color = c[2]
+    local xi = size.X >= minimumsize.X*(1+explosion_blastradius/16) and 2 or 1
+    local yi = size.Y >= minimumsize.Y*(1+explosion_blastradius/16) and 2 or 1
+    local zi = size.Z >= minimumsize.Z*(1+explosion_blastradius/16) and 2 or 1
+    if xi == 1 and yi == 1 and zi == 1 or (cframe.p-explosion_position).magnitude > size.magnitude/2 + explosion_blastradius then
+        if xi == 1 and yi == 1 and zi == 1 then return end
+            local p = Instance.new("SpawnLocation", c[1]) p.Enabled = false
+            p.BrickColor = color
+            p.FormFactor = "Custom" table.insert(parts, p)
+            if heck then
+                p.Anchored = anchored
+            else
+                p.Anchored = true
+            end
+            p.Size = size
+            p.BackSurface = backsurface
+            p.BottomSurface = bottomsurface
+            p.FrontSurface = frontsurface
+            p.LeftSurface = leftsurface
+            p.RightSurface = rightsurface
+            if heck ~= true or ree == true then
+                local int = Instance.new('IntValue',p)
+                int.Name = 'already broken u pleb'
+            end
+            p.TopSurface = topsurface
+            if redmode and ree and same ~= true then
+                task.spawn(function()
+                    repeat
+                        p.Color = Color3.new(1,0,0)
+                        p.Material = Enum.Material.Neon
+                        task.wait()
+                    until p.Color == Color3.new(1,0,0) and p.Material == Enum.Material.Neon
+                end)
+            end
+            p.Transparency = transparency
+            p.Material = material
+            if heck ~= true or ree then
+                -- game:GetService('Debris'):AddItem(p,10)
+            end
+            p.CFrame = cframe
+            p.Reflectance = reflectance
+            p:BreakJoints()
+        return
+    end
+    local mody = math.random(-125,125)/1000
+    for y = 1,yi do if y % yieldafter == 0 then task.wait(.05) end
+        if math.random()> 0.5 then
+            local modx = math.random(-125,125)/1000
+            for x = 1,xi do
+                local modz = math.random(-125,125)/1000
+                for z = 1,zi do --offset = x/xi-0.75+modx)
+                    fragmentate(cframe*CFrame.new(size.X*(xi==1 and 0 or x/xi-0.75+modx),size.Y*(yi==1 and 0 or y/yi-0.75+mody),size.Z*(zi==1 and 0 or z/zi-0.75+modz)),
+                        Vector3.new(xi == 2 and size.X*(1-2*math.abs(x/xi-0.75+modx)) or size.X,yi == 2 and size.Y*(1-2*math.abs(y/yi-0.75+mody)) or size.Y,
+                        zi == 2 and size.Z*(1-2*math.abs(z/zi-0.75+modz)) or size.Z),tbl,explosion_position,explosion_blastradius,
+                        z~=zi and surface_between_splitted_parts or backsurface,y==2 and surface_between_splitted_parts or bottomsurface,
+                        z==2 and surface_between_splitted_parts or frontsurface,x==2 and surface_between_splitted_parts or leftsurface,x~=xi and surface_between_splitted_parts or rightsurface,
+                        y~=yi and surface_between_splitted_parts or topsurface,transparency,reflectance,material,anchored,heck,ree,same)
+                end
+               
+            end
+        else
+            local modz = math.random(-125,125)/1000
+            for z = 1,zi do if z % yieldafter == 0 then task.wait(.05) end
+                local modx = math.random(-125,125)/1000
+                for x = 1,xi do
+                    fragmentate(cframe*CFrame.new(size.X*(xi==1 and 0 or x/xi-0.75+modx),size.Y*(yi==1 and 0 or y/yi-0.75+mody),size.Z*(zi==1 and 0 or z/zi-0.75+modz)),
+                        Vector3.new(xi == 2 and size.X*(1-2*math.abs(x/xi-0.75+modx)) or size.X,yi == 2 and size.Y*(1-2*math.abs(y/yi-0.75+mody)) or size.Y,
+                        zi == 2 and size.Z*(1-2*math.abs(z/zi-0.75+modz)) or size.Z),tbl,explosion_position,explosion_blastradius,
+                        z~=zi and surface_between_splitted_parts or backsurface,y==2 and surface_between_splitted_parts or bottomsurface,
+                        z==2 and surface_between_splitted_parts or frontsurface,x==2 and surface_between_splitted_parts or leftsurface,x~=xi and surface_between_splitted_parts or rightsurface,
+                        y~=yi and surface_between_splitted_parts or topsurface,transparency,reflectance,material,anchored,heck,ree,same)
+                end
+            end
+        end
+    end    
+end
+ 
+function start_fragmentation(position,radius,bigoof,smoloof,samecolor)
+    local search = Region3.new(position-Vector3.new(radius,radius,radius)*1.1,position+Vector3.new(radius,radius,radius)*1.1)
+    
+    repeat
+    local finish = false
+    local parts = workspace:FindPartsInRegion3WithIgnoreList(search,list,100)
+    for i = 1, #parts do
+        table.insert(list, parts[i])
+    end
+    finish = true
+    until #parts < 100 and finish
+    local t = tick()
+    for i, p in pairs(list) do
+        if p:IsDescendantOf(owner.Character) == false then
+local parent = p.Parent
+local anch = p.Anchored
+local tbl = {parent,p.BrickColor}
+p:Destroy()
+fragmentate(p.CFrame,p.Size,tbl,position,radius,p.BackSurface,p.BottomSurface,p.FrontSurface,p.LeftSurface,p.RightSurface,p.TopSurface,p.Transparency,p.Reflectance,p.Material,anch,bigoof,smoloof,samecolor)
+        end
+    end
+    list = {}
+end
+local Tool0 = Instance.new("Tool")
+local Part1 = Instance.new("Part")
+local SpecialMesh2 = Instance.new("SpecialMesh")
+Tool0.Name = "shotgun"
+Tool0.ToolTip = "real"
+Tool0.Parent = owner.Backpack
+Tool0.Grip = CFrame.new(0, -.5, 0) * CFrame.Angles(0, math.pi, 0)
+Part1.Name = "Handle"
+Part1.Parent = Tool0
+Part1.Color = Color3.new(0.388235, 0.372549, 0.384314)
+Part1.Size = Vector3.new(.6, 1.1, 3.6) * 1.25
+SpecialMesh2.Parent = Part1
+SpecialMesh2.MeshId = "rbxassetid://8929269178"
+SpecialMesh2.Scale = Vector3.new(1, 1, 1) * 1.25
+SpecialMesh2.TextureId = "rbxassetid://8929269257"
+SpecialMesh2.MeshType = Enum.MeshType.FileMesh
+local recoil = CFrame.new()
+coroutine.wrap(function()
+while task.wait() do
+recoil = recoil:Lerp(CFrame.Angles(0, 0, 0), .1)
+Tool0.Grip = CFrame.new(-.3, 0, 0) * CFrame.Angles(0, math.rad(170), math.rad(3)) * recoil
+end
+end)()
+local spread = 8
+Tool0.Activated:Connect(function()
+recoil = CFrame.new(-.25, 0, -.5) * CFrame.Angles(math.rad(-45), 0, 0)
+for i = 1, 8 do
+local params = RaycastParams.new()
+local angles = CFrame.Angles(math.rad(math.random(-spread, spread)), math.rad(math.random(-spread, spread)), math.rad(math.random(-spread, spread)))
+params.FilterDescendantsInstances = {owner.Character}
+params.FilterType = Enum.RaycastFilterType.Blacklist
+local org = (Part1.CFrame * CFrame.Angles(0, math.pi, 0)).p
+local dir = ((owner.Character.HumanoidRootPart.CFrame * CFrame.new(-2.5, 0, 0) * angles).lookVector * 30)
+local ray = workspace:Raycast(org, dir, params)
+if ray then
+start_fragmentation(ray.Position, .35, false, true, true)
+end
+end
+end) 
