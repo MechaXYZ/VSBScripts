@@ -158,40 +158,36 @@ local thing = 18
 	end
 end
 bb.Activated:Connect(function()
-if move == 1 then
-move = 2
 local alpha = .6
 pow.Parent = owner.Character.Head
 swing.Parent = pow.Parent
 pow.Parent = nil
 swing.Parent = nil
-		for i = 1, alpha*10 do
-			task.wait()
-			PlayAnimationFromTable({
-				CFrame.new(-0.0223142356, -0.107780628, -0.249816686, 0.906307876, 0.0733869597, -0.416197479, 0, 0.98480773, 0.173648462, 0.422617942, -0.157378972, 0.892539084) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-				CFrame.new(-2.22850417e-007, 1.49999118, 1.16660271e-006, 0.906307936, 1.49011612e-008, 0.422617972, -7.27595761e-009, 1, 0, -0.422618032, 0, 0.906308055) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-				CFrame.new(1.5318948, 0.588474631, 0.207054406, 0.899958313, 0.340718478, 0.272003621, 0.314965397, -0.0767233223, -0.945997, -0.301449746, 0.9370296, -0.176362336) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-				CFrame.new(-1.75, 0.723447502, -1.20010054, 0.726744413, 0.46058476, -0.509611845, -0.503104627, -0.148215696, -0.851421177, -0.46768418, 0.875153661, 0.124007396) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(35)), 
-				CFrame.new(.5,-1-math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
-				CFrame.new(-.5,-1+math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0)
-			}, alpha, false)
+local thing = 18
+if move == 1 then
+move = 2
+for i = 1, alpha*10 do
+task.wait()
+PlayAnimationFromTable({
+CFrame.new(-0.0223142356, -0.107780628, -0.249816686, 0.906307876, 0.0733869597, -0.416197479, 0, 0.98480773, 0.173648462, 0.422617942, -0.157378972, 0.892539084) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(-2.22850417e-007, 1.49999118, 1.16660271e-006, 0.906307936, 1.49011612e-008, 0.422617972, -7.27595761e-009, 1, 0, -0.422618032, 0, 0.906308055) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(1.5318948, 0.588474631, 0.207054406, 0.899958313, 0.340718478, 0.272003621, 0.314965397, -0.0767233223, -0.945997, -0.301449746, 0.9370296, -0.176362336) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(-1.75, 0.723447502, -1.20010054, 0.726744413, 0.46058476, -0.509611845, -0.503104627, -0.148215696, -0.851421177, -0.46768418, 0.875153661, 0.124007396) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(35)), 
+CFrame.new(.5,-1-math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
+CFrame.new(-.5,-1+math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0)
+}, alpha, false)
 end
 elseif move == 2 then
 move = 1
-local alpha = .6
-pow.Parent = owner.Character.Head
-swing.Parent = pow.Parent
-pow.Parent = nil
-swing.Parent = nil
-		for i = 1, alpha*10 do
+for i = 1, alpha*10 do
 PlayAnimationFromTable({
-				CFrame.new(0.0767437443, -0.107780531, -0.279432267, 0.866025388, -0.0868241936, 0.492404073, 0, 0.98480773, 0.173648342, -0.500000238, -0.150383845, 0.852868438) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-				CFrame.new(-2.61076184e-006, 1.4999913, -6.19508683e-007, 0.866025209, 2.98023224e-007, -0.500000656, -2.56928615e-007, 1, 1.1920929e-007, 0.500000596, 2.98023224e-008, 0.866025209) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-				CFrame.new(1.75, 0.812639356, -1.14933658, 0.82139349, -0.422619373, 0.383021921, 0.349686205, -0.157378837, -0.923553765, 0.450591207, 0.892538428, 0.0185142085) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(-35)), 
-				CFrame.new(-1.64197171, 0.599264741, 0.212680459, 0.807513177, -0.456930667, -0.373010725, -0.413006425, 0.0134942085, -0.9106282, 0.421127379, 0.889400065, -0.177818552) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
-				CFrame.new(.5,-1-math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
-				CFrame.new(-.5,-1+math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0), 
-			}, alpha, false)
+CFrame.new(0.0767437443, -0.107780531, -0.279432267, 0.866025388, -0.0868241936, 0.492404073, 0, 0.98480773, 0.173648342, -0.500000238, -0.150383845, 0.852868438) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(-2.61076184e-006, 1.4999913, -6.19508683e-007, 0.866025209, 2.98023224e-007, -0.500000656, -2.56928615e-007, 1, 1.1920929e-007, 0.500000596, 2.98023224e-008, 0.866025209) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(1.75, 0.812639356, -1.14933658, 0.82139349, -0.422619373, 0.383021921, 0.349686205, -0.157378837, -0.923553765, 0.450591207, 0.892538428, 0.0185142085) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(-35)), 
+CFrame.new(-1.64197171, 0.599264741, 0.212680459, 0.807513177, -0.456930667, -0.373010725, -0.413006425, 0.0134942085, -0.9106282, 0.421127379, 0.889400065, -0.177818552) * CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0), 
+CFrame.new(.5,-1-math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(-8), math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0),
+CFrame.new(-.5,-1+math.cos(tick()*thing)/4,0) * CFrame.Angles(math.rad(15),math.rad(-HRP.Orientation.Y),0) * CFrame.fromEulerAnglesXYZ((-math.sin(tick()*thing)*Humanoid.MoveDirection.Z)/1.5,0,(-math.sin(tick()*thing)*-Humanoid.MoveDirection.X)/1.5) * CFrame.Angles(0,math.rad(HRP.Orientation.Y),0) * CFrame.new(0,-1,0), 
+}, alpha, false)
 end
 end
 end)
