@@ -154,13 +154,13 @@ SignalStatic.__type = "Signal"
 local ConnectionStatic = {}
 ConnectionStatic.__index = ConnectionStatic
 ConnectionStatic.__type = "SignalConnection" 
-export type Signal = {
+type Signal = {
 	Name: string,
 	Connections: {[number]: Connection},
 	YieldingThreads: {[number]: BindableEvent}
 }
 
-export type Connection = {
+type Connection = {
 	Signal: Signal?,
 	Delegate: any,
 	Index: number	
