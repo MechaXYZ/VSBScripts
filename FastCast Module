@@ -80,11 +80,14 @@ Table.insert = function (tbl, i, v)
 		RobloxTable.insert(tbl, i)
 	end
 end
-Table.pack = function (ea)
-	return RobloxTable.pack(ea)
+Table.find = function (tbl, v)
+	return RobloxTable.find(tbl, v)
 end
-Table.unpack = function (ea)
-	return RobloxTable.unpack(ea)
+Table.pack = function (...)
+	return RobloxTable.pack(...)
+end
+Table.unpack = function (...)
+	return RobloxTable.unpack(...)
 end
 Table.contains = function (tbl, value)
 	return Table.indexOf(tbl, value) ~= nil -- This is kind of cheatsy but it promises the best performance.
