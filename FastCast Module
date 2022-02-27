@@ -74,7 +74,11 @@ local RNG = Random.new()
 local RobloxTable = table
 local Table = {}
 Table.insert = function (tbl, i, v)
-	RobloxTable.insert(tbl, i, v)
+	if tonumber(i) ~= nil then
+		RobloxTable.insert(tbl, i, v)
+	else
+		RobloxTable.insert(tbl, i)
+	end
 end
 Table.pack = function (ea)
 	return RobloxTable.pack(ea)
