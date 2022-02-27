@@ -79,7 +79,7 @@ table = Table
 local PartCacheStatic = {}
 PartCacheStatic.__index = PartCacheStatic
 PartCacheStatic.__type = "PartCache"
-type PartCache = {
+export type PartCache = {
 	Open: {[number]: BasePart},
 	InUse: {[number]: BasePart},
 	CurrentCacheParent: Instance,
