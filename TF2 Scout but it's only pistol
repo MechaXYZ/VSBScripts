@@ -1,0 +1,564 @@
+local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369}
+local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?"}
+local teamtextureid = 1
+local team = "ROBLOX"
+print('say "blu" for blu team, say "red" for red team')
+print("note: press g to reset zoom before you g/no. or g/ns")
+local con = owner.Chatted:Connect(function(msg)
+if msg == 'red' then
+teamtextureid = 8974239397
+team = "RED"
+owner.Character.Humanoid:SetAttribute(team, 1)
+elseif msg == 'blu' then
+teamtextureid = 8978104105
+team = "BLU"
+owner.Character.Humanoid:SetAttribute(team, 1)
+end
+end)
+repeat task.wait() until teamtextureid ~= 1
+con:Disconnect()
+for i, v in pairs(owner.Character:GetChildren()) do
+if string.find(v.Name, "Arm") or string.find(v.Name, "Hand") then
+-- v:Destroy()
+v.Transparency = 1
+elseif v:IsA("Accessory") then
+v:Destroy()
+elseif string.find(v.Name, "Torso") then
+v.Transparency = 1
+end
+end
+owner.Character.Humanoid.WalkSpeed *= 1.5
+if owner.Character:FindFirstChild("UpperTorso") then
+local tors = Instance.new("SpawnLocation", owner.Character)
+tors.Name = "FakeTorso"
+tors.CanCollide = false
+tors.Size = Vector3.new(2, 2, 1)
+tors.CanQuery = false
+tors.Enabled = false
+tors.CanTouch = false
+local w = Instance.new("Weld", tors)
+w.Part0 = tors
+w.Part1 = owner.Character.UpperTorso
+w.C1 = CFrame.new(0, 2.5, 0)
+local mesh = Instance.new("SpecialMesh", tors)
+mesh.MeshId = 'rbxassetid://8974238936'
+mesh.TextureId = 'rbxassetid://' ..teamtextureid
+mesh.Scale = Vector3.new(.1,.1,.1)
+mesh.Offset = Vector3.new(0, 0, .25)
+else
+owner.Character.HumanoidRootPart.Transparency = 0
+local mesh = Instance.new("SpecialMesh", owner.Character.HumanoidRootPart)
+mesh.MeshId = 'rbxassetid://8974238936'
+mesh.TextureId = 'rbxassetid://' ..teamtextureid
+mesh.Scale = Vector3.new(.1,.1,.1)
+mesh.Offset = Vector3.new(0, 2.5, .5)
+end
+local ll, rl
+if owner.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+ll = owner.Character["Left Leg"]
+rl = owner.Character["Right Leg"]
+else
+for i, v in pairs(owner.Character:GetChildren()) do
+if string.find(v.Name, "Leg") or string.find(v.Name, "Foot") then
+v.Transparency = 1
+end
+end
+ll, rl = Instance.new("SpawnLocation", owner.Character), Instance.new("SpawnLocation", owner.Character)
+ll.Name = "fakell"
+ll.Enabled = false
+ll.Size = Vector3.new(1, 2, 1)
+ll.CanCollide = false
+ll.CanQuery = false
+ll.CanTouch = false
+rl.Name = "fakerl"
+rl.Enabled = false
+rl.Size = Vector3.new(1, 2, 1)
+rl.CanCollide = false
+rl.CanQuery = false
+rl.CanTouch = false
+local w, w2 = Instance.new("Weld", ll), Instance.new("Weld", rl)
+w.Part0 = ll
+w.Part1 = owner.Character.LeftLowerLeg
+w.C1 = CFrame.new(0,.25,0)
+w2.Part0 = rl
+w2.Part1 = owner.Character.RightLowerLeg
+w2.C1 = CFrame.new(0,.25,0)
+end
+local mesh = Instance.new("SpecialMesh", ll)
+mesh.MeshId = 'rbxassetid://8975463209'
+mesh.TextureId = 'rbxassetid://' ..teamtextureid
+mesh.Scale = Vector3.new(.1,.1,.1)
+mesh.Offset = Vector3.new(0, 1.15, .25)
+local mesh = Instance.new("SpecialMesh", rl)
+mesh.MeshId = 'rbxassetid://8975451744'
+mesh.TextureId = 'rbxassetid://' ..teamtextureid
+mesh.Scale = Vector3.new(.1,.1,.1)
+mesh.Offset = Vector3.new(-.5, 1.15, .25)
+local head = owner.Character.Head
+if head:IsA("MeshPart") then
+head.Transparency = 1
+head = Instance.new("SpawnLocation", owner.Character)
+head.Name = "fakehead"
+head.Enabled = false
+head.Size = Vector3.new(2, 1, 1)
+head.CanCollide = false
+head.CanQuery = false
+head.CanTouch = false
+local w = Instance.new("Weld", head)
+w.Part0 = head
+w.Part1 = owner.Character.Head
+-- w.C1 = CFrame.new(0, 2.5, 0)
+owner.Character.Head.Neck.C0 *= CFrame.new(0, 2.65, -.25)
+else
+owner.Character.Torso.Neck.C0 *= CFrame.new(0, 0, 2.5)
+end
+local mesh = Instance.new("SpecialMesh" , head)
+mesh.MeshId = 'rbxassetid://863723265'
+mesh.TextureId = 'rbxassetid://863723378'
+mesh.Scale = Vector3.new(.1,.1,.1)
+local eyes = Instance.new("SpawnLocation", head)
+eyes.CanCollide = false
+eyes.Size = Vector3.new(0.359, 0.069, 0.053)
+eyes.CanTouch = false
+eyes.Enabled = false
+eyes.CanQuery = false
+local w = Instance.new("Weld", owner.Character)
+w.Part0 = head
+w.Part1 = eyes
+w.C1 = CFrame.new(23.343, 7.017, -20.291, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+w.C0 = CFrame.new(23.343, 7.139, -20.614, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+local mesh = Instance.new("SpecialMesh" , eyes)
+mesh.MeshId = 'rbxassetid://863723693'
+mesh.TextureId = 'rbxassetid://863723700'
+mesh.Scale = Vector3.new(.105,.105,.105)
+mesh.Offset = Vector3.new(0, 0,-.015)
+local headset = Instance.new("SpawnLocation", owner.Character)
+headset.CanCollide = false
+headset.Size = Vector3.new(0.849, 1.001, 1.111)
+headset.CanTouch = false
+headset.Enabled = false
+headset.CanQuery = false
+headset.Name = "headset"
+local mesh = Instance.new("SpecialMesh" , headset)
+mesh.MeshId = 'rbxassetid://863725424'
+mesh.TextureId = 'rbxassetid://863725625'
+mesh.Scale = Vector3.new(.1,.1,.1)
+local w = Instance.new("Weld", owner.Character)
+w.Part0 = head
+w.Part1 = headset
+w.C1 = CFrame.new(23.343, 7.017, -20.291, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+w.C0 = CFrame.new(23.249, 7.192, -20.436, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+pcall(function()
+owner.Character.Head.face:Destroy()
+end)
+local DEBUG = false
+local PIERCE = false
+local BULLET_SPEED = 1000
+local BULLET_MAXDIST = 1250	
+local BULLET_GRAVITY = Vector3.new(0, -workspace.Gravity, 0)
+local BULLET_AMOUNT = 10
+local BULLET_SPREAD = 3
+local http = game:GetService("HttpService")
+local f = http:GetAsync("https://raw.githubusercontent.com/MechaXYZ/VSBScripts/main/FastCast%20Module")
+local FastCast = loadstring(f)()
+local caster = FastCast.new()
+local CastParams = RaycastParams.new()
+CastParams.IgnoreWater = true
+CastParams.FilterType = Enum.RaycastFilterType.Blacklist
+CastParams.FilterDescendantsInstances = {owner.Character}
+-- FastCast.DebugLogging = DEBUG
+FastCast.VisualizeCasts = DEBUG
+local bullets = Instance.new("Folder", script)
+bullets.Name = "Bullets"
+local bullet = Instance.new("SpawnLocation")
+bullet.Enabled = false
+bullet.Size = Vector3.new(.15,.15,.35)
+bullet.BrickColor = BrickColor.new("New Yeller")
+bullet.Material = Enum.Material.Neon
+bullet.Anchored = true
+bullet.CanCollide = false
+bullet.Name = "Bullet"
+local a1, a2 = Instance.new("Attachment"), Instance.new("Attachment")
+a1.Parent = bullet 
+a1.Position = Vector3.new(-.1,-.1,0)
+a2.Parent = bullet
+a2.Position = Vector3.new(.1, .1,0)
+coroutine.wrap(function()
+    task.wait()
+    local t = Instance.new("Trail")
+    t.Parent = bullet
+    t.Attachment0 = a1
+    t.Attachment1 = a2
+    t.Color = ColorSequence.new(bullet.Color)
+    t.WidthScale = NumberSequence.new(1,0)
+    t.Lifetime = 0.1
+    t.MinLength = 1
+    t.FaceCamera = true
+    end)()
+function CanRayPierce(cast)
+if (cast.UserData.Hits == nil) then
+cast.UserData.Hits = 1
+else
+cast.UserData.Hits += 1
+end
+if (cast.UserData.Hits > 3) then
+return false
+end
+return true
+end
+local CastBehavior = FastCast.newBehavior()
+CastBehavior.RaycastParams = CastParams
+CastBehavior.MaxDistance = BULLET_MAXDIST
+CastBehavior.HighFidelityBehavior = FastCast.HighFidelityBehavior.Default
+CastBehavior.Acceleration = BULLET_GRAVITY
+CastBehavior.AutoIgnoreContainer = true
+CastBehavior.CosmeticBulletContainer = bullets
+CastBehavior.CosmeticBulletTemplate = bullet
+local function Reflect(surfaceNormal, bulletNormal)
+return bulletNormal - (2 * bulletNormal:Dot(surfaceNormal) * surfaceNormal)
+end
+local function HasHumanoid(p)
+if p:FindFirstAncestorOfClass("Model", true) and p:FindFirstAncestorOfClass("Model", true):FindFirstChildOfClass("Humanoid") then
+return p:FindFirstAncestorOfClass("Model", true):FindFirstChildOfClass("Humanoid")
+else
+return false
+end
+end
+function OnRayHit(cast, raycastResult, segmentVelocity, cosmeticBulletObject)
+local hitPart = raycastResult.Instance
+local hitPoint = raycastResult.Position
+local normal = raycastResult.Normal
+if hitPart ~= nil and hitPart.Parent ~= nil and HasHumanoid(hitPart) then 
+if not HasHumanoid(hitPart):GetAttribute(team) then
+HasHumanoid(hitPart).Health -= math.random(15, 20)
+end
+end
+end
+function OnRayPierced(cast, raycastResult, segmentVelocity, cosmeticBulletObject)
+local position = raycastResult.Position
+local normal = raycastResult.Normal	
+local newNormal = Reflect(normal, segmentVelocity.Unit)
+cast:SetVelocity(newNormal * segmentVelocity.Magnitude)	
+cast:SetPosition(position)
+end
+function OnRayUpdated(cast, segmentOrigin, segmentDirection, length, segmentVelocity, cosmeticBulletObject)
+if cosmeticBulletObject == nil then return end
+local bulletLength = cosmeticBulletObject.Size.Z / 2
+local baseCFrame = CFrame.new(segmentOrigin, segmentOrigin + segmentDirection)
+cosmeticBulletObject.CFrame = baseCFrame * CFrame.new(0, 0, -(length - bulletLength))
+end
+function OnRayTerminated(cast)
+	local cosmeticBullet = cast.RayInfo.CosmeticBulletObject
+	if cosmeticBullet ~= nil then
+		if CastBehavior.CosmeticBulletProvider ~= nil then
+			CastBehavior.CosmeticBulletProvider:ReturnPart(cosmeticBullet)
+		else
+			cosmeticBullet:Destroy()
+		end
+	end
+end
+caster.RayHit:Connect(OnRayHit)
+caster.RayPierced:Connect(OnRayPierced)
+caster.LengthChanged:Connect(OnRayUpdated)
+caster.CastTerminating:Connect(OnRayTerminated)
+local function Fire(pos, direction)
+	local directionalCF = CFrame.new(Vector3.new(), direction)
+	local direction = (directionalCF * CFrame.Angles(math.rad(math.random(-BULLET_SPREAD, BULLET_SPREAD)), math.rad(math.random(-BULLET_SPREAD, BULLET_SPREAD)), math.rad(math.random(-BULLET_SPREAD, BULLET_SPREAD)))).LookVector
+	if PIERCE then
+		CastBehavior.CanPierceFunction = CanRayPierce
+	end
+	local simBullet = caster:Fire(pos, direction, BULLET_SPEED, CastBehavior)
+end
+local ITERATIONS = 8
+local SPRING = {}
+function SPRING.create(self, mass, force, damping, speed)
+local spring = {
+Target = Vector3.new();
+Position = Vector3.new();
+Velocity = Vector3.new();
+Mass = mass or 5;
+Force = force or 50;
+Damping = damping or 4;
+Speed = speed  or 4;
+}
+function spring.shove(self, force)
+local x, y, z	= force.X, force.Y, force.Z
+if x ~= x or x == math.huge or x == -math.huge then
+x	= 0
+end
+if y ~= y or y == math.huge or y == -math.huge then
+y	= 0
+end
+if z ~= z or z == math.huge or z == -math.huge then
+z	= 0
+end
+self.Velocity	= self.Velocity + Vector3.new(x, y, z)
+end
+function spring.update(self, dt)
+local scaledDeltaTime = math.min(dt,1) * self.Speed / ITERATIONS	
+for i = 1, ITERATIONS do
+local iterationForce = self.Target - self.Position
+local acceleration	= (iterationForce * self.Force) / self.Mass
+acceleration -= (self.Velocity * self.Damping)
+self.Velocity += (acceleration * scaledDeltaTime)
+self.Position += (self.Velocity * scaledDeltaTime)
+end
+return self.Position
+end
+return spring
+end
+local mult = 10
+local pistol = Instance.new("SpawnLocation", script)
+pistol.Enabled = false
+pistol.Name = "Pistol"
+pistol.CanCollide = false
+pistol.Size = Vector3.new(2.242, 10.178, 12.39)/mult
+pistol.Position = Vector3.new(4.16, -7.974, -30.56)/mult
+local msh = Instance.new("SpecialMesh", pistol)
+msh.MeshId = "rbxassetid://9016535859"
+msh.TextureId = "rbxassetid://9016536840"
+msh.Scale = Vector3.new(1, 1, 1)/mult
+local vm = Instance.new("Model", script)
+vm.Name = "ViewModel"
+local hands = Instance.new("SpawnLocation", vm)
+hands.Enabled = false
+hands.Name = "PistolHands"
+hands.CanCollide = false
+hands.Size = Vector3.new(26.183, 11.096, 32.61)/mult
+hands.Position = Vector3.new(2.167, -11.339, -15.691)/mult
+local msh = Instance.new("SpecialMesh", hands)
+msh.MeshId = "rbxassetid://9016531020"
+msh.TextureId = "rbxassetid://9016531502"
+msh.Scale = Vector3.new(1, 1, 1)/mult
+local wc = Instance.new("WeldConstraint", pistol)
+wc.Part0 = pistol
+wc.Part1 = hands
+local w = Instance.new("Weld", script)
+w.Part0 = pistol
+w.Part1 = owner.Character.HumanoidRootPart
+local val = Instance.new("ObjectValue", owner.Character)
+val.Name = "b"
+val.Value = bat
+local wc = SPRING.create()
+local sway = SPRING.create()
+local bobspeed = 1
+local bobmod = .1
+local alpha = .25
+local hitcf = CFrame.new()
+local function gb(addition, speed, modifier)
+return math.sin(tick() * addition * speed) * modifier
+end
+coroutine.wrap(function()
+while task.wait() do
+hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), .65)
+end
+end)()
+local mass = 0
+for i, v in pairs(owner.Character:GetChildren()) do
+if v:IsA("BasePart") then
+mass += v:GetMass()
+end
+end
+local function chatfunc(text)
+local chat = coroutine.wrap(function()
+if owner.Character.Head:FindFirstChild("TalkingBillBoard")~= nil then
+owner.Character.Head:FindFirstChild("TalkingBillBoard"):destroy()
+end
+local naeeym2 = Instance.new("BillboardGui", owner.Character.Head)
+naeeym2.Size = UDim2.new(0, 500, 0, 500)
+naeeym2.StudsOffset = Vector3.new(0,3,0)
+naeeym2.Name = "TalkingBillBoard"
+local tecks2 = Instance.new("TextBox",naeeym2)
+tecks2.BackgroundTransparency = 1
+tecks2.BorderSizePixel = 0
+tecks2.Text = ""
+tecks2.Font = "Bodoni"
+tecks2.TextWrapped = true
+tecks2.TextSize = 35
+tecks2.TextStrokeTransparency = 0
+tecks2.TextColor3 = Color3.new(1, 1, 1)
+tecks2.TextStrokeColor3 = Color3.new()
+tecks2.Size = UDim2.new(1, 0, .5,0)
+for c = 1, #text, 1 do
+tecks2.Text = string.sub(text, 1, c)
+task.wait(.05)
+end
+task.wait(1.5)
+for i = 1, 50 do
+tecks2.TextStrokeTransparency += .05
+tecks2.TextTransparency += .05
+end
+naeeym2:Destroy()
+end)
+chat()
+end
+local c = CFrame.new()
+local at = Instance.new("Attachment", pistol)
+at.CFrame = CFrame.new(0, .15, -.6)
+local pe = Instance.new("ParticleEmitter")
+pe.Enabled = false
+pe.Name = "flash"
+pe.Speed = NumberRange.new(0, 0)
+pe.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+pe.LightEmission = 0
+pe.LightInfluence = 1
+pe.Texture = "rbxassetid://386535299"
+pe.Size = NumberSequence.new(.5)
+pe.LockedToPart = true
+pe.Orientation = "FacingCamera"
+pe.EmissionDirection = "Front"
+pe.Drag = 0
+pe.Lifetime = NumberRange.new(.1, .1)
+pe.Rate = 20
+pe.SpreadAngle = Vector2.new(0, 0)
+pe.VelocitySpread = 0
+pe.RotSpeed = NumberRange.new(-360, 360)
+pe.Rotation = NumberRange.new(-180, 180)
+pe.Parent = at
+local allpurpose = Instance.new("Sound", game:GetService("VRService"))
+allpurpose.EmitterSize = 10
+allpurpose.SoundId = 'rbxassetid://7223640465'
+allpurpose.Volume = 1.5
+allpurpose.PlayOnRemove = true
+local quote = Instance.new("Sound", owner.Character.Head)
+quote.SoundId = 'rbxassetid://' ..quoteids[1]
+quote.Volume = 1.25
+local waist = owner.Character:FindFirstChild("Waist", true)
+local waistc0 = CFrame.new()
+if waist then
+waistc0 = waist.C0
+end
+local neckc0 = owner.Character:FindFirstChild("Neck", true).C0
+local function pointheadtocam(cf)
+local body = owner.Character.HumanoidRootPart
+local neck = owner.Character:FindFirstChild("Neck", true)
+local theta = math.asin(cf.LookVector.Y)
+local camera_angle = math.atan2(cf.LookVector.X, cf.LookVector.Z)
+local body_angle = math.atan2(body.CFrame.LookVector.X, body.CFrame.LookVector.Z)
+local theta2 = (camera_angle-body_angle)%(2*math.pi)
+if theta2 > math.pi/2 and theta2 < math.pi*1.5 then
+theta2 = math.pi-theta2
+end
+if owner.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then 
+neck.C0 = neckc0 * CFrame.Angles(-(theta), 0, 0)
+elseif owner.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+-- waist.C0 = waistc0 * CFrame.Angles(theta*.5, 0, 0)
+neck.C0 = neckc0 * CFrame.Angles(theta, 0, 0)
+end
+end
+local qcd = false
+local re = Instance.new("RemoteEvent", val)
+re.OnServerEvent:Connect(function(plr, mode, c1, delta, dt, cam)
+if mode == "aim" then
+pointheadtocam(cam)
+local vel = owner.Character.HumanoidRootPart.Velocity
+local msway = Vector3.new(gb(10, bobspeed, bobmod), gb(5, bobspeed, bobmod), gb(5, bobspeed, bobmod))
+sway:shove(Vector3.new(delta.X / 500, delta.Y / 500))
+wc:shove((msway / 25) * dt * 60 * vel.Magnitude)
+local sw = sway:update(dt)
+local wcs = wc:update(dt)
+w.C1 = w.C1:Lerp(c1, alpha) * hitcf
+w.C1 = w.C1:Lerp(c1 * CFrame.new(wcs.x / 2, wcs.y / 2,0), .25)
+w.C1 *= CFrame.Angles(0,-sw.x, sw.y)
+w.C1 = w.C1:Lerp(w.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
+elseif mode == "d" then
+owner.CameraMaxZoomDistance = oldzoom
+script:Destroy()
+elseif mode == "n" then
+if qcd then return end
+qcd = true
+local q = math.random(1, #quoteids)
+quote.SoundId = 'rbxassetid://' ..quoteids[q]
+chatfunc(quotes[q])
+quote:Play()
+quote.Ended:Wait()
+task.wait(.5)
+qcd = false
+elseif mode == "pistolfire" then
+allpurpose.SoundId = 'rbxassetid://7228118444'
+allpurpose.Parent = pistol
+allpurpose.Parent = nil
+Fire(pistol.Position, cam.lookVector * 10)
+hitcf = CFrame.new(0, .5, .3) * CFrame.Angles(math.rad(45), 0, 0)
+coroutine.wrap(function()
+pe.Enabled = true
+pe:Emit(1)
+task.wait(.05)
+pe.Enabled = false
+end)()
+end
+end)
+NLS([[
+local g = script.Parent.Value
+local re = script.Parent.RemoteEvent
+local UIS = game:GetService("UserInputService")
+local m = owner:GetMouse()
+local cd = false
+script.Parent = workspace
+local deltat = 0
+local c = workspace.CurrentCamera
+local offset = CFrame.new(.6,-.5,-2) * CFrame.Angles(0, .005,0)
+local aimoffset, delta = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta()
+m.KeyDown:Connect(function(k)
+if k == 'g' then
+re:FireServer("d", aimoffset, delta, deltat, c.CFrame)
+script:Destroy()
+elseif k == 'n' then
+re:FireServer("n", aimoffset, delta, deltat, c.CFrame)
+end
+end)
+m.Button1Down:Connect(function()
+if cd then return end
+cd = true
+re:FireServer("pistolfire", aimoffset, delta, deltat, c.CFrame)
+task.wait(.15)
+cd = false
+end)
+local function SetCharacterLocalTransparency(transparency)
+    for i,v in pairs(owner.Character:GetDescendants()) do
+       if v:IsA("BasePart") and v.Name ~= "Head" and v.Name ~= "fakehead" and v.Parent.Name ~= "fakehead" and v.Name ~= "headset" then
+          v.LocalTransparencyModifier = 0
+       end
+    end
+end
+if owner.Character.Head:IsA("MeshPart") then
+owner.Character.Humanoid.CameraOffset = Vector3.new(0, 2.5, -1)
+elseif owner.Character.Head:IsA("BasePart") and not owner.Character.Head:IsA("MeshPart") then
+owner.Character.Humanoid.CameraOffset = Vector3.new(0, 2.65, -.8)
+end
+game:GetService("RunService").Heartbeat:Connect(function(dt)
+pcall(function()
+deltat = dt
+SetCharacterLocalTransparency(0)
+aimoffset, delta = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta()
+re:FireServer("aim", aimoffset, delta, dt, c.CFrame)
+local x, y, z = c.CFrame:ToEulerAnglesXYZ()
+end)
+end)
+local UIS = game:GetService("UserInputService")
+local cdj = false
+local dj = false
+local op = owner.Character.Humanoid.JumpPower
+local tbj = .1
+local djpm = 2
+function jp()
+if cdj and not dj then
+dj = true
+owner.Character.Humanoid.JumpPower = op * djpm
+owner.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+end
+end
+dj = false
+cdj = false
+owner.Character.Humanoid.StateChanged:connect(function(old, new)
+if new == Enum.HumanoidStateType.Landed then
+cdj = false
+dj = false
+owner.Character.Humanoid.JumpPower = op
+elseif new == Enum.HumanoidStateType.Freefall then
+task.wait(tbj)
+cdj = true
+end
+end)
+UIS.JumpRequest:connect(jp)
+]], val)
