@@ -1,5 +1,5 @@
-local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369, 3500942471}
-local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?", "*long laugh*"}
+local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369, 3500942471, 6225475452}
+local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?", "*long laugh*", "Grass grows, birds fly, sun shines, and brother, I hurt people.", "Not so tough now are ya? Are ya?! I'm gonna headbutt cha', I'm gonna headbutt cha', I'm gonna headbutt cha'! Yeah, come get some!"}
 local teamtextureid = 1
 local team = "ROBLOX"
 print([[
@@ -20,6 +20,7 @@ end
 end)
 repeat task.wait() until teamtextureid ~= 1
 con:Disconnect()
+owner.Character.Humanoid.Health = 125
 print([[
 ok here are the controls
 1, 2 and 3 - switch between scattergun, funni bonk bat and a pistol
