@@ -575,12 +575,14 @@ swinging = true
 task.wait(.25)
 swinging = false
 elseif mode == "scatgun" then
+w.C1 = CFrame.new(-2, -1, 0)
 scattergun.Transparency = 0
 hands.Transparency = 0
 ra.Transparency = 1
 la.Transparency = 1
 bat.Transparency = 1
 elseif mode == "bat" then
+w.C1 = CFrame.new(-2, -1, 0)
 scattergun.Transparency = 1
 hands.Transparency = 1
 ra.Transparency = 0
