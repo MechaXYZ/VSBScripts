@@ -1,5 +1,5 @@
-local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369}
-local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?"}
+local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369, 3500942471}
+local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?", "*long laugh*"}
 local teamtextureid = 1
 local team = "ROBLOX"
 print([[
