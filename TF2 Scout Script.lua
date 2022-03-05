@@ -22,7 +22,7 @@ repeat task.wait() until teamtextureid ~= 1
 con:Disconnect()
 print([[
 ok here are the controls
-1 and 2 - switch between scattergun and funni bonk bat
+1, 2 and 3 - switch between scattergun, funni bonk bat and a pistol
 click - use your weapon
 space twice - double jump
 n - taunt
@@ -252,13 +252,15 @@ else
 return false
 end
 end
+local mindmg = 6
+local maxdmg = 8
 function OnRayHit(cast, raycastResult, segmentVelocity, cosmeticBulletObject)
 local hitPart = raycastResult.Instance
 local hitPoint = raycastResult.Position
 local normal = raycastResult.Normal
 if hitPart ~= nil and hitPart.Parent ~= nil and HasHumanoid(hitPart) then 
 if not HasHumanoid(hitPart):GetAttribute(team) then
-HasHumanoid(hitPart).Health -= math.random(6, 8)
+HasHumanoid(hitPart).Health -= math.random(mindmg, maxdmg)
 end
 end
 end
@@ -349,7 +351,7 @@ msh.MeshId = "rbxassetid://8963894461"
 msh.TextureId = "rbxassetid://8963894585"
 msh.Scale = Vector3.new(1, 1, 1)/mult
 local vm = Instance.new("Model", script)
-vm.Name = "ViewModel"
+vm.Name = "ViewModels"
 local hands = Instance.new("SpawnLocation", vm)
 hands.Enabled = false
 hands.Name = "ScattergunHands"
@@ -361,6 +363,31 @@ msh.MeshId = "rbxassetid://8963876775"
 msh.TextureId = "rbxassetid://8963876905"
 msh.Scale = Vector3.new(1, 1, 1)/mult
 local swingcfs = {CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), 0, 0), hitcf = CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), math.rad(125), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), 0, 0)}
+local pistol = Instance.new("SpawnLocation", script)
+pistol.Enabled = false
+pistol.Name = "Pistol"
+pistol.Transparency = 1
+pistol.CanCollide = false
+pistol.Size = Vector3.new(2.242, 10.178, 12.39)/mult
+pistol.Position = Vector3.new(4.16, -7.974, -30.56)/mult
+local msh = Instance.new("SpecialMesh", pistol)
+msh.MeshId = "rbxassetid://9016535859"
+msh.TextureId = "rbxassetid://9016536840"
+msh.Scale = Vector3.new(1, 1, 1)/mult
+local phands = Instance.new("SpawnLocation", vm)
+phands.Enabled = false
+phands.Transparency = 1
+phands.Name = "PistolHands"
+phands.CanCollide = false
+phands.Size = Vector3.new(26.183, 11.096, 32.61)/mult
+phands.Position = Vector3.new(2.167, -11.339, -15.691)/mult
+local msh = Instance.new("SpecialMesh", phands)
+msh.MeshId = "rbxassetid://9016531020"
+msh.TextureId = "rbxassetid://9016531502"
+msh.Scale = Vector3.new(1, 1, 1)/mult
+local wc = Instance.new("WeldConstraint", pistol)
+wc.Part0 = pistol
+wc.Part1 = phands
 local bat = Instance.new("SpawnLocation", script)
 bat.Enabled = false
 bat.Name = "Bat"
@@ -413,7 +440,10 @@ end
 local w2 = Instance.new("Weld", script)
 w2.Part0 = bat
 w2.Part1 = owner.Character.HumanoidRootPart
-CastParams.FilterDescendantsInstances = {owner.Character, scattergun}
+local w3 = Instance.new("Weld", script)
+w3.Part0 = pistol
+w3.Part1 = owner.Character.HumanoidRootPart
+CastParams.FilterDescendantsInstances = {owner.Character, scattergun, bat, pistol, hands, phands, ra, la}
 local val = Instance.new("ObjectValue", owner.Character)
 val.Name = "b"
 val.Value = scattergun
@@ -426,11 +456,6 @@ local hitcf = CFrame.new()
 local function gb(addition, speed, modifier)
 return math.sin(tick() * addition * speed) * modifier
 end
-coroutine.wrap(function()
-while task.wait() do
-hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), .5)
-end
-end)()
 local mass = 0
 for i, v in pairs(owner.Character:GetChildren()) do
 if v:IsA("BasePart") then
@@ -470,6 +495,15 @@ naeeym2:Destroy()
 end)
 chat()
 end
+coroutine.wrap(function()
+while task.wait() do
+if pistol.Transparency == 0 then
+hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), .65)
+else
+hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), .5)
+end
+end
+end)()
 local allpurpose = Instance.new("Sound", game:GetService("VRService"))
 allpurpose.EmitterSize = 10
 allpurpose.SoundId = 'rbxassetid://7223640465'
@@ -491,6 +525,30 @@ local waistc0 = CFrame.new()
 if waist then
 waistc0 = waist.C0
 end
+local at = Instance.new("Attachment", pistol)
+at.CFrame = CFrame.new(0, .15, -.6)
+local at2 = Instance.new("Attachment", scattergun)
+at2.CFrame = CFrame.new(0, .05, -1.43)
+local pe = Instance.new("ParticleEmitter")
+pe.Enabled = false
+pe.Name = "flash"
+pe.Speed = NumberRange.new(0, 0)
+pe.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+pe.LightEmission = 0
+pe.LightInfluence = 1
+pe.Texture = "rbxassetid://386535299"
+pe.Size = NumberSequence.new(.5)
+pe.LockedToPart = true
+pe.Orientation = "FacingCamera"
+pe.EmissionDirection = "Front"
+pe.Drag = 0
+pe.Lifetime = NumberRange.new(.1, .1)
+pe.Rate = 20
+pe.SpreadAngle = Vector2.new(0, 0)
+pe.VelocitySpread = 0
+pe.RotSpeed = NumberRange.new(-360, 360)
+pe.Rotation = NumberRange.new(-180, 180)
+pe.Parent = nil
 local neckc0 = owner.Character:FindFirstChild("Neck", true).C0
 local function pointheadtocam(cf)
 local body = owner.Character.HumanoidRootPart
@@ -513,7 +571,7 @@ local swingcfs = {CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), 0, 0), 
 local qcd = false
 local re = Instance.new("RemoteEvent", val)
 re.OnServerEvent:Connect(function(plr, mode, c1, delta, dt, cam)
-if mode == "aim1" then
+if mode == "aim" then
 pointheadtocam(cam)
 local vel = owner.Character.HumanoidRootPart.Velocity
 local msway = Vector3.new(gb(10, bobspeed, bobmod), gb(5, bobspeed, bobmod), gb(5, bobspeed, bobmod))
@@ -525,26 +583,29 @@ w.C1 = w.C1:Lerp(c1, alpha) * hitcf
 w.C1 = w.C1:Lerp(c1 * CFrame.new(wcs.x / 2, wcs.y / 2,0), .25)
 w.C1 *= CFrame.Angles(0,-sw.x, sw.y)
 w.C1 = w.C1:Lerp(w.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
-elseif mode == "aim2" then
-pointheadtocam(cam)
-local vel = owner.Character.HumanoidRootPart.Velocity
-local msway = Vector3.new(gb(10, bobspeed, bobmod), gb(5, bobspeed, bobmod), gb(5, bobspeed, bobmod))
-sway:shove(Vector3.new(delta.X / 500, delta.Y / 500))
-wc:shove((msway / 25) * dt * 60 * vel.Magnitude)
-local sw = sway:update(dt)
-local wcs = wc:update(dt)
 w2.C1 = w2.C1:Lerp(c1, alpha) * hitcf
 w2.C1 = w2.C1:Lerp(c1 * CFrame.new(wcs.x / 2, wcs.y / 2,0), .25)
 w2.C1 *= CFrame.Angles(0,-sw.x, sw.y)
 w2.C1 = w2.C1:Lerp(w.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
+w3.C1 = w3.C1:Lerp(c1, alpha) * hitcf
+w3.C1 = w3.C1:Lerp(c1 * CFrame.new(wcs.x / 2, wcs.y / 2,0), .25)
+w3.C1 *= CFrame.Angles(0,-sw.x, sw.y)
+w3.C1 = w3.C1:Lerp(w.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
 elseif mode == "fire" then
 fire:Play()
 hitcf = CFrame.new(0, .75, 1.5) * CFrame.Angles(math.rad(35), 0, 0)
 for i = 1, BULLET_AMOUNT do
 coroutine.wrap(function()
-Fire(scattergun.Position, scattergun.CFrame.lookVector * 1000)
+Fire(scattergun.Position, cam.lookVector * 50)
 end)()
 end
+coroutine.wrap(function()
+pe.Parent = at2
+pe.Enabled = true
+pe:Emit(1)
+task.wait(.05)
+pe.Enabled = false
+end)()
 if check(cam) then print('commit jump')
 owner.Character.Humanoid.Jump = true
 owner.Character.HumanoidRootPart.CFrame *= CFrame.new(0, 1.5, 0)
@@ -552,6 +613,19 @@ local a = Instance.new("BodyForce", owner.Character.HumanoidRootPart)
 a.Force = Vector3.new(0, (1000 * mass), 0)
 game:GetService("Debris"):AddItem(a, .35)
 end
+elseif mode == "pistolfire" then
+allpurpose.SoundId = 'rbxassetid://7228118444'
+allpurpose.Parent = pistol
+allpurpose.Parent = nil
+Fire(pistol.Position, cam.lookVector * 10)
+hitcf = CFrame.new(0, .5, .3) * CFrame.Angles(math.rad(45), 0, 0)
+coroutine.wrap(function()
+pe.Parent = at
+pe.Enabled = true
+pe:Emit(1)
+task.wait(.05)
+pe.Enabled = false
+end)()
 elseif mode == "d" then
 owner.CameraMaxZoomDistance = oldzoom
 script.Disabled = true
@@ -576,11 +650,15 @@ task.wait(.25)
 swinging = false
 elseif mode == "scatgun" then
 w.C1 = CFrame.new(-2, -1, 0)
+mindmg = 6
+maxdmg = 8
 scattergun.Transparency = 0
 hands.Transparency = 0
 ra.Transparency = 1
 la.Transparency = 1
 bat.Transparency = 1
+phands.Transparency = 1
+pistol.Transparency = 1
 elseif mode == "bat" then
 w.C1 = CFrame.new(-2, -1, 0)
 scattergun.Transparency = 1
@@ -588,6 +666,19 @@ hands.Transparency = 1
 ra.Transparency = 0
 la.Transparency = 0
 bat.Transparency = 0
+phands.Transparency = 1
+pistol.Transparency = 1
+elseif mode == "pistol" then
+w.C1 = CFrame.new(-2, -1, 0)
+mindmg = 15
+maxdmg = 20
+scattergun.Transparency = 1
+hands.Transparency = 1
+ra.Transparency = 1
+la.Transparency = 1
+bat.Transparency = 1
+phands.Transparency = 0
+pistol.Transparency = 0
 end
 end)
 local sdb = false
@@ -621,7 +712,8 @@ local deltat = 0
 local c = workspace.CurrentCamera
 local offset = CFrame.new(.7,-.7,-2) * CFrame.Angles(0, .005,0)
 local offset2 = CFrame.new(.5, .15, -2) * CFrame.Angles(0, .005,0)
-local aimoffset, delta, aimoffset2 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2)
+local offset3 = CFrame.new(.6,-.5,-2) * CFrame.Angles(0, .005,0)
+local aimoffset, delta, aimoffset2, aimoffset3 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset3)
 local mode = "fire"
 local weapon = "Scattergun"
 local cool = .625
@@ -638,16 +730,21 @@ re:FireServer("d", aimoffset, delta, deltat, c.CFrame)
 script:Destroy()
 elseif k == 'n' then
 re:FireServer("n", aimoffset, delta, deltat, c.CFrame)
-elseif k == '1' and weapon == "Bat" then
+elseif k == '1' and (weapon == "Bat" or weapon == "Pistol") then
 weapon = "Scattergun"
 mode = "fire"
 cool = .625
 re:FireServer("scatgun", aimoffset, delta, deltat, c.CFrame)
-elseif k == '2' and weapon == "Scattergun" then
+elseif k == '2' and (weapon == "Scattergun" or weapon == "Pistol") then
 weapon = "Bat"
 mode = "swing"
 cool = .5
 re:FireServer("bat", aimoffset, delta, deltat, c.CFrame)
+elseif k == '3' and (weapon == "Scattergun" or weapon == "Bat") then
+weapon = "Pistol"
+mode = "pistolfire"
+cool = .15
+re:FireServer("pistol", aimoffset, delta, deltat, c.CFrame)
 end
 end)
 local function SetCharacterLocalTransparency(transparency)
@@ -666,9 +763,10 @@ game:GetService("RunService").Heartbeat:Connect(function(dt)
 pcall(function()
 deltat = dt
 SetCharacterLocalTransparency(0)
-aimoffset, delta, aimoffset2 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2)
-re:FireServer("aim1", aimoffset, delta, dt, c.CFrame)
-re:FireServer("aim2", aimoffset2, delta, dt, c.CFrame)
+aimoffset, delta, aimoffset2, aimoffset3 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset3)
+re:FireServer("aim", aimoffset, delta, dt, c.CFrame)
+re:FireServer("aim", aimoffset2, delta, dt, c.CFrame)
+re:FireServer("aim", aimoffset3, delta, dt, c.CFrame)
 local x, y, z = c.CFrame:ToEulerAnglesXYZ()
 end)
 end)
@@ -730,6 +828,10 @@ local fake35 = ra:Clone()
 fake35.Parent = bo
 local fake5 = bat:Clone()
 fake5.Parent = bo
+local fake6 = phands:Clone()
+fake6.Parent = bo
+local fake7 = pistol:Clone()
+fake7.Parent = bo
 for i, v in pairs(owner.Character:GetChildren()) do
 if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
 local p = re[v.Name]
@@ -746,11 +848,15 @@ fake2.CFrame = hands.CFrame
 fake3.CFrame = la.CFrame
 fake35.CFrame = ra.CFrame
 fake5.CFrame = bat.CFrame
+fake6.CFrame = phands.CFrame
+fake7.CFrame = pistol.CFrame
 fake1.Transparency = scattergun.Transparency
 fake2.Transparency = hands.Transparency
 fake3.Transparency = la.Transparency
 fake35.Transparency = ra.Transparency
 fake5.Transparency = bat.Transparency
+fake6.Transparency = phands.Transparency
+fake7.Transparency = pistol.Transparency
 c.CFrame = CFrame.new(re.HumanoidRootPart.Position) * CFrame.new(0, 2, -5) * CFrame.Angles(0,math.rad(180),0)
 re.HumanoidRootPart.CFrame = owner.Character.HumanoidRootPart.CFrame -- CFrame.Angles(owner.Character.HumanoidRootPart.CFrame:ToEulerAnglesXYZ())
 for i, v in pairs(owner.Character:GetChildren()) do
