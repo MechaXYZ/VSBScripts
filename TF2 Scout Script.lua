@@ -366,7 +366,7 @@ local msh = Instance.new("SpecialMesh", hands)
 msh.MeshId = "rbxassetid://8963876775"
 msh.TextureId = "rbxassetid://8963876905"
 msh.Scale = Vector3.new(1, 1, 1)/mult
-local swingcfs = {CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), 0, 0), hitcf = CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), math.rad(125), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), 0, 0)}
+local swingcfs = {CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), math.rad(125), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), 0, 0)}
 local pistol = Instance.new("SpawnLocation", script)
 pistol.Enabled = false
 pistol.Name = "Pistol"
