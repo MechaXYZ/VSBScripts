@@ -33,6 +33,7 @@ if team == "BLU" then
 print("aw you didn't pick red :(")
 end
 for i = 1, 10 do
+task.wait()
 owner.Character.Humanoid.Health += 2.5
 end
 local oldzoom = owner.CameraMaxZoomDistance
