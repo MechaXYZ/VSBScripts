@@ -78,6 +78,18 @@ mesh.MeshId = 'rbxassetid://8974238936'
 mesh.TextureId = 'rbxassetid://' ..teamtextureid
 mesh.Scale = Vector3.new(.1,.1,.1)
 mesh.Offset = Vector3.new(0, 0, .25)
+local healpart = Instance.new("SpawnLocation", owner.Character)
+healpart.Name = "MedicHealPart"
+healpart.CanCollide = false
+healpart.Size = Vector3.new(25.643, 50, 16.977)/10
+healpart.CanQuery = false
+healpart.Enabled = false
+healpart.Transparency = 1
+healpart.CanTouch = false
+local w = Instance.new("Weld", healpart)
+w.Part0 = healpart
+w.Part1 = tors
+w.C1 = CFrame.new(0, 1, 0)
 else
 owner.Character.HumanoidRootPart.Transparency = 0
 local mesh = Instance.new("SpecialMesh", owner.Character.HumanoidRootPart)
@@ -85,6 +97,18 @@ mesh.MeshId = 'rbxassetid://8974238936'
 mesh.TextureId = 'rbxassetid://' ..teamtextureid
 mesh.Scale = Vector3.new(.1,.1,.1)
 mesh.Offset = Vector3.new(0, 2.5, .5)
+local healpart = Instance.new("SpawnLocation", owner.Character)
+healpart.Name = "MedicHealPart"
+healpart.CanCollide = false
+healpart.Size = Vector3.new(25.643, 50, 16.977)/10
+healpart.CanQuery = false
+healpart.Enabled = false
+healpart.Transparency = 1
+healpart.CanTouch = false
+local w = Instance.new("Weld", healpart)
+w.Part0 = healpart
+w.Part1 = owner.Character.HumanoidRootPart
+w.C1 = CFrame.new(0, 1, 0)
 end
 local ll, rl
 if owner.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
