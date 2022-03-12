@@ -732,7 +732,7 @@ w3.C1 *= CFrame.Angles(0,-sw.x, sw.y)
 w3.C1 = w3.C1:Lerp(w.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
 elseif mode == "d" then
 owner.CameraMaxZoomDistance = oldzoom
-script:Destroy()
+script.Disabled = true
 elseif mode == "n" then
 if qcd then return end
 qcd = true
