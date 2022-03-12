@@ -597,7 +597,6 @@ elseif owner.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 neck.C0 = neckc0 * CFrame.Angles(theta, 0, 0)
 end
 end
-local swingcfs = {CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), 0, 0), hitcf = CFrame.new(-.5, -3, -1) * CFrame.Angles(math.rad(-90), math.rad(125), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), 0, 0)}
 local qcd = false
 local re = Instance.new("RemoteEvent", val)
 re.OnServerEvent:Connect(function(plr, mode, c1, delta, dt, cam)
