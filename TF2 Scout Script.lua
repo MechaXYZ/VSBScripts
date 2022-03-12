@@ -367,7 +367,7 @@ local msh = Instance.new("SpecialMesh", hands)
 msh.MeshId = "rbxassetid://8963876775"
 msh.TextureId = "rbxassetid://8963876905"
 msh.Scale = Vector3.new(1, 1, 1)/mult
-local swingcfs = {CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), math.rad(125), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), 0, 0)}
+local swingcfs = {CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), math.rad(170), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), 0, 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), math.rad(180), 0), CFrame.new(-.5, -2, -3) * CFrame.Angles(math.rad(-90), math.rad(-180), 0)}
 local pistol = Instance.new("SpawnLocation", script)
 pistol.Enabled = false
 pistol.Name = "Pistol"
@@ -500,12 +500,13 @@ naeeym2:Destroy()
 end)
 chat()
 end
+local alph = .1
 coroutine.wrap(function()
 while task.wait() do
 if pistol.Transparency == 0 then
 hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), .65)
 else
-hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), .5)
+hitcf = hitcf:Lerp(CFrame.Angles(0, 0, 0), alph)
 end
 end
 end)()
@@ -649,6 +650,11 @@ local q = math.random(1, #swingcfs)
 allpurpose.SoundId = 'rbxassetid://' ..swings[math.random(1, #swings)]
 allpurpose.Parent = bat
 allpurpose.Parent = nil
+if q == 3 or q == 4 then
+alph = .1
+else
+alph = .5
+end
 hitcf = swingcfs[q]
 swinging = true
 task.wait(.25)
