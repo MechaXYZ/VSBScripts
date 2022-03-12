@@ -315,16 +315,17 @@ return false
 end
 end
 function OnRayHit(cast, raycastResult, segmentVelocity, cosmeticBulletObject)
-cosmeticBulletObject.Anchored = true
 local hitPart = raycastResult.Instance
 local hitPoint = raycastResult.Position
 local normal = raycastResult.Normal
 if hitPart ~= nil and hitPart.Parent ~= nil and HasHumanoid(hitPart) then 
 if not HasHumanoid(hitPart):GetAttribute(team) then
+cosmeticBulletObject.Anchored = true
 HasHumanoid(hitPart).Health -= math.random(12, 23)
 local w = Instance.new("WeldConstraint", hitPart)
 w.Part0 = cosmeticBulletObject
 w.Part1 = hitPart
+cosmeticBulletObject.Anchored = false
 end
 end
 end
