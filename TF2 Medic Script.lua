@@ -859,6 +859,7 @@ swinging = true
 task.wait(.35)
 swinging = false
 elseif mode == "i'm going to saw through your bones" then
+w3.C1 = CFrame.new(-2, -1, 0)
 sg.Transparency = 1
 glass.Transparency = 1
 arms2.Transparency = 1
