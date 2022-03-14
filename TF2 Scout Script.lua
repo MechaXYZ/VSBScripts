@@ -1,5 +1,5 @@
-local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369, 3500942471, 6225475452, 138185305}
-local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?", "*long laugh*", "Not so tough now are ya? Are ya?! I'm gonna headbutt cha', I'm gonna headbutt cha', I'm gonna headbutt cha'! Yeah, come get some!", "Grass grows, birds fly, sun shines, and brother, I hurt people."}
+local quoteids = {5801619105, 7143729883, 1543462253, 1543509902, 6699227382, 1018518369, 3500942471, 6225475452, 138185305, 6866520692}
+local quotes = {"Nice hustle tons of fun! Next, time eat a salad!", "Sweet.", "Amplus Tripudio!", "Paidum Celeris!", "Pop quiz: How long's it take to beat a moron to death? BAMP! Sorry, time's up, ya dead!", "Who wants some-a this?", "*long laugh*", "Not so tough now are ya? Are ya?! I'm gonna headbutt cha', I'm gonna headbutt cha', I'm gonna headbutt cha'! Yeah, come get some!", "Grass grows, birds fly, sun shines, and brother, I hurt people.", "Think fast chucklenuts!"}
 local teamtextureid = 1
 local team = "ROBLOX"
 print([[
