@@ -1,4 +1,6 @@
 local quoteids = {5589196168, 6544927564, 6083193447, 993905304, 5659911488, 998679945, 993908890, 993907407}
+local medicids = {435756181, 435756212, 435756249}
+local medics = {"Doktor!", "Medic!", "MEEEDIIIC!"}
 local quotes = {"Oops! That was not medicine.", "Medic gaming!", "Hahahahahahaha!", "Gesundheit!", "Hahahahaha! Hohohohaha!", "Horrido!", "Raus, raus!", "Forward!"}
 local teamtextureid = 1
 local teamhandtexture = 1
@@ -44,9 +46,10 @@ con:Disconnect()
 owner.Character.Humanoid.MaxHealth = 150
 print([[
 ok here are the controls
-1, 2, and 3 - switch between scary syringe medicine gun, medigun (no übercharge because lazy) , and bonesaw
+1, 2, and 3 - switch between scary syringe medicine gun, medigun (no übercharge because lazy), and bonesaw
 click - use your weapon
 n - taunt
+z - call for medic
 g - stop the script (will go back to third person so use it before you g/no.)
 ]])
 if team == "BLU" then
@@ -757,6 +760,16 @@ quote:Play()
 quote.Ended:Wait()
 task.wait(.5)
 qcd = false
+elseif mode == "i need a medic here!" then
+if qcd then return end
+qcd = true
+local q = math.random(1, #medicids)
+quote.SoundId = 'rbxassetid://' ..medicids[q]
+chatfunc(medics[q])
+quote:Play()
+quote.Ended:Wait()
+task.wait(.5)
+qcd = false
 elseif mode == "healbeam" then
 if t:GetAttribute(team) then
 beamend.CFrame = CFrame.new(0, .75, 0)
@@ -944,6 +957,8 @@ re:FireServer("d", aimoffset, delta, deltat, c.CFrame)
 script.Disabled = true
 elseif k == 'n' then
 re:FireServer("n", aimoffset, delta, deltat, c.CFrame)
+elseif k == 'z' then
+re:FireServer("i need a medic here!", aimoffset, delta, deltat, c.CFrame)	
 elseif k == '1' and (weapon == "Medi Gun" or weapon == "Bonesaw") then
 weapon = "Syringe Gun"
 cool = .105
