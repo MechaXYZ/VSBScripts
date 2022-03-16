@@ -2382,6 +2382,8 @@ local Root = function(API,Parsed)
 	return startInstance
 end
 local Compressor = Comp
+local Encoders = {["Instance"] = instanceFunc, ["Instances"] = Instances, ["Value"] = Value}
+local Decoders = {["Instance"] = instanceCreator, ["Root"] = Root, ["Value"] = Value2}
 ---
 local RBLXSerialize = {
 	_IDENTITY = "RBLXSerialize",
@@ -2450,7 +2452,7 @@ RBLXSerialize.Encode = function(class,compressed : bool)
 		end
 	end 
 	-- find the method!
-	local enocdeMethod = instanceFunc
+	local enocdeMethod = Encoders[typeOfClass]
 	if not enocdeMethod then 
 		enocdeMethod =  Value
 	end 
@@ -2497,7 +2499,7 @@ RBLXSerialize.Decode = function(encoded,compressed : bool )
 	
 	-- Gather information for decoder!
 	local typeOfClass = parsed.TypeOf
-	local decodeMethod = instanceCreator
+	local decodeMethod = Decoders[typeOfClass]
 	if not decodeMethod then 
 		decodeMethod =  Value
 	end 
