@@ -2072,7 +2072,7 @@ end
 
 local allowed = Allowed
 local defaultCheck = DC
-local instanceFunc function(API,instance,instances) 
+local instanceFunc = function(API,instance,instances) 
 	local canCreate = defaultCheck.isCreatable(instance.ClassName)
 	if not canCreate then 
 		API.throw("Uncreatable isntance detetected  : ",instance.ClassName)
