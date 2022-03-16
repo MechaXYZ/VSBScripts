@@ -2458,7 +2458,7 @@ RBLXSerialize.Encode = function(class,compressed : bool)
 	end 
 	
 	-- actuall Encode!
-	local result = instanceFunc(API,class)
+	local result = enocdeMethod(API,class)
 	if not result then 
 		throw("Failure to encode "..typeOfClass)
 		return true 
