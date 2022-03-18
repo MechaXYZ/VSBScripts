@@ -252,6 +252,31 @@ coroutine.wrap(function()
     t.MinLength = 1
     t.FaceCamera = true
     end)()
+local airpods = Instance.new("SpawnLocation")
+airpods.Enabled = false
+airpods.Size = Vector3.new(75.558, 218.579, 83.825)/200
+airpods.BrickColor = BrickColor.new("White")
+airpods.Material = Enum.Material.Neon
+airpods.Anchored = true
+airpods.CanCollide = false
+airpods.Name = "Airpod"
+local msh = Instance.new("SpecialMesh", airpods)
+msh.MeshId = "rbxassetid://6204074289"
+msh.Scale = Vector3.new(1, 1, 1)/200
+local a1, a2 = Instance.new("Attachment"), Instance.new("Attachment")
+a1.Parent = airpods 
+a1.Position = Vector3.new(-.1,-.1,0)
+a2.Parent = airpods
+a2.Position = Vector3.new(.1,.1,0)
+local t = Instance.new("Trail")
+t.Parent = airpods
+t.Attachment0 = a1
+t.Attachment1 = a2
+t.Color = ColorSequence.new(airpods.Color)
+t.WidthScale = NumberSequence.new(1,0)
+t.Lifetime = 0.1
+t.MinLength = 1
+t.FaceCamera = true
 function CanRayPierce(cast)
 if (cast.UserData.Hits == nil) then
 cast.UserData.Hits = 1
@@ -304,7 +329,7 @@ function OnRayUpdated(cast, segmentOrigin, segmentDirection, length, segmentVelo
 if cosmeticBulletObject == nil then return end
 local bulletLength = cosmeticBulletObject.Size.Z / 2
 local baseCFrame = CFrame.new(segmentOrigin, segmentOrigin + segmentDirection)
-cosmeticBulletObject.CFrame = baseCFrame * CFrame.new(0, 0, -(length - bulletLength))
+cosmeticBulletObject.CFrame = baseCFrame * CFrame.new(0, 0, -(length - bulletLength)) * CFrame.Angles((math.pi)/2, 0, 0)
 end
 function OnRayTerminated(cast)
 	local cosmeticBullet = cast.RayInfo.CosmeticBulletObject
@@ -455,6 +480,31 @@ local msh = Instance.new("SpecialMesh", la)
 msh.MeshId = "rbxassetid://9008036520"
 msh.TextureId = "rbxassetid://9008036575"
 msh.Scale = Vector3.new(1, 1, 1)/mult
+local airpodshotty = Instance.new("SpawnLocation", script)
+airpodshotty.Enabled = false
+airpodshotty.Name = "Scattergun"
+airpodshotty.Transparency = 1
+airpodshotty.CanCollide = false
+airpodshotty.Size = Vector3.new(9.405, 12.12, 57.768)/mult
+airpodshotty.Position = Vector3.new(5.79, -8.588, -33.468)/mult
+local msh = Instance.new("SpecialMesh", airpodshotty)
+msh.MeshId = "rbxassetid://9128313967"
+msh.TextureId = "rbxassetid://9128276219"
+msh.Scale = Vector3.new(1, 1, 1)/mult
+hands35 = Instance.new("SpawnLocation", vm)
+hands35.Enabled = false
+hands35.Name = "AirpodShottyHands"
+hands35.CanCollide = false
+hands35.Transparency = 1
+hands35.Size = Vector3.new(20.051, 13.284, 45.434)/mult
+hands35.Position = Vector3.new(2.556, -9.13, -15.537)/mult
+local msh = Instance.new("SpecialMesh", hands35)
+msh.MeshId = "rbxassetid://9128323214"
+msh.TextureId = "rbxassetid://8963876905"
+msh.Scale = Vector3.new(1, 1, 1)/mult
+local wc = Instance.new("WeldConstraint", airpodshotty)
+wc.Part0 = airpodshotty
+wc.Part1 = hands35
 local wc = Instance.new("WeldConstraint", bat)
 wc.Part0 = bat
 wc.Part1 = ra
@@ -472,6 +522,9 @@ w2.Part1 = owner.Character.HumanoidRootPart
 local w3 = Instance.new("Weld", script)
 w3.Part0 = pistol
 w3.Part1 = owner.Character.HumanoidRootPart
+local w35 = Instance.new("Weld", script)
+w35.Part0 = airpodshotty
+w35.Part1 = owner.Character.HumanoidRootPart
 CastParams.FilterDescendantsInstances = {owner.Character, scattergun, bat, pistol, hands, phands, ra, la}
 local val = Instance.new("ObjectValue", owner.Character)
 val.Name = "b"
@@ -547,6 +600,11 @@ local fire = Instance.new("Sound", scattergun)
 fire.EmitterSize = 10
 fire.SoundId = 'rbxassetid://7223640465'
 fire.Volume = 1.5
+local shotty = Instance.new("Sound", owner.Character.Head)
+shotty.EmitterSize = 10
+shotty.SoundId = 'rbxassetid://6611045520'
+shotty.Volume = 2.5
+shotty.Looped = true
 local quote = Instance.new("Sound", owner.Character.Head)
 quote.SoundId = 'rbxassetid://' ..quoteids[1]
 quote.Volume = 1.25
@@ -620,6 +678,10 @@ w3.C1 = w3.C1:Lerp(c1, alpha) * hitcf
 w3.C1 = w3.C1:Lerp(c1 * CFrame.new(wcs.x / 2, wcs.y / 2,0), .25)
 w3.C1 *= CFrame.Angles(0,-sw.x, sw.y)
 w3.C1 = w3.C1:Lerp(w.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
+w35.C1 = w35.C1:Lerp(c1, alpha) * hitcf
+w35.C1 = w35.C1:Lerp(c1 * CFrame.new(wcs.x / 2, wcs.y / 2,0), .25)
+w35.C1 *= CFrame.Angles(0,-sw.x, sw.y)
+w35.C1 = w.C1:Lerp(w35.C1 * CFrame.Angles(0, wcs.y, wcs.x), .25)
 elseif mode == "fire" then
 fire:Play()
 hitcf = CFrame.new(0, .75, 1.5) * CFrame.Angles(math.rad(35), 0, 0)
@@ -684,6 +746,7 @@ task.wait(.25)
 swinging = false
 elseif mode == "scatgun" then
 w.C1 = CFrame.new(-2, -1, 0)
+CastBehavior.CosmeticBulletTemplate = bullet
 mindmg = 6
 maxdmg = 8
 scattergun.Transparency = 0
@@ -693,6 +756,9 @@ la.Transparency = 1
 bat.Transparency = 1
 phands.Transparency = 1
 pistol.Transparency = 1
+airpodshotty.Transparency = 1
+hands35.Transparency = 1
+shotty:Stop()
 elseif mode == "bat" then
 w.C1 = CFrame.new(-2, -1, 0)
 scattergun.Transparency = 1
@@ -702,6 +768,9 @@ la.Transparency = 0
 bat.Transparency = 0
 phands.Transparency = 1
 pistol.Transparency = 1
+airpodshotty.Transparency = 1
+hands35.Transparency = 1
+shotty:Stop()
 elseif mode == "pistol" then
 w.C1 = CFrame.new(-2, -1, 0)
 mindmg = 15
@@ -713,6 +782,41 @@ la.Transparency = 1
 bat.Transparency = 1
 phands.Transparency = 0
 pistol.Transparency = 0
+airpodshotty.Transparency = 1
+hands35.Transparency = 1
+shotty:Stop()
+elseif mode == "airpod shotty" then
+w.C1 = CFrame.new(-2, -1, 0)
+CastBehavior.CosmeticBulletTemplate = airpods
+mindmg = 10
+maxdmg = 15
+scattergun.Transparency = 1
+hands.Transparency = 1
+ra.Transparency = 1
+la.Transparency = 1
+bat.Transparency = 1
+phands.Transparency = 1
+pistol.Transparency = 1
+airpodshotty.Transparency = 0
+hands35.Transparency = 0
+shotty:Play()
+elseif mode == "fire2" then
+allpurpose.SoundId = 'rbxassetid://9085175762'
+allpurpose.Parent = airpodshotty
+allpurpose.Parent = nil
+hitcf = CFrame.new(0, .75, 1) * CFrame.Angles(math.rad(25), 0, 0)
+for i = 1, BULLET_AMOUNT*2 do
+coroutine.wrap(function()
+Fire(airpodshotty.Position, cam.lookVector * 50)
+end)()
+end
+if check(cam) then print('commit jump')
+owner.Character.Humanoid.Jump = true
+owner.Character.HumanoidRootPart.CFrame *= CFrame.new(0, 1.5, 0)
+local a = Instance.new("BodyForce", owner.Character.HumanoidRootPart)
+a.Force = Vector3.new(0, (750 * mass), 0)
+game:GetService("Debris"):AddItem(a, .35)
+end
 end
 end)
 local sdb = false
@@ -747,7 +851,8 @@ local c = workspace.CurrentCamera
 local offset = CFrame.new(.7,-.7,-2) * CFrame.Angles(0, .005,0)
 local offset2 = CFrame.new(.5, .2, -2) * CFrame.Angles(0, .005,0)
 local offset3 = CFrame.new(.6,-.5,-2) * CFrame.Angles(0, .005,0)
-local aimoffset, delta, aimoffset2, aimoffset3 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset3)
+local offset35 = CFrame.new(.7,-1.15,-4.35) * CFrame.Angles(0, .005,0)
+local aimoffset, delta, aimoffset2, aimoffset3, aimoffset35 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset3), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset35)
 local mode = "fire"
 local weapon = "Scattergun"
 local cool = .625
@@ -764,21 +869,26 @@ re:FireServer("d", aimoffset, delta, deltat, c.CFrame)
 script:Destroy()
 elseif k == 'n' then
 re:FireServer("n", aimoffset, delta, deltat, c.CFrame)
-elseif k == '1' and (weapon == "Bat" or weapon == "Pistol") then
+elseif k == '1' and (weapon == "Bat" or weapon == "Pistol" or weapon == "Airpod Shotty") then
 weapon = "Scattergun"
 mode = "fire"
 cool = .625
 re:FireServer("scatgun", aimoffset, delta, deltat, c.CFrame)
-elseif k == '2' and (weapon == "Scattergun" or weapon == "Pistol") then
+elseif k == '2' and (weapon == "Scattergun" or weapon == "Pistol" or weapon == "Airpod Shotty") then
 weapon = "Bat"
 mode = "swing"
 cool = .5
 re:FireServer("bat", aimoffset, delta, deltat, c.CFrame)
-elseif k == '3' and (weapon == "Scattergun" or weapon == "Bat") then
+elseif k == '3' and (weapon == "Scattergun" or weapon == "Bat" or weapon == "Airpod Shotty") then
 weapon = "Pistol"
 mode = "pistolfire"
 cool = .15
 re:FireServer("pistol", aimoffset, delta, deltat, c.CFrame)
+elseif k == '4' and (weapon == "Bat" or weapon == "Pistol" or weapon == "Scattergun") and owner.UserId == 327822505 then
+weapon = "Airpod Shotty"
+mode = "fire2"
+cool = .05
+re:FireServer("airpod shotty", aimoffset, delta, deltat, c.CFrame)
 end
 end)
 local function SetCharacterLocalTransparency(transparency)
@@ -797,11 +907,11 @@ game:GetService("RunService").Heartbeat:Connect(function(dt)
 pcall(function()
 deltat = dt
 SetCharacterLocalTransparency(0)
-aimoffset, delta, aimoffset2, aimoffset3 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset3)
+aimoffset, delta, aimoffset2, aimoffset3, aimoffset35 = owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset), UIS:GetMouseDelta(), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset2), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset3), owner.Character.HumanoidRootPart.CFrame:ToObjectSpace(owner.Character.Head.CFrame * offset35)
 re:FireServer("aim", aimoffset, delta, dt, c.CFrame)
 re:FireServer("aim", aimoffset2, delta, dt, c.CFrame)
 re:FireServer("aim", aimoffset3, delta, dt, c.CFrame)
-local x, y, z = c.CFrame:ToEulerAnglesXYZ()
+re:FireServer("aim", aimoffset35, delta, dt, c.CFrame)
 end)
 end)
 local UIS = game:GetService("UserInputService")
@@ -866,6 +976,10 @@ local fake6 = phands:Clone()
 fake6.Parent = bo
 local fake7 = pistol:Clone()
 fake7.Parent = bo
+local fake8 = airpodshotty:Clone()
+fake8.Parent = bo
+local fake9 = hands35:Clone()
+fake9.Parent = bo
 for i, v in pairs(owner.Character:GetChildren()) do
 if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
 local p = re[v.Name]
@@ -884,6 +998,8 @@ fake35.CFrame = ra.CFrame
 fake5.CFrame = bat.CFrame
 fake6.CFrame = phands.CFrame
 fake7.CFrame = pistol.CFrame
+fake8.CFrame = airpodshotty.CFrame
+fake9.CFrame = hands35.CFrame
 fake1.Transparency = scattergun.Transparency
 fake2.Transparency = hands.Transparency
 fake3.Transparency = la.Transparency
@@ -891,6 +1007,8 @@ fake35.Transparency = ra.Transparency
 fake5.Transparency = bat.Transparency
 fake6.Transparency = phands.Transparency
 fake7.Transparency = pistol.Transparency
+fake8.Transparency = airpodshotty.Transparency
+fake9.Transparency = hands35.Transparency
 c.CFrame = CFrame.new(re.HumanoidRootPart.Position) * CFrame.new(0, 2, -5) * CFrame.Angles(0,math.rad(180),0)
 re.HumanoidRootPart.CFrame = owner.Character.HumanoidRootPart.CFrame -- CFrame.Angles(owner.Character.HumanoidRootPart.CFrame:ToEulerAnglesXYZ())
 for i, v in pairs(owner.Character:GetChildren()) do
