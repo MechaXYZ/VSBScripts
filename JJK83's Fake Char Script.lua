@@ -1146,7 +1146,7 @@ function Ready()
 	CheckBeam.Attachment1 = CheckA
 	CheckBeam.Transparency = NumberSequence.new(1)
 	CheckBeam.FaceCamera = true
-	local TL = Instance.new("TextLabel",BBG)
+	local TL = Instance.new("TextBox",BBG)
 	TL.AnchorPoint = Vector2.new(0.5,0.5)
 	TL.Position = UDim2.new(0.5,0,0.5,0)
 	TL.Size = UDim2.new(1.25,0,1.25,0)
