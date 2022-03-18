@@ -243,7 +243,7 @@ function Ready()
 	end
 	local function Create()
 		if Cooldown == true then return end
-		Model = Instance.new("Model",game.Workspace)
+		Model = Instance.new("Model",script)
 		Model.Name = "SwordNPC "..Color.Name
 		H = Instance.new("Part",Model)
 		H.Name = "Head"
