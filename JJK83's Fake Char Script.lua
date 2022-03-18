@@ -34,7 +34,23 @@ function Instancea.new(name, parent)
     end
 end 
 local Instance = Instancea
+script.Name = "Information"
+task.wait(.25)
+if owner == nil then script:Destroy() return end
+repeat wait() until owner.Character
+local Humanoid = owner.Character:FindFirstChildWhichIsA("Humanoid")
+Humanoid:SetStateEnabled("Dead",false)
+local D = owner.Character:GetDescendants()
+for i = 1,#D do
+	if D[i]:IsA("BasePart") then
+		D[i]:Destroy()
+	end
+end
+local function Chatted(text,recipient)
+	if recipient == nil then
 script.Name = "FakeChar"
+		ScreenGui:Destroy()
+		ChatConnection:Disconnect()
 task.wait(.25)
 if owner == nil then script:Destroy() return end
 local HC = Instance.new("Part")
@@ -7302,7 +7318,7 @@ while true do
 		end
 	end)
 	wait(1.2)
-	if owner and owner.Parent and L and L.Parent then
+	if owner and owner.Parent then
 		if ((RegHits%80 == 0 and RegHits > 0) or DeFunnycat) and Humanoid.Jump then
 			if not DeFunnycat then
 				local ScreenGui = Instance.new("ScreenGui",owner.PlayerGui)
@@ -7360,3 +7376,271 @@ No need to wait for 80 more hits]]
 	end
 end
 -- script:Destroy()
+	end
+end
+ChatConnection = owner.Chatted:Connect(Chatted)
+ScreenGui = Instance.new("ScreenGui",owner.PlayerGui)
+local B1 = Instance.new("TextButton",ScreenGui)
+B1.Size = UDim2.new(0.075,0,0.1,0)
+B1.Position = UDim2.new(0,0,0.3,0)
+B1.Font = Enum.Font.Code
+B1.TextScaled = true
+B1.TextStrokeTransparency = 0
+B1.TextColor3 = Color3.new(0,0,0)
+B1.TextStrokeColor3 = Color3.new(1,1,1)
+B1.Text = "[Normal] Toggles charged shots. Wait approximately 1.5 seconds to charge a shot."
+B1.MouseButton1Click:Connect(function()
+	Chatted("Normal")
+end)
+local B2 = Instance.new("TextButton",ScreenGui)
+B2.Size = UDim2.new(0.075,0,0.1,0)
+B2.Position = UDim2.new(0,0,0.4,0)
+B2.Font = Enum.Font.Code
+B2.TextScaled = true
+B2.TextStrokeTransparency = 0
+B2.TextColor3 = Color3.new(0,0,0)
+B2.TextStrokeColor3 = Color3.new(1,1,1)
+B2.Text = "[AAAAH] One of the first 'emotes,' based off of the long fall screaming."
+B2.MouseButton1Click:Connect(function()
+	Chatted("/e AAAAH")
+end)
+local B3 = Instance.new("TextButton",ScreenGui)
+B3.Size = UDim2.new(0.075,0,0.1,0)
+B3.Position = UDim2.new(1,0,0.3,0)
+B3.Font = Enum.Font.Code
+B3.TextScaled = true
+B3.TextStrokeTransparency = 0
+B3.TextColor3 = Color3.new(0,0,0)
+B3.TextStrokeColor3 = Color3.new(1,1,1)
+B3.AnchorPoint = Vector2.new(1,0)
+B3.Text = "[Up] Toggles aiming upwards."
+B3.MouseButton1Click:Connect(function()
+	Chatted("Up")
+end)
+local B4 = Instance.new("TextButton",ScreenGui)
+B4.Size = UDim2.new(0.075,0,0.1,0)
+B4.Position = UDim2.new(1,0,0.4,0)
+B4.Font = Enum.Font.Code
+B4.TextScaled = true
+B4.TextStrokeTransparency = 0
+B4.TextColor3 = Color3.new(0,0,0)
+B4.TextStrokeColor3 = Color3.new(1,1,1)
+B4.AnchorPoint = Vector2.new(1,0)
+B4.Text = "[Down] Toggles aiming downwards. This also enables recoil jumping by shooting a charged shot downwards in the air without stabbing anything."
+B4.MouseButton1Click:Connect(function()
+	Chatted("Down")
+end)
+local B5 = Instance.new("TextButton",ScreenGui)
+B5.Size = UDim2.new(0.075,0,0.1,0)
+B5.Position = UDim2.new(1,0,0.5,0)
+B5.Font = Enum.Font.Code
+B5.TextScaled = true
+B5.TextStrokeTransparency = 0
+B5.TextColor3 = Color3.new(0,0,0)
+B5.TextStrokeColor3 = Color3.new(1,1,1)
+B5.AnchorPoint = Vector2.new(1,0)
+B5.Text = "[Disable] Toggles shooting. You may run and jump at the same time."
+B5.MouseButton1Click:Connect(function()
+	Chatted("Disable")
+end)
+local B6 = Instance.new("TextButton",ScreenGui)
+B6.Size = UDim2.new(0.075,0,0.1,0)
+B6.Position = UDim2.new(0,0,0.5,0)
+B6.Font = Enum.Font.Code
+B6.TextScaled = true
+B6.TextStrokeTransparency = 0
+B6.TextColor3 = Color3.new(0,0,0)
+B6.TextStrokeColor3 = Color3.new(1,1,1)
+B6.Text = "[Off] Toggles lights and switches between explosive shots and stun shots when shooting a charged shot."
+B6.MouseButton1Click:Connect(function()
+	Chatted("Off")
+end)
+local B7 = Instance.new("TextButton",ScreenGui)
+B7.Size = UDim2.new(0.075,0,0.1,0)
+B7.Position = UDim2.new(0,0,0.6,0)
+B7.Font = Enum.Font.Code
+B7.TextScaled = true
+B7.TextStrokeTransparency = 0
+B7.TextColor3 = Color3.new(0,0,0)
+B7.TextStrokeColor3 = Color3.new(1,1,1)
+B7.Text = "[Damage] An alternative to resetting your character."
+B7.MouseButton1Click:Connect(function()
+	Chatted("Damage")
+end)
+local B8 = Instance.new("TextButton",ScreenGui)
+B8.Size = UDim2.new(0.075,0,0.1,0)
+B8.Position = UDim2.new(1,0,0.6,0)
+B8.Font = Enum.Font.Code
+B8.TextScaled = true
+B8.TextStrokeTransparency = 0
+B8.TextColor3 = Color3.new(0,0,0)
+B8.TextStrokeColor3 = Color3.new(1,1,1)
+B8.AnchorPoint = Vector2.new(1,0)
+B8.Text = "[Heal] Activates the heal field, fully healing surrounding characters if not downed. Has a cooldown of approximately 25 seconds."
+B8.MouseButton1Click:Connect(function()
+	Chatted("Heal")
+end)
+local B9 = Instance.new("TextButton",ScreenGui)
+B9.Size = UDim2.new(0.075,0,0.1,0)
+B9.Position = UDim2.new(1,0,0.2,0)
+B9.Font = Enum.Font.Code
+B9.TextScaled = true
+B9.TextStrokeTransparency = 0
+B9.TextColor3 = Color3.new(0,0,0)
+B9.TextStrokeColor3 = Color3.new(1,1,1)
+B9.AnchorPoint = Vector2.new(1,0)
+B9.Text = "[Hide] Toggles your name visibility."
+B9.MouseButton1Click:Connect(function()
+	Chatted("Hide")
+end)
+local B10 = Instance.new("TextButton",ScreenGui)
+B10.Size = UDim2.new(0.075,0,0.1,0)
+B10.Position = UDim2.new(0.925,0,0.2,0)
+B10.Font = Enum.Font.Code
+B10.TextScaled = true
+B10.TextStrokeTransparency = 0
+B10.TextColor3 = Color3.new(0,0,0)
+B10.TextStrokeColor3 = Color3.new(1,1,1)
+B10.AnchorPoint = Vector2.new(1,0)
+B10.Text = "[Aim] A complicated aiming system. Position the camera behind your character, use the movement directions to move the cursor, and the jump button to shoot."
+B10.MouseButton1Click:Connect(function()
+	Chatted("Aim")
+end)
+local B11 = Instance.new("TextButton",ScreenGui)
+B11.Size = UDim2.new(0.075,0,0.1,0)
+B11.Position = UDim2.new(0.075,0,0.3,0)
+B11.Font = Enum.Font.Code
+B11.TextScaled = true
+B11.TextStrokeTransparency = 0
+B11.TextColor3 = Color3.new(0,0,0)
+B11.TextStrokeColor3 = Color3.new(1,1,1)
+B11.Text = "[Move] Toggles the 8-way movement restriction."
+B11.MouseButton1Click:Connect(function()
+	Chatted("Move")
+end)
+local B12 = Instance.new("TextButton",ScreenGui)
+B12.Size = UDim2.new(0.075,0,0.1,0)
+B12.Position = UDim2.new(0.925,0,0.3,0)
+B12.Font = Enum.Font.Code
+B12.TextScaled = true
+B12.TextStrokeTransparency = 0
+B12.TextColor3 = Color3.new(0,0,0)
+B12.TextStrokeColor3 = Color3.new(1,1,1)
+B12.AnchorPoint = Vector2.new(1,0)
+B12.Text = "[Grab] To stab something, shoot while the blaster is inside of it. Grab a character by stabbing them while Grab is active."
+B12.MouseButton1Click:Connect(function()
+	Chatted("Grab")
+end)
+local B13 = Instance.new("TextButton",ScreenGui)
+B13.Size = UDim2.new(0.075,0,0.1,0)
+B13.Position = UDim2.new(0.075,0,0.4,0)
+B13.Font = Enum.Font.Code
+B13.TextScaled = true
+B13.TextStrokeTransparency = 0
+B13.TextColor3 = Color3.new(0,0,0)
+B13.TextStrokeColor3 = Color3.new(1,1,1)
+B13.Text = "[Dance] Disables Down, Up, Aim, and Grab and skips the wait for the secondary idle animation."
+B13.MouseButton1Click:Connect(function()
+	Chatted("Dance")
+end)
+local B14 = Instance.new("TextButton",ScreenGui)
+B14.Size = UDim2.new(0.075,0,0.1,0)
+B14.Position = UDim2.new(0.075,0,0.5,0)
+B14.Font = Enum.Font.Code
+B14.TextScaled = true
+B14.TextStrokeTransparency = 0
+B14.TextColor3 = Color3.new(0,0,0)
+B14.TextStrokeColor3 = Color3.new(1,1,1)
+B14.Text = "[Laugh] Used for taunting."
+B14.MouseButton1Click:Connect(function()
+	Chatted("Laugh")
+end)
+B1.NextSelectionDown = B2
+B2.NextSelectionDown = B6
+B3.NextSelectionDown = B4
+B4.NextSelectionDown = B5
+B5.NextSelectionDown = B8
+B6.NextSelectionDown = B7
+B7.NextSelectionDown = B1
+B8.NextSelectionDown = B9
+B9.NextSelectionDown = B3
+B10.NextSelectionDown = B12
+B11.NextSelectionDown = B13
+B12.NextSelectionDown = B10
+B13.NextSelectionDown = B14
+B14.NextSelectionDown = B11
+B2.NextSelectionUp = B1
+B6.NextSelectionUp = B2
+B4.NextSelectionUp = B3
+B5.NextSelectionUp = B4
+B8.NextSelectionUp = B5
+B7.NextSelectionUp = B6
+B1.NextSelectionUp = B7
+B9.NextSelectionUp = B8
+B3.NextSelectionUp = B9
+B10.NextSelectionUp = B12
+B11.NextSelectionUp = B14
+B12.NextSelectionUp = B10
+B13.NextSelectionUp = B11
+B14.NextSelectionUp = B13
+B1.NextSelectionRight = B11
+B2.NextSelectionRight = B13
+B3.NextSelectionRight = B1
+B4.NextSelectionRight = B2
+B5.NextSelectionRight = B6
+B6.NextSelectionRight = B14
+B7.NextSelectionRight = B8
+B8.NextSelectionRight = B7
+B9.NextSelectionRight = B10
+B10.NextSelectionRight = B9
+B11.NextSelectionRight = B12
+B12.NextSelectionRight = B3
+B13.NextSelectionRight = B4
+B14.NextSelectionRight = B5
+B1.NextSelectionLeft = B3
+B2.NextSelectionLeft = B4
+B3.NextSelectionLeft = B12
+B4.NextSelectionLeft = B13
+B5.NextSelectionLeft = B14
+B6.NextSelectionLeft = B5
+B7.NextSelectionLeft = B8
+B8.NextSelectionLeft = B7
+B9.NextSelectionLeft = B10
+B10.NextSelectionLeft = B9
+B11.NextSelectionLeft = B1
+B12.NextSelectionLeft = B11
+B13.NextSelectionLeft = B2
+B14.NextSelectionLeft = B6
+B1.BackgroundColor3 = Color3.new(1,0,1)
+B2.BackgroundColor3 = BrickColor.new("Really black").Color
+B3.BackgroundColor3 = Color3.new(1,0,0)
+B4.BackgroundColor3 = Color3.new(1,0,0)
+B5.BackgroundColor3 = Color3.new(1,0,0)
+B6.BackgroundColor3 = Color3.new(1,0,0)
+B7.BackgroundColor3 = Color3.new(0,0,1)
+B8.BackgroundColor3 = Color3.new(1,0,1)
+B9.BackgroundColor3 = Color3.new(1,0,0)
+B10.BackgroundColor3 = Color3.new(1,0,0)
+B11.BackgroundColor3 = Color3.new(1,0,0)
+B12.BackgroundColor3 = Color3.new(1,0,0)
+B13.BackgroundColor3 = BrickColor.new("Really black").Color
+B14.BackgroundColor3 = BrickColor.new("Medium stone grey").Color
+local TL = Instance.new("TextLabel",ScreenGui)
+TL.AnchorPoint = Vector2.new(0.5,0.5)
+TL.Size = UDim2.new(0.7,0,0.3,0)
+TL.Position = UDim2.new(0.5,0,0.7,0)
+TL.Font = Enum.Font.Code
+TL.BackgroundTransparency = 1
+TL.TextStrokeTransparency = 0
+TL.TextScaled = true
+TL.TextColor3 = Color3.new(0.6,0.6,0)
+TL.TextStrokeColor3 = Color3.new(1,1,0)
+TL.Text = [[Blasting Grounds by JJK83
+Hold a movement direction and the jump button to shoot
+Knocking down a character is worth 4 score, landing the last hit on a character is worth 2 score
+Getting knocked down or eliminated will subtract half of the values above or subtract full values if the last hit was your own
+Shooting a Target Block is worth 1 score
+Launching a Hazardous Block into a Hazardous Block Launcher is worth 8 score whereas landing the 100th hit is 160 score AND will send a powerful Bomb Block
+When you get knocked down, hold the jump button to get back up and reset the last hit value of your character
+Actions on side may be chatted
+CHAT ANYTHING OR PRESS AN ACTION TO START]]
