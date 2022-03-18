@@ -53,7 +53,6 @@ if CamFocus == nil then
 end
 CamFocus.Value = nil
 NLS([[
-local S = script.ServerScript.Value
 local CamFocus = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("CamFocus")
 while true do
 	task.wait(.5)
