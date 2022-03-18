@@ -35,6 +35,34 @@ function Instancea.new(name, parent)
 end 
 local Instance = Instancea
 task.wait(.25)
+local SoundA = Instance.new("Sound",game:GetService("VRService"))
+	SoundA.SoundId = "rbxasset://sounds/swordslash.wav"
+	SoundA.Volume = 1
+	SoundA.PlayOnRemove = true
+	local SoundB = Instance.new("Sound",game:GetService("VRService"))
+	SoundB.SoundId = "rbxasset://sounds/swordlunge.wav"
+	SoundB.Volume = 1
+	SoundB.PlayOnRemove = true
+	local SoundC = Instance.new("Sound",game:GetService("VRService"))
+	SoundC.SoundId = "rbxasset://sounds/flashbulb.wav"
+	SoundC.Volume = 1.6
+	SoundC.PlayOnRemove = true
+	local SoundD = Instance.new("Sound",game:GetService("VRService"))
+	SoundD.SoundId = "rbxasset://sounds/uuhhh.mp3"
+	SoundD.Volume = 1.4
+	SoundD.PlayOnRemove = true
+	local SoundE = Instance.new("Sound",game:GetService("VRService"))
+	SoundE.SoundId = "rbxasset://sounds/kerplunk.wav"
+	SoundE.Volume = 1.8
+	SoundE.PlayOnRemove = true
+	local SoundF = Instance.new("Sound",game:GetService("VRService"))
+	SoundF.SoundId = "rbxasset://sounds/electronicpingshort.wav"
+	SoundF.Volume = 1.6
+	SoundF.PlayOnRemove = true
+	local SoundG = Instance.new("Sound",game:GetService("VRService"))
+	SoundG.SoundId = "rbxasset://sounds/Rocket shot.wav"
+	SoundG.Volume = 0.7
+	SoundG.PlayOnRemove = true
 local H = Instance.new("Hint",script)
 local B1 = Instance.new("BillboardGui",script)
 local T1 = Instance.new("TextBox",B1)
@@ -383,27 +411,7 @@ function Ready()
 	end
 	Blade.Material = Enum.Material.SmoothPlastic
 	Blade.Locked = true
-	local SoundA = Instance.new("Sound",Blade)
-	SoundA.SoundId = "rbxasset://sounds/swordslash.wav"
-	SoundA.Volume = 1
-	local SoundB = Instance.new("Sound",Blade)
-	SoundB.SoundId = "rbxasset://sounds/swordlunge.wav"
-	SoundB.Volume = 1
-	local SoundC = Instance.new("Sound",Blade)
-	SoundC.SoundId = "rbxasset://sounds/flashbulb.wav"
-	SoundC.Volume = 1.6
-	local SoundD = Instance.new("Sound",Blade)
-	SoundD.SoundId = "rbxasset://sounds/uuhhh.mp3"
-	SoundD.Volume = 1.4
-	local SoundE = Instance.new("Sound",Blade)
-	SoundE.SoundId = "rbxasset://sounds/kerplunk.wav"
-	SoundE.Volume = 1.8
-	local SoundF = Instance.new("Sound",Blade)
-	SoundF.SoundId = "rbxasset://sounds/electronicpingshort.wav"
-	SoundF.Volume = 1.6
-	local SoundG = Instance.new("Sound",Blade)
-	SoundG.SoundId = "rbxasset://sounds/Rocket shot.wav"
-	SoundG.Volume = 0.7
+--a--
 	local A = Instance.new("Attachment",Blade)
 	local Particles = Instance.new("ParticleEmitter",A)
 	Particles.LightEmission = 1
@@ -468,11 +476,12 @@ function Ready()
 				CurrentHumanoid.Health = CurrentHealth
 				if SoundE then
 					SoundE.PlaybackSpeed = 1.2
-					SoundE:Play()
+SoundE.Parent = Blade
+SoundE.Parent = nil
 				end
 				if SoundF then
-					SoundF.PlaybackSpeed = 2.4
-					SoundF:Play()
+SoundF.Parent = Blade
+SoundF.Parent = nil
 				end
 				if Blade then
 					if Particles then
@@ -555,16 +564,19 @@ function Ready()
 					if Humanoid.Health == Stored then
 						if SoundE then
 							SoundE.PlaybackSpeed = 1.2
-							SoundE:Play()
+SoundE.Parent = Blade
+SoundE.Parent = nil
 						end
 						if SoundF then
 							SoundF.PlaybackSpeed = 2
-							SoundF:Play()
+SoundF.Parent = Blade
+SoundF.Parent = nil
 						end
 					else
 						if SoundE then
 							SoundE.PlaybackSpeed = 1
-							SoundE:Play()
+SoundE.Parent = Blade
+SoundE.Parent = nil
 						end
 					end
 					local creator = Instance.new("ObjectValue",Humanoid)
@@ -600,17 +612,20 @@ function Ready()
 					if (Blade.Velocity-hit.Velocity).Magnitude > 33 then
 						if SoundD then
 							SoundD.PlaybackSpeed = 1.14
-							SoundD:Play()
+SoundD.Parent = Blade
+SoundD.Parent = nil
 						end
 					end
 				elseif hit.Parent:IsA("Tool") and hit.Parent.Parent then
 					if SoundE then
 						SoundE.PlaybackSpeed = 1.2
-						SoundE:Play()
+SoundE.Parent = Blade
+SoundE.Parent = nil
 					end
 					if SoundF then
 						SoundF.PlaybackSpeed = 1.8
-						SoundF:Play()
+SoundF.Parent = Blade
+SoundF.Parent = nil
 					end
 					if Blade and CritTimer < 0 then
 						Bill.StudsOffsetWorldSpace = Blade.Position
@@ -628,13 +643,15 @@ function Ready()
 					end
 					if SoundE then
 						SoundE.PlaybackSpeed = 2.5
-						SoundE:Play()
+SoundE.Parent = Blade
+SoundE.Parent = nil
 					end
 				end
 				if (Blade.Velocity-hit.Velocity).Magnitude > 68 then
 					if SoundG then
 						SoundG.PlaybackSpeed = math.random(1600,2000) / 100
-						SoundG:Play()
+SoundG.Parent = Blade
+SoundG.Parent = nil
 					end
 				end
 				local Tag2 = hit.Parent:FindFirstChild("FakeHumanoid")
@@ -650,7 +667,8 @@ function Ready()
 					elseif hit.Anchored or hit.Size.Magnitude >= 20 then
 						if SoundF then
 							SoundF.PlaybackSpeed = 2.2
-							SoundF:Play()
+SoundF.Parent = Blade
+SoundF.Parent = nil
 						end
 					end
 					if OOF then
@@ -688,14 +706,16 @@ function Ready()
 						end
 						if SoundG then
 							SoundG.PlaybackSpeed = math.random(120,240) / 100
-							SoundG:Play()
+SoundG.Parent = Blade
+SoundG.Parent = nil
 						end
 					end
 				end
 			end
 			if SoundC then
 				SoundC.PlaybackSpeed = 1.6
-				SoundC:Play()
+SoundC.Parent = Blade
+SoundC.Parent = nil
 			end
 			if Particles then
 				if Player and Player.Neutral == false then
@@ -746,11 +766,13 @@ function Ready()
 					end
 					if Super then
 						SoundB.PlaybackSpeed = 1.15
-						SoundB:Play()
+SoundB.Parent = Blade
+SoundB.Parent = nil
 					end
 					if SoundA then
 						SoundA.PlaybackSpeed = 1.4
-						SoundA:Play()
+SoundA.Parent = Blade
+SoundA.Parent = nil
 					end
 				end
 			end
@@ -885,7 +907,7 @@ function Ready()
 end
 local Total = 0
 while true do
-	wait(0.25)
+	task.wait(.25)
 	if Spawned < 10 then
 		Spawned = Spawned + 1
 		Total = Total + 1
