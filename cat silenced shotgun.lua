@@ -120,6 +120,7 @@ local cat = Instance.new("SpawnLocation", h)
 cat.Enabled = false
 cat.Massless = true
 cat.Name = "cat"
+cat.CanCollide = false
 cat.Size = Vector3.new(32.093, 25.012, 50) / 10
 local w = Instance.new("Weld", h)
 w.Part0 = cat
