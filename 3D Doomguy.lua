@@ -572,7 +572,9 @@ m.KeyDown:Connect(function(k)
 end)
 m.Button1Down:Connect(function()
 	if info.Shotgun.Ammo <= 0 then
-		re:FireServer("empty", "A", "A")
+		canfire = false
+		reload()
+		canfire = true
 		return
 	end
 	if cd == false and canfire == true then
