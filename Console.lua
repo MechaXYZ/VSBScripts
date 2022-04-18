@@ -397,7 +397,7 @@ Remote:FireServer("StartType", true)
 end)
 TextBox.FocusLost:Connect(function(EnterPressed)
 if EnterPressed then
-TextBox.Text ..= "\n"
+TextBox.Text = TextBox.Text.. "\n"
 TextBox:CaptureFocus()
 else
 Remote:FireServer("StopType", false)
