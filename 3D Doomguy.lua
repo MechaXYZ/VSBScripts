@@ -300,14 +300,14 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 		shell.Enabled = false
 		shell.Size = Vector3.new(3.484, 1.609, 1.578) / div
 		-- print(cf)
-		shell.CFrame = cf
+		shell.CFrame = box.CFrame * CFrame.new(5, 1, 0)
 		shell.CanCollide = true
 		shell.Velocity = (cf.RightVector * 20) + Vector3.new(0, 25, 0)
 		local msh = Instance.new("SpecialMesh", shell)
 		msh.MeshId = 'rbxassetid://9406357465'
 		msh.TextureId = 'rbxassetid://9406529731'
 		msh.Scale = Vector3.new(1, 1, 1) / div
-		print(shell.Parent)
+		-- print(shell.Parent)
 		-- game:GetService("Debris"):AddItem(shell, 10)
 	end
 end)
@@ -595,10 +595,12 @@ m.Button1Down:Connect(function()
 		firing = false
 		cd = false
 		return
-	elseif info.Shotgun.Ammo <= 0 then
+	elseif info.Shotgun.Ammo <= 0 and cd == false then
+		cd = true
 		canfire = false
 		reload()
 		canfire = true
+		cd = false
 		return
 	end
 end)
