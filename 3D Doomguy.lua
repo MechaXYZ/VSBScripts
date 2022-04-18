@@ -300,10 +300,11 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 		shell.Enabled = false
 		shell.Size = Vector3.new(3.484, 1.609, 1.578) / 2
 		shell.CFrame = cf
-		shell.Velocity = cf.RightVector * 25
+		shell.CanCollide = true
+		-- shell.Velocity = cf.RightVector * 25
 		local msh = Instance.new("SpecialMesh", shell)
 		msh.MeshId = 'rbxassetid://9406357465'
-		msh.TextureId = 'rbxassetid://9406268849'
+		msh.TextureId = 'rbxassetid://9406529731'
 		msh.Scale = Vector3.new(1, 1, 1) / 2
 		game:GetService("Debris"):AddItem(shell, 10)
 	end
