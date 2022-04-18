@@ -302,12 +302,13 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 		-- print(cf)
 		shell.CFrame = cf
 		shell.CanCollide = true
-		-- shell.Velocity = (cf.RightVector * 20) + Vector3.new(0, 25, 0)
+		shell.Velocity = (cf.RightVector * 20) + Vector3.new(0, 25, 0)
 		local msh = Instance.new("SpecialMesh", shell)
 		msh.MeshId = 'rbxassetid://9406357465'
 		msh.TextureId = 'rbxassetid://9406529731'
 		msh.Scale = Vector3.new(1, 1, 1) / div
-		game:GetService("Debris"):AddItem(shell, 10)
+		print(shell.Parent)
+		-- game:GetService("Debris"):AddItem(shell, 10)
 	end
 end)
 local oldhp = owner.Character.Humanoid.Health
