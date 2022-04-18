@@ -299,10 +299,10 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 		local shell = Instance.new("SpawnLocation", script)
 		shell.Enabled = false
 		shell.Size = Vector3.new(3.484, 1.609, 1.578) / div
-		-- print(cf)
+		print(cf)
 		shell.CFrame = cf
 		shell.CanCollide = true
-		shell.Velocity = (cf.RightVector * 35) + Vector3.new(0, 40, 0)
+		shell.Velocity = (cf.RightVector * 20) + Vector3.new(0, 25, 0)
 		local msh = Instance.new("SpecialMesh", shell)
 		msh.MeshId = 'rbxassetid://9406357465'
 		msh.TextureId = 'rbxassetid://9406529731'
@@ -593,6 +593,7 @@ m.Button1Down:Connect(function()
 		task.wait(.05)
 		firing = false
 		cd = false
+		return
 	elseif info.Shotgun.Ammo <= 0 then
 		canfire = false
 		reload()
