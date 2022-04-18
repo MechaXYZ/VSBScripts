@@ -298,14 +298,15 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 	elseif what == "shell fx" then
 		local shell = Instance.new("SpawnLocation", script)
 		shell.Enabled = false
-		shell.Size = Vector3.new(3.484, 1.609, 1.578) / 2
-		shell.CFrame = box.CFrame
+		shell.Size = Vector3.new(3.484, 1.609, 1.578) / div
+		print(cf)
+		shell.CFrame = cf
 		shell.CanCollide = true
-		shell.Velocity = box.CFrame.RightVector * 25
+		shell.Velocity = cf.RightVector * 25
 		local msh = Instance.new("SpecialMesh", shell)
 		msh.MeshId = 'rbxassetid://9406357465'
 		msh.TextureId = 'rbxassetid://9406529731'
-		msh.Scale = Vector3.new(1, 1, 1) / 2
+		msh.Scale = Vector3.new(1, 1, 1) / div
 		game:GetService("Debris"):AddItem(shell, 10)
 	end
 end)
