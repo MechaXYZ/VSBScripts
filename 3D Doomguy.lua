@@ -299,9 +299,9 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 		local shell = Instance.new("SpawnLocation", script)
 		shell.Enabled = false
 		shell.Size = Vector3.new(3.484, 1.609, 1.578) / 2
-		shell.CFrame = cf
+		shell.CFrame = box.CFrame
 		shell.CanCollide = true
-		-- shell.Velocity = cf.RightVector * 25
+		shell.Velocity = box.CFrame.RightVector * 25
 		local msh = Instance.new("SpecialMesh", shell)
 		msh.MeshId = 'rbxassetid://9406357465'
 		msh.TextureId = 'rbxassetid://9406529731'
