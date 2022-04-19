@@ -295,20 +295,6 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 	elseif what == "jump" then
 		allpurpose.SoundId = 'rbxassetid://5121746630'
 		allpurpose.Parent = owner.Character.Head allpurpose.Parent = nil
-	elseif what == "shell fx" then
-		local shell = Instance.new("SpawnLocation", script)
-		shell.Enabled = false
-		shell.Size = Vector3.new(3.484, 1.609, 1.578) / div
-		-- print(cf)
-		shell.CFrame = box.CFrame * CFrame.new(5, 1, 0)
-		shell.CanCollide = true
-		shell.Velocity = (cf.RightVector * 20) + Vector3.new(0, 25, 0)
-		local msh = Instance.new("SpecialMesh", shell)
-		msh.MeshId = 'rbxassetid://9406357465'
-		msh.TextureId = 'rbxassetid://9406529731'
-		msh.Scale = Vector3.new(1, 1, 1) / div
-		-- print(shell.Parent)
-		-- game:GetService("Debris"):AddItem(shell, 10)
 	end
 end)
 local oldhp = owner.Character.Humanoid.Health
@@ -577,7 +563,6 @@ m.Button1Down:Connect(function()
 		flash:Emit(1)
 		firing = true
 		info.Shotgun.Ammo = info.Shotgun.Ammo - 1
-		re:FireServer("shell fx", sg.CFrame, "A")
 		coroutine.wrap(function()
 			re:FireServer("fireanim", cam.CFrame, cam.CFrame.lookVector * 50)
 			for i = 1, 7 do
