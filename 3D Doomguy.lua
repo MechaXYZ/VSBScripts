@@ -536,6 +536,10 @@ local flash = Instance.new("ParticleEmitter", sgat)
 	flash.Lifetime = NumberRange.new(.15, .15)
 	flash.Size = NumberSequence.new(1.5)
 local function sgreload()
+	if info.Shotgun.Ammo == info.Shotgun.Max then
+		sgpump()
+		return
+	end
 	info.Shotgun.Offset = CFrame.new(0, -2, .75) * CFrame.Angles(0, math.rad(-90), 0) 
 	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
 	task.wait(1/fps)
@@ -633,7 +637,7 @@ local function ssgfire(taken)
 end
 m.KeyDown:Connect(function(k)
 	if k == 'r' and canfire == true and firing == false then
-		if selected == info.Shotgun and info.Shotgun.Ammo ~= info.Shotgun.Max then
+		if selected == info.Shotgun then
 			canfire = false
 			sgreload()
 			canfire = true
@@ -649,10 +653,6 @@ m.KeyDown:Connect(function(k)
 			ssgfire(1)
 			cd = false
 			return
-		elseif selected == info.Shotgun and info.Shotgun.Ammo == info.Shotgun.Max then
-			canfire = false
-			sgpump()
-			canfire = true
 		end
 	elseif k == '1' and firing == false and canfire == true and selected == info.SSG then
 		selected = info.Shotgun
