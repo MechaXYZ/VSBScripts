@@ -538,8 +538,7 @@ local flash = Instance.new("ParticleEmitter", sgat)
 local function sgreload()
 	if info.Shotgun.Ammo == info.Shotgun.Max then
 		sgpump()
-		return
-	end
+	else
 	info.Shotgun.Offset = CFrame.new(0, -2, .75) * CFrame.Angles(0, math.rad(-90), 0) 
 	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
 	task.wait(1/fps)
@@ -571,6 +570,7 @@ local function sgreload()
 	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
 	info.Shotgun.Offset = CFrame.new(0, -2, 0) * CFrame.Angles(0, math.rad(-90), 0)
 	sgpump()
+	end
 end
 local function ssgreload()
 	canfire = false
@@ -610,6 +610,9 @@ local function sgfire()
 		sgpump()
 		task.wait(.05)
 		firing = false
+		if info.Shotgun.Ammo <= 0 then
+			sgreload()
+		end
 		cd = false
 		return
 end
