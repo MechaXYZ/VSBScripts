@@ -658,12 +658,12 @@ m.KeyDown:Connect(function(k)
 		selected = info.Shotgun
 		ssg.Transparency = 1
 		sg.Transparency = 0
-		recoffset = CFrame.new(1.25, 0, 1.25)
+		recoffset = CFrame.new(2.25, 0, 1.5)
 	elseif k == '2' and firing == false and canfire == true and selected == info.Shotgun then
 		selected = info.SSG
 		sg.Transparency = 1
 		ssg.Transparency = 0
-		recoffset = CFrame.new(1.25, 0, 1.25)
+		recoffset = CFrame.new(2.25, 0, 1.5)
 	end
 end)
 m.Button1Down:Connect(function()
