@@ -102,8 +102,9 @@ caster.LengthChanged:Connect(OnRayUpdated)
 caster.CastTerminating:Connect(OnRayTerminated)
 local re = Instance.new("RemoteEvent", owner.PlayerGui)
 	re.Name = "RipAndTearEvent"
-local doomval = Instance.new("ObjectValue", re)
-	doomval.Name = "shotgun"
+local v = Instance.new("ObjectValue", re)
+	v.Name = "val"
+	v.Value = script
 owner.Character.Humanoid.WalkSpeed = 20
 for _, v in pairs(owner.Character:GetDescendants()) do
 	if v:IsA("BasePart") or v:IsA("Decal") or v:IsA("Texture") then
@@ -202,16 +203,15 @@ local fire = Instance.new("Sound", game:GetService("VRService"))
 	fire.Volume = 1.25
 	fire.PlayOnRemove = true
 	fire.EmitterSize = 15
-local hurt = Instance.new("Sound", game:GetService("VRService"))
-	hurt.SoundId = 'rbxassetid://8090948798'
-	hurt.Volume = 1.25
-	hurt.PlayOnRemove = true
-	hurt.EmitterSize = 15
 local allpurpose = Instance.new("Sound", game:GetService("VRService"))
 	allpurpose.SoundId = 'rbxassetid://678886685'
 	allpurpose.Volume = 3
 	allpurpose.PlayOnRemove = true
 	allpurpose.EmitterSize = 15
+local ap2 = Instance.new("Sound", owner.Character.Head)
+	ap2.SoundId = 'rbxassetid://678886685'
+	ap2.Volume = 2
+	ap2.EmitterSize = 15
 local name = Instance.new("BillboardGui", owner.Character.Head)
 	name.Size = UDim2.new(50, 0, 50, 0)
 	name.StudsOffset = Vector3.new(0, 2, 0)
@@ -260,6 +260,7 @@ local function setrifgrip(name)
 end
 re.OnServerEvent:Connect(function(plr, what, cf, dir)
 	if what == "fireanim" then
+		fire.SoundId = 'rbxassetid://' ..cf
 		fire.Parent = owner.Character.Head fire.Parent = nil
 		attack = true
 		flash.Enabled = true
@@ -279,17 +280,20 @@ re.OnServerEvent:Connect(function(plr, what, cf, dir)
 		attack = false
 	elseif what == "fire" then
 		caster:Fire(cf.p, dir, BULLET_SPEED, CastBehavior)
+	elseif what == "ssg reload" then
+		ap2.SoundId = 'rbxassetid://5975125771'
+		ap2:Play()
 	elseif what == "run" then
 		owner.Character.Humanoid.WalkSpeed = 45
 	elseif what == "walk" then
 		owner.Character.Humanoid.WalkSpeed = 20
-	elseif what == "shell in" then
+	elseif what == "sg shell in" then
 		allpurpose.SoundId = 'rbxassetid://8822193908'
 		allpurpose.Parent = owner.Character.Head allpurpose.Parent = nil
 	elseif what == "empty" then
 		allpurpose.SoundId = 'rbxassetid://8628978369'
 		allpurpose.Parent = owner.Character.Head allpurpose.Parent = nil
-	elseif what == "pump" then
+	elseif what == "sgpump" then
 		allpurpose.SoundId = 'rbxassetid://7129228370'
 		allpurpose.Parent = owner.Character.Head allpurpose.Parent = nil
 	elseif what == "jump" then
@@ -306,7 +310,8 @@ owner.Character.Humanoid.Jumping:Connect(function(jump)
 end)
 owner.Character.Humanoid.HealthChanged:Connect(function(hp)
 	if hp < oldhp then
-		hurt.Parent = box hurt.Parent = nil
+		allpurpose.SoundId = 'rbxassetid://8090948798'
+		allpurpose.Parent = box allpurpose.Parent = nil
 		stunned = true
 		guymsh.MeshId = 'rbxassetid://' ..doomguy_meshes["Hurt"]
 		rifmsh.MeshId = 'rbxassetid://' ..rifle_meshes["Hurt"]
@@ -342,9 +347,11 @@ coroutine.wrap(function()
 	end
 end)()
 workspace.DescendantRemoving:Connect(function(s)
-	if s == script then
+	if s == script or s == owner.Character then
 		owner.CameraMode = Enum.CameraMode.Classic
 		owner.CameraMode = Enum.CameraMode.Classic
+		script:ClearAllChildren()
+		script.Disabled = true
 	end
 end)
 NLS([[
@@ -387,12 +394,12 @@ function SPRING.create(self, mass, force, damping, speed)
 	return spring
 end
 local re = script.Parent
+local s = re.val.Value
 local cam = workspace.CurrentCamera
 local m = owner:GetMouse()
 script.Parent = workspace
 local div = 9
 owner.Character.Humanoid.CameraOffset = Vector3.new(0, .55, 0)
-local offset = CFrame.new(0, -2, 0) * CFrame.Angles(0, math.rad(-90), 0)
 local wc = SPRING.create()
 local sway = SPRING.create()
 local fire = SPRING.create()
@@ -401,6 +408,10 @@ local bobspeed = 1
 local bobmod = .1
 local cd = false
 local canfire = true
+local new = false
+owner.CharacterAdded:Connect(function()
+	new = true
+end)
 owner.CameraMode = Enum.CameraMode.LockFirstPerson
 local function gb(addition, speed, modifier)
 	return math.sin(tick() * addition * speed) * modifier
@@ -408,7 +419,13 @@ end
 local info = {
 	["Shotgun"] = {
 		["Max"] = 8,
-		["Ammo"] = 8
+		["Ammo"] = 8,
+		["Offset"] = CFrame.new(0, -2, 0) * CFrame.Angles(0, math.rad(-90), 0)
+	},
+	["SSG"] = {
+		["Max"] = 2,
+		["Ammo"] = 2,
+		["Offset"] = CFrame.new(3, -3, 0) * CFrame.Angles(0, math.rad(-90), 0)
 	}
 }
 local sg_meshes = {
@@ -424,6 +441,27 @@ local sg_meshes = {
 	["Reload C"] = 9399665241,
 	["Reload D"] = 9399667752
 }
+local ssg_meshes = {
+	["Normal"] = 9415219583,
+	["Reload 1"] = 9415219276,
+	["Reload 2"] = 9415219026,
+	["Reload 3"] = 9415218803,
+	["Reload 4"] = 9415218467,
+	["Reload 5"] = 9415218333,
+	["Reload 6"] = 9415218206,
+	["Reload 7"] = 9415217970,
+	["Reload 8"] = 9415217785,
+	["Reload 9"] = 9415217613,
+	["Reload 10"] = 9415217436,
+	["Reload 11"] = 9415217277,
+	["Reload 12"] = 9415216961,
+	["Reload 13"] = 9415216748,
+	["Reload 14"] = 9415216591,
+	["Reload 15"] = 9415216352,
+	["Reload 16"] = 9415216118,
+	["Reload 17"] = 9415215948,
+	["Reload 18"] = 9415215730
+}
 UIS.InputBegan:Connect(function(i, g)
 	if i.KeyCode == Enum.KeyCode.LeftShift then
 		re:FireServer("run", "a", "a")
@@ -434,19 +472,33 @@ UIS.InputEnded:Connect(function(i, g)
 		re:FireServer("walk", "a", "a")
 	end
 end)
+local selected = info.Shotgun
+local offset = info.Shotgun.Offset
 local vm = Instance.new("Model", script)
 	vm.Name = "Viewmodel"
 local sg = Instance.new("SpawnLocation", vm)
 	sg.Enabled = false
 	sg.Name = "shotgun"
 	sg.CanCollide = false
-	sg.Anchored = false
+	sg.Anchored = true
 	sg.Size = Vector3.new(50, 29.724, 24.016) / div
-local msh = Instance.new("SpecialMesh", sg)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
-	msh.TextureId = 'rbxassetid://9390473711'
-	msh.Scale = Vector3.new(1, 1, 1) / div
-	msh.Offset = Vector3.new(-2.55, 0, 0)
+local sgmsh = Instance.new("SpecialMesh", sg)
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
+	sgmsh.TextureId = 'rbxassetid://9390473711'
+	sgmsh.Scale = Vector3.new(1, 1, 1) / div
+	sgmsh.Offset = Vector3.new(-2.55, 0, 0)
+local ssg = Instance.new("SpawnLocation", vm)
+	ssg.Enabled = false
+	ssg.Name = "super shotgun"
+	ssg.CanCollide = false
+	ssg.Anchored = true
+	ssg.Size = Vector3.new(50, 18.627, 39.804) / (div / 2)
+	ssg.Transparency = 1
+local ssgmsh = Instance.new("SpecialMesh", ssg)
+	ssgmsh.MeshId = 'rbxassetid://' ..ssg_meshes["Normal"]
+	ssgmsh.TextureId = 'rbxassetid://9415223601'
+	ssgmsh.Scale = Vector3.new(1, 1, 1) / (div / 2)
+	ssgmsh.Offset = Vector3.new(-1.55, 0, 0)
 local fps = 16
 local recoffset = CFrame.new()
 coroutine.wrap(function()
@@ -454,117 +506,93 @@ coroutine.wrap(function()
 		recoffset = recoffset:Lerp(CFrame.new(), .25)
 	end
 end)()
-local function pump()
-	re:FireServer("pump", "A", "A")
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Pump A"]
+local function sgpump()
+	re:FireServer("sgpump", "A", "A")
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Pump A"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Pump B"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Pump B"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Pump C"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Pump C"]
 	task.wait(1/(fps/2))
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Pump B"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Pump B"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Pump A"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Pump A"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
 end
 local function spread(min, max)
 	return CFrame.Angles(math.rad(math.random(min, max)), math.rad(math.random(min, max)), math.rad(math.random(min, max)))
 end
-local at = Instance.new("Attachment", sg)
-at.CFrame = CFrame.new(-6, 1.35, -.95)
-local flash = Instance.new("ParticleEmitter", at)
+local sgat = Instance.new("Attachment", sg)
+sgat.CFrame = CFrame.new(-6, 1.35, -.95)
+local ssgat = Instance.new("Attachment", ssg)
+ssgat.CFrame = CFrame.new(-7.5, 1.35, 2)
+local flash = Instance.new("ParticleEmitter", sgat)
 	flash.Enabled = false
 	flash.LockedToPart = true
 	flash.Speed = NumberRange.new(0, 0)
 	flash.Texture = 'rbxassetid://9400234823'
 	flash.Rotation = NumberRange.new(-180, 180)
 	flash.Lifetime = NumberRange.new(.15, .15)
-local function reload()
-	offset = CFrame.new(0, -2, .75) * CFrame.Angles(0, math.rad(-90), 0) 
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
+	flash.Size = NumberSequence.new(1.5)
+local function sgreload()
+	info.Shotgun.Offset = CFrame.new(0, -2, .75) * CFrame.Angles(0, math.rad(-90), 0) 
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start B"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start B"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
 	task.wait(1/fps)
 	for i = 1, (info.Shotgun.Max - info.Shotgun.Ammo)  do
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload A"]
+		sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload A"]
 		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload B"]
+		sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload B"]
 		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload C"]
-		re:FireServer("shell in", "A", "A")
+		sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload C"]
+		re:FireServer("sg shell in", "A", "A")
 		info.Shotgun.Ammo = info.Shotgun.Ammo + 1
 		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload D"]
+		sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload D"]
 		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
+		sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
 		task.wait(1/fps)
 	end
 	info.Shotgun.Ammo = info.Shotgun.Max
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start B"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start B"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
-	offset = CFrame.new(0, -2, 0) * CFrame.Angles(0, math.rad(-90), 0)
-	pump()
+	sgmsh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
+	info.Shotgun.Offset = CFrame.new(0, -2, 0) * CFrame.Angles(0, math.rad(-90), 0)
+	sgpump()
 end
-local function unload()
-	offset = CFrame.new(0, -2, .75) * CFrame.Angles(0, math.rad(-90), 0) 
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
-	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start B"]
-	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
-	task.wait(1/fps)
-	for i = 1, info.Shotgun.Ammo  do
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
-		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload D"]
-		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload C"]
-		re:FireServer("shell in", "A", "A")
-		info.Shotgun.Ammo = info.Shotgun.Ammo - 1
-		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload B"]
-		task.wait(1/fps)
-		msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload A"]
-		task.wait(1/fps)
+local function ssgreload()
+	canfire = false
+	re:FireServer("ssg reload", "A", "A")
+	info.SSG.Offset = CFrame.new(3.5, -3.5, 0) * CFrame.Angles(0, math.rad(-90), 0)
+	for i = 1, 18 do
+		ssgmsh.MeshId = 'rbxassetid://' ..ssg_meshes["Reload " ..tostring(i)]
+		if i == 4 then
+			task.wait(1/(fps/2))
+		else
+			task.wait(1/fps)
+		end
 	end
-	info.Shotgun.Ammo = 0
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start C"]
+	info.SSG.Ammo = info.SSG.Max
+	info.SSG.Offset = CFrame.new(3, -3, 0) * CFrame.Angles(0, math.rad(-90), 0)
 	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start B"]
-	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Reload Start A"]
-	task.wait(1/fps)
-	msh.MeshId = 'rbxassetid://' ..sg_meshes["Normal"]
-	offset = CFrame.new(0, -2, 0) * CFrame.Angles(0, math.rad(-90), 0)
+	ssgmsh.MeshId = 'rbxassetid://' ..ssg_meshes["Normal"]
+	canfire = true
 end
 local firing = false
-m.KeyDown:Connect(function(k)
-	if k == 'r' and canfire == true and info.Shotgun.Ammo ~= info.Shotgun.Max and firing == false then
-		canfire = false
-		reload()
-		canfire = true
-	elseif k == 'z' and canfire == true and info.Shotgun.Ammo > 0 and firing == false then
-		-- canfire = false
-		-- unload()
-		-- canfire = true
-	end
-end)
-m.Button1Down:Connect(function()
-	if cd == false and canfire == true and info.Shotgun.Ammo > 0 then
-		cd = true
+local function sgfire()
 		flash:Emit(1)
 		firing = true
 		info.Shotgun.Ammo = info.Shotgun.Ammo - 1
 		coroutine.wrap(function()
-			re:FireServer("fireanim", cam.CFrame, cam.CFrame.lookVector * 50)
+			re:FireServer("fireanim", 6779445744, cam.CFrame.lookVector * 50)
 			for i = 1, 7 do
 				re:FireServer("fire", cam.CFrame, (cam.CFrame * spread(-8, 8)).lookVector * 50)
 			end
@@ -575,16 +603,79 @@ m.Button1Down:Connect(function()
 		task.wait(.05)
 		fire:shove(Vector3.new(-rand,1.5,-5))
 		task.wait(.5)
-		pump()
+		sgpump()
 		task.wait(.05)
 		firing = false
 		cd = false
 		return
-	elseif info.Shotgun.Ammo <= 0 and cd == false then
+end
+local function ssgfire(taken)
+	flash:Emit(1)
+	firing = true
+	info.SSG.Ammo = info.SSG.Ammo - taken
+	coroutine.wrap(function()
+		re:FireServer("fireanim", 6839481031, cam.CFrame.lookVector * 50)
+		for i = 1, taken * 10 do
+			re:FireServer("fire", cam.CFrame, (cam.CFrame * spread(-8, 8)).lookVector * 50)
+		end
+	end)()
+	local rand = math.random(50, 75) / 100
+	recoffset = CFrame.new(.75, .25, 0) * CFrame.Angles(0, 0, math.rad(-6))
+	fire:shove(Vector3.new(rand,-1.5,5))
+	task.wait(.05)
+	fire:shove(Vector3.new(-rand,1.5,-5))
+	task.wait(.5)
+	if info.SSG.Ammo <= 0 then
+		ssgreload()
+	end
+	task.wait(.05)
+	firing = false
+end
+m.KeyDown:Connect(function(k)
+	if k == 'r' and canfire == true and firing == false then
+		if selected == info.Shotgun and info.Shotgun.Ammo ~= info.Shotgun.Max then
+			canfire = false
+			sgreload()
+			canfire = true
+		elseif selected == info.SSG and info.SSG.Ammo ~= info.SSG.Max then
+			canfire = false
+			ssgreload()
+			canfire = true
+		end
+	elseif k == 'q' and cd == false and canfire == true and firing == false then
+		if selected == info.SSG and info.SSG.Ammo > 0 then
+			cd = true
+			flash.Parent = ssgat
+			ssgfire(1)
+			cd = false
+			return
+		elseif selected == info.Shotgun and info.Shotgun.Ammo == info.Shotgun.Max then
+			canfire = false
+			sgpump()
+			canfire = true
+		end
+	elseif k == '1' and firing == false and canfire == true and selected == info.SSG then
+		selected = info.Shotgun
+		ssg.Transparency = 1
+		sg.Transparency = 0
+		recoffset = CFrame.new(1.25, 0, 1.25)
+	elseif k == '2' and firing == false and canfire == true and selected == info.Shotgun then
+		selected = info.SSG
+		sg.Transparency = 1
+		ssg.Transparency = 0
+		recoffset = CFrame.new(1.25, 0, 1.25)
+	end
+end)
+m.Button1Down:Connect(function()
+	if cd == false and canfire == true then
 		cd = true
-		canfire = false
-		reload()
-		canfire = true
+		if selected == info.Shotgun and info.Shotgun.Ammo > 0 then
+			flash.Parent = sgat
+			sgfire()
+		elseif selected == info.SSG and info.SSG.Ammo == info.SSG.Max then
+			flash.Parent = ssgat
+			ssgfire(2)
+		end
 		cd = false
 		return
 	end
@@ -630,8 +721,15 @@ owner.Character.Humanoid.StateChanged:connect(function(old, new)
 	end
 end)
 UIS.JumpRequest:connect(jp)
+local d = false
 game:GetService("RunService").RenderStepped:Connect(function(dt)
-	pcall(function()
+	local s, e = pcall(function()
+	       	if owner.Character == nil or owner.Character.Humanoid.Health <= 0 or not s or new == true then
+            		owner.CameraMode = Enum.CameraMode.Classic
+            		vm:Destroy()
+            		script:ClearAllChildren()
+           		script.Disabled = true
+      		end
 		local movedir = owner.Character.Humanoid.MoveDirection
 		local mv = cam.CFrame:VectorToObjectSpace(movedir)
 		tilt = math.clamp(lerp(tilt, mv.X * tsz, .1), -.25, .1) 
@@ -650,10 +748,19 @@ game:GetService("RunService").RenderStepped:Connect(function(dt)
 		local wc = wc:update(dt)
 		local recoil = fire:update(dt)
 		cam.CFrame = cam.CFrame * CFrame.new(0, recoil.y, recoil.z) * CFrame.Angles(recoil.x, 0, 0)
-		sg.CFrame = cam.CFrame:ToWorldSpace(offset * recoffset)
+		sg.CFrame = cam.CFrame:ToWorldSpace(selected.Offset * recoffset)
 		sg.CFrame = sg.CFrame:ToWorldSpace(CFrame.new(wc.x / 2,wc.y / 2,0))
 		sg.CFrame = sg.CFrame * CFrame.Angles(0,-sway.x,sway.y)
 		sg.CFrame = sg.CFrame * CFrame.Angles(0,wc.y,wc.x)
+--
+		ssg.CFrame = cam.CFrame:ToWorldSpace(selected.Offset * recoffset)
+		ssg.CFrame = ssg.CFrame:ToWorldSpace(CFrame.new(wc.x / 2,wc.y / 2,0))
+		ssg.CFrame = ssg.CFrame * CFrame.Angles(0,-sway.x,sway.y)
+		ssg.CFrame = ssg.CFrame * CFrame.Angles(0,wc.y,wc.x)
 	end)
+	if d == false and (not s) then
+		d = true
+		print(e)
+	end
 end)
 ]], re)
