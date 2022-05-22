@@ -129,73 +129,92 @@ local function shoot(pos, direction)
 end
 
 local gungun = Instance.new("Tool", owner.Backpack)
-	gungun.Name = "The Revolver Revolver"
+	gungun.Name = "The Gun Gun"
 	gungun.ToolTip = "You should fire it!"
-	gungun.Grip = CFrame.new(.009, -.25, -.85) * CFrame.Angles(0, math.pi, 0)
+	gungun.Grip = CFrame.new(.009, -.25, .85)
 local h = Instance.new("SpawnLocation", gungun)
 	h.Name = "Handle"
 	h.Enabled = false
 	h.CanCollide = false
 	h.Massless = true
 	h.Archivable = true
-	h.Size = Vector3.new(50, 172.719, 341.995) / 150
+	h.Size = Vector3.new(.187, .999, 1.392)
 local msh = Instance.new("SpecialMesh", h)
-	msh.MeshId = 'rbxassetid://574986846'
-	msh.TextureId = 'rbxassetid://574986956'
-	msh.Scale = Vector3.new(1, 1, 1) / 150
+	msh.MeshId = 'rbxassetid://476920625'
+	msh.TextureId = 'rbxassetid://476920703'
+	msh.Scale = Vector3.new(1, 1, 1) / 15
 
 local rad = math.rad
 local tw = game:GetService("TweenService")
 
 local function angle(min, max)
 	local rnd = Random.new()
-	return CFrame.Angles(rad(rnd:NextNumber(min, max)), rad(rnd:NextNumber(min, max)), rad(rnd:NextNumber(min, max)))
+	-- return CFrame.Angles(rad(rnd:NextNumber(min, max)), rad(rnd:NextNumber(min, max)), rad(rnd:NextNumber(min, max)))
+	return CFrame.Angles(rad(rnd:NextInteger(min, max)), rad(rnd:NextInteger(min, max)), rad(rnd:NextInteger(min, max)))
 end
 
 local function clone(cf, sprd, p)
 	local a = h:Clone()
 	a.Parent = p
 	a.CanCollide = false
+	a.Name = "Gun Gun Gun"
 	a.Anchored = true
-	a.CFrame = cf * angle(-sprd, sprd)
+	a.CFrame = cf * angle(-(sprd), sprd)
 	return a
 end
 local fire = Instance.new("Sound", game:GetService("VRService"))
-	fire.SoundId = 'rbxassetid://6322588515'
-	fire.Volume = .35
+	fire.SoundId = 'rbxassetid://139593133'
+	fire.Volume = 1
 	fire.EmitterSize = 10
 	fire.PlayOnRemove = true
+local click = Instance.new("Sound", game:GetService("VRService"))
+	click.SoundId = 'rbxassetid://1136276162'
+	click.Volume = 2
+	click.EmitterSize = 10
+	click.PlayOnRemove = true
 local count = 0
 gungun.Activated:Connect(function()
+	click.Parent = h
+	click.Parent = nil
 	local olddir = (h.CFrame * CFrame.new(0, 0, -350)).p
 	count += 1
 	local sprd = 0
 	local faketbl = Instance.new("Model", script)
-	faketbl.Name = "Revolver Group #" ..count
+	faketbl.Name = "Gun Gun Gun Group #" ..count
 	local new = clone(h.CFrame, sprd, faketbl)
-	local cf = new.CFrame * CFrame.new(0, 0, 3)
-	tw:Create(new, TweenInfo.new(.5), {CFrame = cf}):Play()
-	task.wait(1)
-	for i = 1, 6 do
+	local cf = new.CFrame * CFrame.new(0, 0, -3)
+	tw:Create(new, TweenInfo.new(.35), {CFrame = cf}):Play()
+	new:SetAttribute("sprd", 1)
+	task.wait(.5)
+	for i = 1, 7 do
+		click.Parent = h
+		click.Parent = nil
 		sprd += (3 + (i * 2))
 		for _, v in pairs(faketbl:GetChildren()) do
-			local new = clone(v.CFrame, sprd, faketbl)
-			local cf = new.CFrame * CFrame.new(0, 0, 3)
-			tw:Create(new, TweenInfo.new(.5), {CFrame = cf}):Play()
+			local new = clone(v.CFrame, v:GetAttribute("sprd"), faketbl)
+			local cf = new.CFrame * CFrame.new(0, 0, -(3 + (i / 2)))
+			tw:Create(new, TweenInfo.new(.35), {CFrame = cf}):Play()
+			local rnd = math.random(-1, 1)
+			local sprd2 = v:GetAttribute("sprd")
+			if rnd == 0 or rnd == 1 then
+				new:SetAttribute("sprd", (sprd2 + (4 * i)))
+			elseif rnd == -1 then
+				new:SetAttribute("sprd", (sprd2 - (4 * i)))
+			end
 		end
-		task.wait(1)
+		task.wait(.5)
 	end
 	print(#faketbl:GetChildren())
-	task.wait(1)
+	task.wait(.5)
 	for _, v in pairs(faketbl:GetChildren()) do
 		coroutine.wrap(function()
-		tw:Create(v, TweenInfo.new(.5), {CFrame = CFrame.lookAt(v.Position, olddir)}):Play()
+		-- tw:Create(v, TweenInfo.new(.5), {CFrame = CFrame.lookAt(v.Position, olddir)}):Play()
 		task.wait(math.random(1, 5) / 10)
 			for i = 1, math.random(15, 25) do
 				fire.Parent = v
 				fire.Parent = nil
 				local ang = angle(-3, 3)
-				shoot(v.Position, ((v.CFrame * CFrame.Angles(0, math.pi, 0)) * ang).lookVector * 25)
+				shoot(v.Position, (v.CFrame * ang).lookVector * 25)
 				local rnd = Random.new()
 				task.wait(rnd:NextNumber(.25, .75))
 			end
