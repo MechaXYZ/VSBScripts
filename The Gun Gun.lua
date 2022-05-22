@@ -131,18 +131,18 @@ end
 local gungun = Instance.new("Tool", owner.Backpack)
 	gungun.Name = "The Gun Gun"
 	gungun.ToolTip = "You should fire it!"
-	gungun.Grip = CFrame.new(.009, -.25, .85)
+	gungun.Grip = CFrame.new(.85, -.25, 0) * CFrame.Angles(0, math.rad(90), 0)
 local h = Instance.new("SpawnLocation", gungun)
 	h.Name = "Handle"
 	h.Enabled = false
 	h.CanCollide = false
 	h.Massless = true
 	h.Archivable = true
-	h.Size = Vector3.new(.187, .999, 1.392)
+	h.Size = Vector3.new(2.9, 1.4, .4)
 local msh = Instance.new("SpecialMesh", h)
-	msh.MeshId = 'rbxassetid://476920625'
-	msh.TextureId = 'rbxassetid://476920703'
-	msh.Scale = Vector3.new(1, 1, 1) / 15
+	msh.MeshId = 'rbxassetid://9700148913'
+	msh.TextureId = 'rbxassetid://9700186025'
+	msh.Scale = Vector3.new(1, 1, 1)
 
 local rad = math.rad
 local tw = game:GetService("TweenService")
@@ -163,7 +163,7 @@ local function clone(cf, sprd, p)
 	return a
 end
 local fire = Instance.new("Sound", game:GetService("VRService"))
-	fire.SoundId = 'rbxassetid://139593133'
+	fire.SoundId = 'rbxassetid://196561491'
 	fire.Volume = 1
 	fire.EmitterSize = 10
 	fire.PlayOnRemove = true
@@ -176,13 +176,13 @@ local count = 0
 gungun.Activated:Connect(function()
 	click.Parent = h
 	click.Parent = nil
-	local olddir = (h.CFrame * CFrame.new(0, 0, -350)).p
+	local olddir = (h.CFrame * CFrame.new(-350, 0, 0)).p
 	count += 1
 	local sprd = 0
 	local faketbl = Instance.new("Model", script)
 	faketbl.Name = "Gun Gun Gun Group #" ..count
 	local new = clone(h.CFrame, sprd, faketbl)
-	local cf = new.CFrame * CFrame.new(0, 0, -3)
+	local cf = new.CFrame * CFrame.new(-3, 0, 0)
 	tw:Create(new, TweenInfo.new(.35), {CFrame = cf}):Play()
 	new:SetAttribute("sprd", 1)
 	task.wait(.5)
@@ -192,14 +192,14 @@ gungun.Activated:Connect(function()
 		sprd += (3 + (i * 2))
 		for _, v in pairs(faketbl:GetChildren()) do
 			local new = clone(v.CFrame, v:GetAttribute("sprd"), faketbl)
-			local cf = new.CFrame * CFrame.new(0, 0, -(3 + (i / 2)))
+			local cf = new.CFrame * CFrame.new(-(3 + (i / 4)), 0, 0)
 			tw:Create(new, TweenInfo.new(.35), {CFrame = cf}):Play()
 			local rnd = math.random(-1, 1)
 			local sprd2 = v:GetAttribute("sprd")
 			if rnd == 0 or rnd == 1 then
-				new:SetAttribute("sprd", (sprd2 + (4 * i)))
+				new:SetAttribute("sprd", (sprd2 + (2 * i)))
 			elseif rnd == -1 then
-				new:SetAttribute("sprd", (sprd2 - (4 * i)))
+				new:SetAttribute("sprd", (sprd2 - (2 * i)))
 			end
 		end
 		task.wait(.5)
@@ -210,19 +210,17 @@ gungun.Activated:Connect(function()
 		coroutine.wrap(function()
 		-- tw:Create(v, TweenInfo.new(.5), {CFrame = CFrame.lookAt(v.Position, olddir)}):Play()
 		task.wait(math.random(1, 5) / 10)
-			for i = 1, math.random(15, 25) do
+			for i = 1, math.random(15, 20) do
 				fire.Parent = v
 				fire.Parent = nil
 				local ang = angle(-3, 3)
-				shoot(v.Position, (v.CFrame * ang).lookVector * 25)
+				shoot(v.Position, ((v.CFrame * CFrame.Angles(0, math.rad(90), 0)) * ang).lookVector * 25)
 				local rnd = Random.new()
-				task.wait(rnd:NextNumber(.25, .75))
+				task.wait(rnd:NextNumber(.25, .5))
 			end
 			v.Parent = script
-			v.Anchored = false
-			v.CanCollide = true
-			task.wait(3.5)
-			tw:Create(v, TweenInfo.new(.5), {Transparency = 1}):Play()
+			tw:Create(v, TweenInfo.new(.5), {Transparency = 1, CFrame = v.CFrame * CFrame.new(0, -.75, 0)}):Play()
+			task.wait(.5)
 			v:Destroy()
 		end)()
 	end
