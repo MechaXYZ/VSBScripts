@@ -186,7 +186,7 @@ end
 function Path.GetNearestCharacter(fromPosition)
 	local character, dist = nil, math.huge
 	for _, player in ipairs(Players:GetPlayers()) do
-		if player.Character and (player.Character:FindFirstChildWhichIsA("BasePart").Position - fromPosition).Magnitude < dist then
+		if player.Character and player.Character:FindFirstChildWhichIsA("BasePart") and (player.Character:FindFirstChildWhichIsA("BasePart").Position - fromPosition).Magnitude < dist then
 			character, dist = player.Character, (player.Character:FindFirstChildWhichIsA("BasePart").Position - fromPosition).Magnitude
 		end
 	end
