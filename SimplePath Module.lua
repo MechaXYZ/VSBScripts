@@ -47,7 +47,8 @@ Path.__index = function(table, index)
 end
 
 --Used to visualize waypoints
-local visualWaypoint = Instance.new("Part")
+local visualWaypoint = Instance.new("SpawnLocation")
+visualizeWaypoint.Enabled = false
 visualWaypoint.Size = Vector3.new(0.3, 0.3, 0.3)
 visualWaypoint.Anchored = true
 visualWaypoint.CanCollide = false
@@ -66,7 +67,7 @@ local function createVisualWaypoints(waypoints)
 	for _, waypoint in ipairs(waypoints) do
 		local visualWaypointClone = visualWaypoint:Clone()
 		visualWaypointClone.Position = waypoint.Position
-		visualWaypointClone.Parent = workspace
+		visualWaypointClone.Parent = script
 		visualWaypointClone.Color =
 			(waypoint == waypoints[#waypoints] and Color3.fromRGB(0, 255, 0))
 			or (waypoint.Action == Enum.PathWaypointAction.Jump and Color3.fromRGB(255, 0, 0))
@@ -273,6 +274,7 @@ function Path:Run(target)
 	--Non-humanoid handle case
 	if not target and not self._humanoid and self._target then
 		moveToFinished(self, true)
+		print("no.")
 		return
 	end
 
