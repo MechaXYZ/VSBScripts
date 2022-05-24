@@ -48,7 +48,7 @@ end
 
 --Used to visualize waypoints
 local visualWaypoint = Instance.new("SpawnLocation")
-visualizeWaypoint.Enabled = false
+visualWaypoint.Enabled = false
 visualWaypoint.Size = Vector3.new(0.3, 0.3, 0.3)
 visualWaypoint.Anchored = true
 visualWaypoint.CanCollide = false
