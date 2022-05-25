@@ -1,0 +1,184 @@
+--[[ SETUP ]] --
+
+local pm = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/MechaXYZ/VSBScripts/main/SimplePath%20Module.lua")
+local simplepath = loadstring(pm)()
+
+local model = Instance.new("Model", script)
+    model.Name = "Bingus"
+local bingus = Instance.new("SpawnLocation", model)
+    bingus.Enabled = false
+    bingus.Name = "HumanoidRootPart"
+    bingus.Size = Vector3.new(2.609, 2.609, 2.609)
+    model.PrimaryPart = bingus
+local head = Instance.new("SpawnLocation", model)
+    head.Enabled = false
+    head.Name = "Head"
+    head.Size = Vector3.new()
+    head.Transparency = 0
+    head.CanCollide = false
+local torso = Instance.new("SpawnLocation", model)
+    torso.Enabled = false
+    torso.Name = "Torso"
+    torso.Size = Vector3.new()
+    torso.Transparency = 0
+    torso.CanCollide = false
+local ears = Instance.new("SpawnLocation", model)
+    ears.Enabled = false
+    ears.Name = "Ears"
+    ears.Size = Vector3.new(2.398, 2.891, .377)
+    ears.Massless = true
+    ears.CanCollide = false
+local msh = Instance.new("SpecialMesh", ears)
+    msh.MeshId = "rbxassetid://5660900600"
+    msh.TextureId = "rbxassetid://9543390109"
+    msh.Scale = Vector3.new(2.398, 3.262, 0.652)
+
+-- lucas and bain wanted me to add this boolvalue
+
+local alive = Instance.new("BoolValue", bingus)
+	alive.Name = "BingusAlive"
+	alive.Value = true
+-- bv for kicking
+local bv = Instance.new("BodyVelocity", bingus)
+    -- bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bv.MaxForce = Vector3.new()
+
+-- welds
+local w = Instance.new("Weld", model)
+    w.Name = "Ears Weld"
+    w.Part0 = ears
+    w.Part1 = bingus
+    w.C0 = CFrame.new(.009, -1.772, .165)
+local w = Instance.new("Weld", torso)
+    w.Part0 = bingus
+    w.Part1 = head
+    w.Name = "Neck"
+local m6d = Instance.new("Motor6D", bingus)
+    m6d.Part0 = bingus
+    m6d.Part1 = torso
+    m6d.Name = "RootJoint"
+
+local function txt(face, id)
+    local text = Instance.new("Texture", bingus)
+        text.Name = face
+        text.Face = face
+        text.Texture = "rbxassetid://" .. id
+        text.StudsPerTileU = 2.609
+        text.StudsPerTileV = 2.609
+    return text
+end
+
+-- textures
+local top = txt("Top", 9543391827)
+local bottom = txt("Bottom", 9543391827)
+local left = txt("Left", 9543390109)
+local right = txt("Right", 9543390109)
+local front = txt("Front", 9508006574)
+local back = txt("Back", 9543391827)
+
+local hum = Instance.new("Humanoid")
+    hum.RequiresNeck = false
+    hum.DisplayName = "bingus"
+    hum.Parent = model
+    -- test: hum:MoveTo(Vector3.new(50, 0, 0))
+
+hum.Died:Connect(function()
+	alive.Value = false
+end)
+-- funny kicking
+local kick = Instance.new("ProximityPrompt", bingus)
+    kick.Enabled = true
+    kick.MaxActivationDistance = 8  
+    kick.ClickablePrompt = false
+    kick.RequiresLineOfSight = false
+    kick.HoldDuration = 0 -- .25
+    kick.ObjectText = "" -- "Bingus"
+    kick.ActionText = "" -- "kick him!"
+    kick.KeyboardKeyCode = Enum.KeyCode.E
+kick.Triggered:Connect(function(plr)
+    local rnd = Random.new()
+    bingus.Massless = true
+    hum.PlatformStand = true
+    bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bv.Velocity = (plr.Character.HumanoidRootPart.CFrame.lookVector * 50) + Vector3.new(0, 50, 0)
+    task.wait(.05)
+    bv.MaxForce = Vector3.new()
+    bv.Velocity = Vector3.new()
+    bingus.RotVelocity = Vector3.new(rnd:NextNumber(-5, 5), rnd:NextNumber(-5, 5), rnd:NextNumber(-5, 5))
+    task.wait(1.95)
+	if alive.Value == true then
+    	hum.PlatformStand = false
+	end
+    bingus.Massless = false
+end)
+
+-- [[ ON WITH THE AI! ]] --
+
+local function checksight(m, c)
+    --[[
+    local dist = (c.Position - m.Position).Magnitude
+    if dist < 100 then -- in range
+        return true
+    else -- out of range
+        return false
+    end
+    ]]--
+    return false
+end
+
+local path = simplepath.new(model)
+local goal = nil
+-- path.Visualize = true
+
+path.Blocked:Connect(function()
+    if goal then
+            pcall(function()
+            hum:MoveTo(goal.Position, goal)
+            hum.Jump = true
+            path:Run(goal)
+        end)
+    end
+end)
+
+path.WaypointReached:Connect(function()
+    path:Stop(goal)
+end)
+
+path.Error:Connect(function(e)
+    -- print(e)
+    if e == "ComputationError" or e == "TargetUnreachable" then
+        if goal then
+            pcall(function()
+                m.Humanoid:MoveTo(goal.Position, goal)
+                if e == "ComputationError" and not touching(bingus.CFrame, Vector3.new(5, 5, 5), "TrussPart") then
+                    hum.Jump = true
+                end
+                path:Run(goal)
+            end)
+        end
+    end
+end)
+
+local function wander()
+    local rnd = Random.new()
+    local sprd = 50
+    local pos = (bingus.CFrame * CFrame.new(rnd:NextNumber(-(sprd), sprd), rnd:NextNumber(-(sprd), sprd), rnd:NextNumber(-(sprd), sprd))).Position
+    path:Run(pos)
+end
+
+coroutine.wrap(function()
+    while task.wait(1) and alive.Value == true do
+        -- goal = simplepath.GetNearestCharacter(m.HumanoidRootPart.Position):FindFirstChildWhichIsA("BasePart")
+        if checksight(bingus, goal) then
+            if spotted == false then
+                spotted = true
+            end
+            path:Run(goal)
+        elseif not checksight(bingus, goal) then
+            spotted = false
+            wander()
+            local rnd = Random.new()
+            task.wait(rnd:NextNumber(1.5, 2))
+        end
+    end
+end)()
