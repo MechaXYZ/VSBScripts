@@ -274,7 +274,6 @@ function Path:Run(target)
 	--Non-humanoid handle case
 	if not target and not self._humanoid and self._target then
 		moveToFinished(self, true)
-		print("no.")
 		return
 	end
 
