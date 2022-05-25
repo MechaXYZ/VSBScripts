@@ -9,10 +9,10 @@ local delay = Instance.new("NumberValue", re)
     delay.Value = 5
 local sd = Instance.new("NumberValue", re)
     sd.Name = "Shrink"
-    sd.Value = 3
+    sd.Value = 2
 local gd = Instance.new("NumberValue", re)
     gd.Name = "Grow"
-    gd.Value = 3
+    gd.Value = 2
 local function size(scl, d)
     local Percent = scl / currentsize
     local Player = owner    
@@ -59,6 +59,8 @@ end)
 
 -- [[ LOCALSCRIPT ]] --
 NLS([[
+	print("F - Shrink")
+	print("G - Grow")
     -- SETUP --
     local re = script.Parent
     local delay = re.Delay.Value
