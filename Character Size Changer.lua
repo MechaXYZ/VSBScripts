@@ -1,19 +1,19 @@
 local currentsize = 1
 local function size(scl)
-local Percent = scl/currentsize
-local Player = owner    
-local Humanoid = Player.Character:FindFirstChildOfClass("Humanoid")
-        for i, v in pairs(Player.Character:GetDescendants()) do
-            if v:IsA("JointInstance") then
-            v.C0 = CFrame.new((v.C0.Position * Percent)) * (v.C0 - v.C0.Position)
-            v.C1 = CFrame.new((v.C1.Position * Percent)) * (v.C1 - v.C1.Position)
-			elseif v:IsA("SpecialMesh") then
-			v.Scale = v.Scale * Percent
- 			elseif v:IsA("BasePart") then
-            v.Size = v.Size * Percent   
-        end
-        end
-        end
+	local Percent = scl / currentsize
+	local Player = owner    
+	local Humanoid = Player.Character:FindFirstChildOfClass("Humanoid")
+	for i, v in pairs(Player.Character:GetDescendants()) do
+		if v:IsA("JointInstance") then
+				v.C0 = CFrame.new((v.C0.Position * Percent)) * (v.C0 - v.C0.Position)
+        v.C1 = CFrame.new((v.C1.Position * Percent)) * (v.C1 - v.C1.Position)
+		elseif v:IsA("SpecialMesh") and v.Parent.Name ~= "Head" then
+				v.Scale = v.Scale * Percent
+ 		elseif v:IsA("BasePart") then
+        v.Size = v.Size * Percent   
+    end
+	end
+end
 print([[
 Commands
 R6 = R6 Only command
