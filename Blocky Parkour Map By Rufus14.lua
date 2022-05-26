@@ -433,7 +433,7 @@ end
 spawn(animate)
 end))
 for i,v in pairs(mas:GetChildren()) do
-	v.Parent = workspace
+	v.Parent = script
 	pcall(function() v:MakeJoints() end)
 end
 mas:Destroy()
