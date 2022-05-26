@@ -207,7 +207,7 @@ ray.Activated:Connect(function()
     multi.SoundId = "rbxassetid://130113322"
     multi.Parent = plr.Character.Head
     multi.Parent = nil
-    local a = shoot(CFrame.new(h.Position, plr.Character.HumanoidRootPart.CFrame.lookVector * 500), txt.TextColor3, beam)
+    local a = shoot(h.CFrame, txt.TextColor3, beam)
     local gothit = false
     for i = 1, 128 do
         if gothit == true then
