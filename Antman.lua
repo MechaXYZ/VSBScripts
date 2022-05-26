@@ -3,8 +3,7 @@
 warn([[antman script by mecha
     i recommend using r6
     z - shrink
-    x - grow
-]])
+    x - grow]])
 local currentsize = owner.Character.Head.Size.Y
 local tw = game:GetService("TweenService")
 local re = Instance.new("RemoteEvent", owner.PlayerGui)
@@ -18,6 +17,11 @@ local sd = Instance.new("NumberValue", re)
 local gd = Instance.new("NumberValue", re)
     gd.Name = "Grow"
     gd.Value = 2
+local morph = Instance.new("Sound", game:GetService("VRService"))
+    morph.SoundId = "rbxassetid://130113415"
+    morph.Volume = .5
+    morph.PlayOnRemove = true
+    morph.EmitterSize = 8
 local function size(scl, d)
     local Percent = scl / currentsize
     local Player = owner    
@@ -36,6 +40,8 @@ local function size(scl, d)
     end
 end
 re.OnServerEvent:Connect(function(plr, what, type)
+    morph.Parent = owner.Character.Head
+    morph.Parent = nil
     local hum = owner.Character:FindFirstChildOfClass("Humanoid")
     if what == "shrink" then
         if type == Enum.HumanoidRigType.R6 then
