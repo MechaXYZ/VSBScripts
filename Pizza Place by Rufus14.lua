@@ -2,30 +2,6 @@
 --Converted with ttyyuu12345's model to script plugin v4
 wait()
 script.Parent = game.Lighting
-local function scann(part)
-	for i,v in pairs(part:GetChildren()) do
-		scann(v)
-		if v.ClassName == "Part" then
-			v:destroy()
-		end
-		if v.ClassName == "Humanoid" then
-			v.Health = 0
-		end
-		if v.ClassName == "Seat" then
-			v:destroy()
-		end
-		if v.ClassName == "SpawnLocation" then
-			v:destroy()
-		end
-		if v.ClassName == "MeshPart" then
-			v:destroy()
-		end
-		if v.ClassName == "Sound" then
-			v:destroy()
-		end
-	end
-end
-scann(workspace)
 function sandbox(var,func)
 	local env = getfenv(func)
 	local newenv = setmetatable({},{
@@ -3321,7 +3297,7 @@ end
 end--]]
 while true do
 	if Model0.Parent == nil then
-		Model0.Parent = workspace
+		Model0.Parent = script
 	end
 	if music.Parent == nil then
 		music.Parent = Model0
