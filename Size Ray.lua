@@ -219,7 +219,10 @@ ray.Activated:Connect(function()
                 a.CFrame = a.CFrame * CFrame.new(0, 0, -2)
                 for _, hit in pairs(workspace:GetPartBoundsInBox(a.CFrame, a.Size * 1.05)) do
                     local m = hit:FindFirstAncestorOfClass("Model")
-                    if m and not m:FindFirstChildOfClass("Humanoid") then
+                    repeat
+                        m = m:FindFirstAncestorOfClass("Model")
+                    until m:FindFirstAncestorOfClass("Model") == nil
+                    if (m and not m:FindFirstChildOfClass("Humanoid")) then
                         task.wait(.025)
                         gothit = true
                         a:Destroy()
@@ -229,7 +232,7 @@ ray.Activated:Connect(function()
                         multi.Parent = nil
                         gothit = true
                         break
-                    elseif (m and m:FindFirstChildOfClass("Humanoid") and m ~= plr.Character) or (not m and hit ~= a and hit ~= h and (hit.Name ~= "Base" and hit.Parent == workspace)) then
+                    elseif (m and m:FindFirstChildOfClass("Humanoid") and m ~= plr.Character) or (not m and hit ~= a and hit ~= h and (hit.Name ~= "Base" and hit.Parent ~= script)) then
                         task.wait(.025)
                         gothit = true
                         a:Destroy()
