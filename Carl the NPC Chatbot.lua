@@ -165,6 +165,10 @@ end
 
 table.foreach(game:GetService("Players"):GetPlayers(), function(i, v) ChatEvent(v) end) -- pretty noice
 
+if owner.Character and owner.Character:FindFirstChild("HumanoidRootPart") then
+    Part4.CFrame = owner.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, -5)
+end
+
 repeat
     task.wait()
     game:GetService("Chat").BubbleChatEnabled = true
