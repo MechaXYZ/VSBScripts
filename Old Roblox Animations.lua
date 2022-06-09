@@ -195,8 +195,8 @@ end
             if pose == "Running" then
                 RightShoulder.MaxVelocity = 0.15
                 LeftShoulder.MaxVelocity = 0.15
-    LeftHip.MaxVelocity = 0.15
-    RightHip.MaxVelocity = 0.15
+                LeftHip.MaxVelocity = 0.15
+                RightHip.MaxVelocity = 0.15
                 amplitude = 1
                 frequency = 9
             elseif pose == "Climbing" then
@@ -210,7 +210,7 @@ end
                 frequency = 1
             end
      
-            desiredAngle = amplitude * math.sin(time*frequency)
+            desiredAngle = amplitude * math.sin(time * frequency)
      
             RightShoulder.DesiredAngle = desiredAngle + climbFudge
             LeftShoulder.DesiredAngle = desiredAngle - climbFudge
@@ -263,6 +263,6 @@ end
      
         local runService = game:service("RunService");
         while Figure.Parent ~= nil do
-            local _, time = task.wait(.1)
+            local _, time = wait(0.1)
             move(time)
         end
