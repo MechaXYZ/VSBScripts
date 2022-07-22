@@ -40,4 +40,3 @@ for _, v in pairs(game:GetService("Players"):GetPlayers()) do
 	add(v)
 end
 game:GetService("Players").PlayerAdded:Connect(add)
-repeat game:GetService("Chat").BubbleChatEnabled = true task.wait() until game:GetService("Chat").BubbleChatEnabled == true 
