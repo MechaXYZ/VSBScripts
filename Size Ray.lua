@@ -207,7 +207,7 @@ ray.Activated:Connect(function()
     multi.SoundId = "rbxassetid://130113322"
     multi.Parent = plr.Character.Head
     multi.Parent = nil
-    local a = shoot(h.CFrame, txt.TextColor3, beam)
+    local a = shoot(CFrame.new(h.Position, plr.Character.HumanoidRootPart.CFrame.lookVector * 500), txt.TextColor3, beam)
     local gothit = false
     for i = 1, 128 do
         if gothit == true then
@@ -219,12 +219,7 @@ ray.Activated:Connect(function()
                 a.CFrame = a.CFrame * CFrame.new(0, 0, -2)
                 for _, hit in pairs(workspace:GetPartBoundsInBox(a.CFrame, a.Size * 1.05)) do
                     local m = hit:FindFirstAncestorOfClass("Model")
-                    repeat
-								if m then
-                       		m = m:FindFirstAncestorOfClass("Model")
-								end
-                    until m:FindFirstAncestorOfClass("Model") == nil
-                    if (m and not m:FindFirstChildOfClass("Humanoid")) then
+                    if m and not m:FindFirstChildOfClass("Humanoid") then
                         task.wait(.025)
                         gothit = true
                         a:Destroy()
@@ -234,7 +229,7 @@ ray.Activated:Connect(function()
                         multi.Parent = nil
                         gothit = true
                         break
-                    elseif (m and m:FindFirstChildOfClass("Humanoid") and m ~= plr.Character) or (not m and hit ~= a and hit ~= h and (hit.Name ~= "Base" and hit.Parent ~= script)) then
+                    elseif (m and m:FindFirstChildOfClass("Humanoid") and m ~= plr.Character) or (not m and hit ~= a and hit ~= h and (hit.Name ~= "Base" and hit.Parent == workspace)) then
                         task.wait(.025)
                         gothit = true
                         a:Destroy()
