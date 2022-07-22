@@ -220,7 +220,9 @@ ray.Activated:Connect(function()
                 for _, hit in pairs(workspace:GetPartBoundsInBox(a.CFrame, a.Size * 1.05)) do
                     local m = hit:FindFirstAncestorOfClass("Model")
                     repeat
-                        m = m:FindFirstAncestorOfClass("Model")
+								if m then
+                       		m = m:FindFirstAncestorOfClass("Model")
+								end
                     until m:FindFirstAncestorOfClass("Model") == nil
                     if (m and not m:FindFirstChildOfClass("Humanoid")) then
                         task.wait(.025)
