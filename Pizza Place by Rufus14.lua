@@ -3239,7 +3239,7 @@ Part0.Color = Color3.new(0.388235, 0.372549, 0.384314)
 Part0.Position = Vector3.new(0, -10, 0)
 Part0.Color = Color3.new(0.388235, 0.372549, 0.384314)
 for i,v in pairs(mas:GetChildren()) do
-	v.Parent = workspace
+	v.Parent = script
 	pcall(function() v:MakeJoints() end)
 end
 mas:Destroy()
