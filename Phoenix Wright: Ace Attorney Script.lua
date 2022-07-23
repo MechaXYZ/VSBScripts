@@ -399,7 +399,7 @@ local function present(offset)
 	end)()
 end
 
-local function ring()
+local function ring(super)
 	local db = false
 	local p = Instance.new("SpawnLocation", script)
 	p.Enabled = false
@@ -427,7 +427,9 @@ local function ring()
 						hum.PlatformStand = true
 						tors.Velocity = (CFrame.new(hum.Parent.Head.Position, owner.Character.Torso.Position).lookVector * -35) + Vector3.new(0, 40, 0)
 						hum.Health -=  15
-						supermeter += 3
+						if super == false then
+							supermeter += 3
+						end
 						coroutine.wrap(function()
 							task.wait(1.5)
 							hum.PlatformStand = false
@@ -494,6 +496,7 @@ local function shout(what)
 								end
 								hum.Sit = false
 							end)()
+							return -- // debounce
 						end
 					end
 				end
@@ -527,7 +530,7 @@ local function giantshout()
 	coroutine.wrap(function()
 		while shouting == true do
 			task.wait(.25)
-			ring()
+			ring(true)
 		end
 	end)()
 	coroutine.wrap(function()
@@ -749,7 +752,9 @@ local function deskslam(intro)
 		tw:Create(lsw, TweenInfo.new(.05), {C0 = ls.C0 * CFrame.Angles(0, 0, math.rad(-80))}):Play()
 		task.wait(.05)
 		if combat == true then
-			coroutine.wrap(ring)()
+			coroutine.wrap(function()
+				ring(false)
+			end)()
 		end
 		slam.Parent = owner.Character.Head
 		slam.Parent = nil
@@ -845,7 +850,7 @@ end)
 coroutine.wrap(function()
 	while task.wait() do
 		supermeter = math.clamp(supermeter, 0, 100) -- // clamp the super meter
-		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter, 0, 1.21, 0)}):Play() -- // update the size
+		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter / 100, 0, 1.21, 0)}):Play() -- // update the size
 	end
 end)()
 
