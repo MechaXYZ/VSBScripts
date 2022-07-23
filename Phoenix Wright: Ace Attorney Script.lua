@@ -427,7 +427,7 @@ local function ring()
 						hum.PlatformStand = true
 						tors.Velocity = (CFrame.new(hum.Parent.Head.Position, owner.Character.Torso.Position).lookVector * -35) + Vector3.new(0, 40, 0)
 						hum.Health -=  15
-						supermeter += 5
+						supermeter += 3
 						coroutine.wrap(function()
 							task.wait(1.5)
 							hum.PlatformStand = false
@@ -472,11 +472,11 @@ local function shout(what)
 							if deskmode == true then -- // buff all attacks when in deskmode since you're stuck and can't really aim
 								tors.Velocity = p.CFrame.UpVector * -100
 								hum.Health -= 50
-								supermeter += 10
+								supermeter += 5
 							else
 								tors.Velocity = p.CFrame.UpVector * -50
 								hum.Health -= 25
-								supermeter += 5
+								supermeter += 4
 							end
 							coroutine.wrap(function()
 								task.wait(1.5)
@@ -559,6 +559,7 @@ local function giantshout()
 end
 
 local function superobject()
+	supermeter = 0 -- // reset the super meter, we can't have everyone spamming the op move can we?
 	owner.Character.Humanoid.WalkSpeed = 0 -- // set ws and jp to 0 because this move is gonna be op
 	owner.Character.Humanoid.JumpPower = 0
 	local ph = game:GetService("PhysicsService")
@@ -844,7 +845,7 @@ end)
 coroutine.wrap(function()
 	while task.wait() do
 		supermeter = math.clamp(supermeter, 0, 100) -- // clamp the super meter
-		superbar2.Size = UDim2.new(supermeter, 0, 1.21, 0) -- // update the size
+		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter, 0, 1.21, 0)}):Play() -- // update the size
 	end
 end)()
 
