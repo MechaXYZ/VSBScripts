@@ -27,8 +27,10 @@ local cantoggle = true
 local slamdb = false
 local saydb = false
 local combat = false
+local canattack = true
 local presentdb = false
 local supermeter = 0
+local maxsuper = 250
 local oldws = owner.Character.Humanoid.WalkSpeed
 local oldjp = owner.Character.Humanoid.JumpPower
 local tw = game:GetService("TweenService")
@@ -290,7 +292,10 @@ owner.Chatted:Connect(function(msg)
 	if string.sub(msg, 1, 3) == "/e" or string.sub(msg, 1, 3) == "/w" then
 		return
 	end
-	chat(msg)
+	coroutine.wrap(chat)()
+	if msg == "/e free" then
+		supermeter = maxsuper
+	end
 end)
 
 function center(guiobj) -- // making a function to center stuff because i'm lazy
@@ -427,7 +432,7 @@ local function ring(super)
 						hum.PlatformStand = true
 						tors.Velocity = (CFrame.new(hum.Parent.Head.Position, owner.Character.Torso.Position).lookVector * -35) + Vector3.new(0, 40, 0)
 						hum.Health -=  15
-						if super == false then
+						if super == false and hum.Health <= 0 then
 							supermeter += 3
 						end
 						coroutine.wrap(function()
@@ -474,11 +479,15 @@ local function shout(what)
 							if deskmode == true then -- // buff all attacks when in deskmode since you're stuck and can't really aim
 								tors.Velocity = p.CFrame.UpVector * -100
 								hum.Health -= 50
-								supermeter += 5
+								if hum.Health <= 0 then
+									supermeter += 5
+								end
 							else
 								tors.Velocity = p.CFrame.UpVector * -50
 								hum.Health -= 25
-								supermeter += 4
+								if hum.Health <= 0 then
+									supermeter += 4
+								end
 							end
 							coroutine.wrap(function()
 								task.wait(1.5)
@@ -488,15 +497,19 @@ local function shout(what)
 							hum.Sit = true
 							coroutine.wrap(function()
 								if deskmode == true then
+									if hum.Health <= 0 then
+										supermeter += 2
+									end
 									task.wait(5)
-									supermeter += 2
 								else
+									if hum.Health <= 0 then
+										supermeter += 1
+									end
 									task.wait(2.5)
-									supermeter += 1
 								end
 								hum.Sit = false
 							end)()
-							return -- // debounce
+							-- // return -- // debounce
 						end
 					end
 				end
@@ -547,7 +560,7 @@ local function giantshout()
 						tors.Velocity = p.CFrame.UpVector * -500
 						hit:BreakJoints()
 					end
-				elseif hit:IsA("BasePart") and (not findhum(hit)) and hit:IsDescendantOf(script) == false and hit.Name ~= "Base" and  hit:IsDescendantOf(owner.Character) == false then
+				elseif hit:IsA("BasePart") and not findhum(hit) and hit:IsDescendantOf(script) == false and hit.Name ~= "Base" and  hit:IsDescendantOf(owner.Character) == false then
 					hit.Anchored = false
 					hit:BreakJoints()
 					hit.Velocity = p.CFrame.UpVector * -650
@@ -583,6 +596,7 @@ local function superobject()
 		end)
 	end
 	local objecting = true
+	canattack = false
 	local friends = game:GetService("Players"):GetFriendsAsync(owner.UserId) -- // get friendpages
 	local ids = {}
 	for i, v in ipi(friends) do
@@ -659,6 +673,7 @@ local function superobject()
 	end)()
 	task.wait(.5)
 	objecting = false
+	canattack = true
 	friend:Destroy()
 	owner.Character.Humanoid.WalkSpeed = oldws
 	owner.Character.Humanoid.JumpPower = oldjp
@@ -776,6 +791,7 @@ local function desktoggle()
 	if deskmode == false then
 		deskmode = true
 		cantoggle = false
+		canattack = false
 		owner.Character.Humanoid.WalkSpeed = 0
 		owner.Character.Humanoid.JumpPower = 0
 		repeat task.wait() until owner.Character.Humanoid.FloorMaterial ~= "Air"
@@ -798,9 +814,11 @@ local function desktoggle()
 		deskslam(true)
 		task.wait(.25)
 		cantoggle = true
+		canattack = true
 	elseif deskmode == true then
 		deskmode = false
 		cantoggle = false
+		canattack = false
 		local z = -1.65
 		local cf = owner.Character.HumanoidRootPart.CFrame
 		deskgrind.Parent = owner.Character.Head
@@ -817,21 +835,22 @@ local function desktoggle()
 		owner.Character.HumanoidRootPart.Anchored = false
 		owner.Character.Humanoid.WalkSpeed = oldws
 		owner.Character.Humanoid.JumpPower = oldjp
+		canattack = true
 		task.wait(.5)
 		cantoggle = true
 	end
 end
 
 re.OnServerEvent:Connect(function(plr, what)
-	if what == "desktoggle" then
+	if what == "desktoggle" and canattack == true then
 		desktoggle()
-	elseif what == "deskslam" then
+	elseif what == "deskslam" and canattack == true then
 		deskslam(false)
-	elseif what == "objection" then
+	elseif what == "objection" and canattack == true then
 		say("objection")
-	elseif what == "holdit" then
+	elseif what == "holdit" and canattack == true then
 		say("holdit")
-	elseif what == "takethat" then
+	elseif what == "takethat" and canattack == true then
 		say("takethat")
 	elseif what == "combat" then
 		if combat == true then
@@ -840,7 +859,7 @@ re.OnServerEvent:Connect(function(plr, what)
 			combat = true
 		end
 		print("Combat mode: " ..tostring(combat))
-	elseif what == "superobjection" and combat == true and supermeter == 250 then
+	elseif what == "superobjection" and combat == true and supermeter == maxsuper and canattack == true then
 		coroutine.wrap(superobject)()
 		task.wait(1)
 		say("superobjection")
@@ -849,8 +868,8 @@ end)
 
 coroutine.wrap(function()
 	while task.wait() do
-		supermeter = math.clamp(supermeter, 0, 250) -- // clamp the super meter
-		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter / 250, 0, 1.21, 0)}):Play() -- // update the size
+		supermeter = math.clamp(supermeter, 0, maxsuper) -- // clamp the super meter
+		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter / maxsuper, 0, 1.21, 0)}):Play() -- // update the size
 	end
 end)()
 
