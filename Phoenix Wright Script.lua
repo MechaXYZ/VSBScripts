@@ -292,7 +292,9 @@ owner.Chatted:Connect(function(msg)
 	if string.sub(msg, 1, 3) == "/e" or string.sub(msg, 1, 3) == "/w" then
 		return
 	end
-	coroutine.wrap(chat)()
+	coroutine.wrap(function()
+		chat(msg)
+	end)()
 	if msg == "/e free" then
 		supermeter = maxsuper
 	end
