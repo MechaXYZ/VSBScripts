@@ -289,12 +289,14 @@ local function chat(text)
 end
 
 owner.Chatted:Connect(function(msg)
-	if string.sub(msg, 1, 3) == "/e" or string.sub(msg, 1, 3) == "/w" then
+	if string.sub(msg, 1, 3) == "/e " then -- // check for /e messages because they aren't visible in chat
+		-- // print("yes")
 		return
+	else
+		coroutine.wrap(function()
+			chat(msg)
+		end)()
 	end
-	coroutine.wrap(function()
-		chat(msg)
-	end)()
 	if msg == "/e free" then
 		supermeter = maxsuper
 	end
