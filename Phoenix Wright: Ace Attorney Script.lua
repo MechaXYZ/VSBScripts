@@ -840,7 +840,7 @@ re.OnServerEvent:Connect(function(plr, what)
 			combat = true
 		end
 		print("Combat mode: " ..tostring(combat))
-	elseif what == "superobjection" and combat == true and supermeter == 100 then
+	elseif what == "superobjection" and combat == true and supermeter == 250 then
 		coroutine.wrap(superobject)()
 		task.wait(1)
 		say("superobjection")
@@ -849,8 +849,8 @@ end)
 
 coroutine.wrap(function()
 	while task.wait() do
-		supermeter = math.clamp(supermeter, 0, 100) -- // clamp the super meter
-		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter / 100, 0, 1.21, 0)}):Play() -- // update the size
+		supermeter = math.clamp(supermeter, 0, 250) -- // clamp the super meter
+		tw:Create(superbar2, TweenInfo.new(.25), {Size = UDim2.new(supermeter / 250, 0, 1.21, 0)}):Play() -- // update the size
 	end
 end)()
 
