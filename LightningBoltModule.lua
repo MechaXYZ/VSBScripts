@@ -961,6 +961,8 @@ do
 		part.Anchored = true
 		part.CanCollide = false
 		part.Locked = true
+		part.CanQuery = false
+		part.CanTouch = false
 		part.CastShadow = false
 		part.Transparency = 1
 		part.Size = Vector3.new(0.05, 0.05, 0.05)
