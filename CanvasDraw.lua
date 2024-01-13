@@ -671,10 +671,15 @@ do
 			-- Define API
 			local function createGradient(colorData, x, pixelStart, pixelCount)
 				local Sequence = TableCreate(#colorData)
+				
 				for i, data in colorData do
 					Sequence[i] = ColorSeqKeyPNew(Mclamp(data.p / pixelCount, 0, 1), data.c)
 				end
-		
+				
+				table.sort(Sequence, function(a, b)
+					return a.Time < b.Time
+				end)
+
 				local Frame = Canvas._Pool:Get()
 				Frame.Position = UDim2FromScale(invX * (x - 1), pixelStart * invY)
 				Frame.Size = UDim2FromScale(invX, invY * pixelCount)
