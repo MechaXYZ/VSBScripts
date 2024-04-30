@@ -47,8 +47,7 @@ Path.__index = function(table, index)
 end
 
 --Used to visualize waypoints
-local visualWaypoint = Instance.new("SpawnLocation")
-visualWaypoint.Enabled = false
+local visualWaypoint = Instance.new("Part")
 visualWaypoint.Size = Vector3.new(0.3, 0.3, 0.3)
 visualWaypoint.Anchored = true
 visualWaypoint.CanCollide = false
@@ -67,7 +66,7 @@ local function createVisualWaypoints(waypoints)
 	for _, waypoint in ipairs(waypoints) do
 		local visualWaypointClone = visualWaypoint:Clone()
 		visualWaypointClone.Position = waypoint.Position
-		visualWaypointClone.Parent = script
+		visualWaypointClone.Parent = workspace
 		visualWaypointClone.Color =
 			(waypoint == waypoints[#waypoints] and Color3.fromRGB(0, 255, 0))
 			or (waypoint.Action == Enum.PathWaypointAction.Jump and Color3.fromRGB(255, 0, 0))
@@ -137,7 +136,7 @@ local function moveToFinished(self, reached)
 	if not self._humanoid then
 		if reached and self._currentWaypoint + 1 <= #self._waypoints then
 			invokeWaypointReached(self)
-			self._currentWaypoint += 1
+			self._currentWaypoint = self._currentWaypoint + 1
 		elseif reached then
 			self._visualWaypoints = destroyVisualWaypoints(self._visualWaypoints)
 			self._target = nil
@@ -154,7 +153,7 @@ local function moveToFinished(self, reached)
 		if self._currentWaypoint + 1 < #self._waypoints then
 			invokeWaypointReached(self)
 		end
-		self._currentWaypoint += 1
+		self._currentWaypoint = self._currentWaypoint + 1
 		move(self)
 	elseif reached then --Target reached, pathfinding ends
 		disconnectMoveConnection(self)
@@ -186,8 +185,8 @@ end
 function Path.GetNearestCharacter(fromPosition)
 	local character, dist = nil, math.huge
 	for _, player in ipairs(Players:GetPlayers()) do
-		if player.Character and player.Character:FindFirstChildWhichIsA("BasePart") and (player.Character:FindFirstChildWhichIsA("BasePart").Position - fromPosition).Magnitude < dist then
-			character, dist = player.Character, (player.Character:FindFirstChildWhichIsA("BasePart").Position - fromPosition).Magnitude
+		if player.Character and (player.Character.PrimaryPart.Position - fromPosition).Magnitude < dist then
+			character, dist = player.Character, (player.Character.PrimaryPart.Position - fromPosition).Magnitude
 		end
 	end
 	return character
