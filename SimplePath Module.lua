@@ -61,18 +61,20 @@ local function declareError(self, errorType)
 end
 
 --Create visual waypoints
-local function createVisualWaypoints(waypoints)
+local function createVisualWaypoints(waypoints, parent)
 	local visualWaypoints = {}
+	
 	for _, waypoint in ipairs(waypoints) do
 		local visualWaypointClone = visualWaypoint:Clone()
 		visualWaypointClone.Position = waypoint.Position
-		visualWaypointClone.Parent = workspace
+		visualWaypointClone.Parent = parent
 		visualWaypointClone.Color =
 			(waypoint == waypoints[#waypoints] and Color3.fromRGB(0, 255, 0))
 			or (waypoint.Action == Enum.PathWaypointAction.Jump and Color3.fromRGB(255, 0, 0))
 			or Color3.fromRGB(255, 139, 0)
 		table.insert(visualWaypoints, visualWaypointClone)
 	end
+	
 	return visualWaypoints
 end
 
@@ -83,6 +85,7 @@ local function destroyVisualWaypoints(waypoints)
 			waypoint:Destroy()
 		end
 	end
+	
 	return
 end
 
@@ -208,6 +211,7 @@ function Path.new(agent, agentParameters, override)
 			Stopped = Instance.new("BindableEvent");
 		};
 		_agent = agent;
+		_visualParent = workspace;
 		_humanoid = agent:FindFirstChildOfClass("Humanoid");
 		_path = PathfindingService:CreatePath(agentParameters);
 		_status = "Idle";
@@ -326,7 +330,7 @@ function Path:Run(target)
 
 	--Visualize waypoints
 	destroyVisualWaypoints(self._visualWaypoints)
-	self._visualWaypoints = (self.Visualize and createVisualWaypoints(self._waypoints))
+	self._visualWaypoints = (self.Visualize and createVisualWaypoints(self._waypoints, self._visualParent))
 
 	--Create a new move connection if it doesn't exist already
 	self._moveConnection = self._humanoid and (self._moveConnection or self._humanoid.MoveToFinished:Connect(function(...)
